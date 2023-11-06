@@ -14,8 +14,4 @@ npm i
 
 Фронт деплоится автоматически после любого коммита в определенных ветках. Список работающих деплоев проекта будет вестись тут и пополняться при необходимости:
 
-1. Ветка `auth`
-
-    **Статус**: __TODO: ДОБАВИТЬ СТАТУС__
-
-    **Ссылка**: __TODO: ДОБАВИТЬ ССЫЛКУ__
+1. [![Netlify Status](https://api.netlify.com/api/v1/badges/2bbe1e04-fd84-4f6f-bca2-76a7aeceb4a2/deploy-status)](https://app.netlify.com/sites/renovation-studio-auth-test/deploys) [Ветка `auth`](https://renovation-studio-auth-test.netlify.app/)
