@@ -31,7 +31,6 @@ dist-ssr
 node_modules
 vendor
 *.log
-*.lock
 *.tmp
 *.txt
 *.csv
