@@ -1,7 +1,7 @@
 <template>
   <div class="mt-12 container max-w-full mx-auto sm:px-4 bg-main border-none">
-    <div class="container mx-auto sm:px-4 mw-90 border-none">
-      <footer class="flex flex-wrap row-cols-5 py-5 border-none">
+    <div class="container mx-auto sm:px-4  mw-90 border-none">
+      <footer class="flex flex-wrap  row-cols-5 py-5 border-none">
         <div class="relative flex-grow max-w-full flex-1 px-4">
           <img
             src="../assets/Логотип lg.png"
@@ -10,7 +10,7 @@
           <h6 class="mt-2 mb-2">
             Мы в соцсетях:
           </h6>
-          <div class="flex flex-wrap mr-auto">
+          <div class="flex flex-wrap  mr-auto">
             <div class="w-1/5">
               <img
                 src="..\assets\akar-icons_facebook-fill.png"
@@ -42,25 +42,25 @@
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Проектирование</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Строительство</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Отделка и ремонт</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Декорирование</a>
             </li>
           </ul>
@@ -74,19 +74,19 @@
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Команда</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Вакансии</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Новости</a>
             </li>
           </ul>
@@ -100,15 +100,12 @@
             <li class="text-muted">
               <div class="flex flex-wrap">
                 <div class="w-1/9 pt-2">
-                  <img
-                    src="../assets/icon _phone_.png"
-                    alt=""
-                  >
+                  <span class="material-symbols-outlined text-black text-md">call</span>
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-4">
                   <a
                     href="#"
-                    class="text-sm text-bold font-montserrat inline-block py-2 px-3 no-underline p-0 text-gray-400"
+                    class="text-sm text-bold font-montserrat  inline-block py-2 px-3 no-underline p-0 text-gray-400"
                   >8 999 888 22 55</a>
                 </div>
               </div>
@@ -116,15 +113,12 @@
             <li class="text-muted">
               <div class="flex flex-wrap">
                 <div class="w-1/9 pt-2">
-                  <img
-                    src="../assets/icon _home_.png"
-                    alt=""
-                  >
+                  <span class="material-symbols-outlined text-black text-md">home</span>
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-4">
                   <a
                     href="#"
-                    class="text-sm text-bold font-montserrat inline-block py-2 px-3 no-underline p-0 text-gray-400"
+                    class="text-sm text-bold font-montserrat  inline-block py-2 px-3 no-underline p-0 text-gray-400"
                   >г. Волгоград, <br>ул. Волгоградская, 1</a>
                 </div>
               </div>
@@ -132,15 +126,12 @@
             <li class="text-muted">
               <div class="flex flex-wrap">
                 <div class="w-1/9 pt-2">
-                  <img
-                    src="../assets/icon _mail_.png"
-                    alt=""
-                  >
+                  <span class="material-symbols-outlined text-black text-md">mail</span>
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-4">
                   <a
                     href="#"
-                    class="text-sm text-bold font-montserrat inline-block py-2 px-3 no-underline p-0 text-gray-400"
+                    class="text-sm text-bold font-montserrat  inline-block py-2 px-3 no-underline p-0 text-gray-400"
                   >pristroika@volsu.ru</a>
                 </div>
               </div>
@@ -154,7 +145,14 @@
 
 <style scoped>
 /* Наследие бутстрапа */
-.mw-90 {
+.mw-90{
   max-width: 90%;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
 }
 </style>

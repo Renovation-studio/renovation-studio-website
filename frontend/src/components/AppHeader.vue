@@ -5,7 +5,7 @@
       <div class="sm:container mx-auto xl:px-5 mw-75">
         <div class="flex flex-wrap ">
           <!-- ЛОГО -->
-          <div class="w-1/7">
+          <div class="w-1/6">
             <img
               class="img-logo"
               src="../assets/Логотип.png"
@@ -13,7 +13,7 @@
             >
           </div>
 
-          <div class="w-1/7">
+          <div class="w-1/12">
             <div class="flex flex-wrap  mt-2">
               <div class="w-1/6 pt-2">
                 <img
@@ -25,6 +25,19 @@
                 <span class="text-xs">Волгоград</span>
               </div>
             </div>
+          </div>
+
+          <div
+            v-show="$router.currentRoute.value.name !== 'login' && $router.currentRoute.value.name !== 'forgot_password'"
+            class="w-8/12 text-right mt-2"
+          >
+            <button
+              class="text-xs rounded-lg text-bold font-montserrat inline-block py-2 px-4 no-underline repair-order-btn bg-white border border-darkgray"
+              href="#"
+              @click="$router.push('login')"
+            >
+              Войти
+            </button>
           </div>
         </div>
       </div>
@@ -60,7 +73,7 @@
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <button
-            class="text-sm rounded text-bold font-montserrat inline-block py-2 px-4 no-underline repair-order-btn bg-purchase border-none"
+            class="text-sm rounded-lg text-bold font-montserrat inline-block py-2 px-4 no-underline repair-order-btn bg-purchase border-none"
             href="#"
           >
             Заказать ремонт
@@ -72,18 +85,17 @@
 </template>
 
 <style scoped>
-.img-logo {
-    width: 80%; 
+  .img-logo {
+    width: 80%;
     height: 85%
-}
-.navbar-container{
-    height: 1%; 
-}
-.w-65{
+  }
+  .navbar-container{
+    height: 1%;
+  }
+  .w-65{
     width:65%;
-}
-.mw-75{
+  }
+  .mw-75{
     max-width:75%;
-}
-
+  }
 </style>
