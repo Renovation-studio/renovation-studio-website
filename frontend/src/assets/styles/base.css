@@ -24,9 +24,18 @@ body {
 
 .owerflow-scroll-y {
   overflow-y: scroll;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
 }
 
 .owerflow-scroll-y::-webkit-scrollbar {
   width: 0;
+}
+
+:root {
+  --swiper-theme-color: #1e1e1e93 !important;
+}
+
+.swiper-pagination-bullet {
+  width: 17px !important;
+  height: 17px !important;
 }

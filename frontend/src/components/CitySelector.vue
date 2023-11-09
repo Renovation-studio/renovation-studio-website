@@ -12,7 +12,7 @@
     leave-from-class="transform opacity-100 scale-100"
     leave-to-class="transition opacity-0 scale-95"
     >
-      <ul v-show="isOpen" class="city-list">
+      <ul v-show="isOpen" class="city-list round">
         <li v-for="city in cities" :key="city.id" @click="selectCity(city)">{{ city.name }}</li>
       </ul>
     </transition>

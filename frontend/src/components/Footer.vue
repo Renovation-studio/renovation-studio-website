@@ -1,8 +1,8 @@
 <template>
-    <footer class="relative" :style="footerStyle">
+    <footer ref="footer" class="relative">
         <FeedbackForm v-if="feedbackFormEnable" />
-        <div id="footer-container" :style="containerStyle">
-            <div id="about" :style="aboutStyle">
+        <div ref="footerContainer" class="h-200px bg-#8dd3bb">
+            <div ref="about" class="flex pt-30px h-100% w-100%">
                 <div class="flex grow flex-justify-center">
                     <div class="flex-col">
                         <img class="w-150px" src="@/assets/img/logo.png" alt="logo" />
@@ -15,17 +15,17 @@
                 <div class="flex grow flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold mt-10px">Информация о нас</p>
-                        <router-link to="/" class="decoration-none"><p class="mt-10px">Команда</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="mt-10px">Вакансии</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="mt-10px">Новости</p></router-link>
+                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Команда</p></router-link>
+                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Вакансии</p></router-link>
+                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Новости</p></router-link>
                     </div>
                 </div>
                 <div class="flex grow flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold mt-10px">Наши услуги</p>
-                        <router-link to="/" class="decoration-none"><p class="mt-10px">Ремонтные работы</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="mt-10px">Дизайн-проект</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="mt-10px">Ремонт под ключ</p></router-link>
+                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонтные работы</p></router-link>
+                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Дизайн-проект</p></router-link>
+                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонт под ключ</p></router-link>
                     </div>
                 </div>
                 <div class="flex grow flex-justify-center">
@@ -54,49 +54,36 @@
 <script setup lang="ts">
 import FeedbackForm from './FeedbackForm.vue'
 import { useRouter } from "vue-router";
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 
 const feedbackFormEnable = ref(false);
+const footer = ref<HTMLElement | null>(null);
+const footerContainer = ref<HTMLElement | null>(null);
+const about = ref<HTMLElement | null>(null);
 const router = useRouter();
 const currentRoute = router.currentRoute.value; 
 
-const footerStyle = computed(() => {
-      if (currentRoute.path === '/') {
+onMounted(() => {
+    if (currentRoute.path === '/') {
         feedbackFormEnable.value = true;
-        return { marginTop: '220px' }; 
-      }
+        if (footer.value) {
+            footer.value.style.marginTop = '170px';
+        }
 
-      return {}; 
-});
+        if (footerContainer.value) {
+            footerContainer.value.style.height = '400px';
+        }
 
-const containerStyle = computed(() => {
-      if (currentRoute.path === '/') {
-        return { height: '400px' }; 
-      }
-
-      return {}; 
-});
-
-const aboutStyle = computed(() => {
-      if (currentRoute.path === '/') {
-        return { paddingTop: '220px' }; 
-      }
-
-      return {}; 
+        if (about.value) {
+            about.value.style.paddingTop = '220px';
+        }
+    }
 });
 </script>
 
 
 <style scoped>
-#footer-container {
-    height: 200px;
-    background: #8dd3bb;
-}
-
-#about {
-    display: flex;
-    padding-top: 30px;
-    height: 100%;
-    width: 100%;
+p.link:hover {
+    text-decoration: underline;
 }
 </style>

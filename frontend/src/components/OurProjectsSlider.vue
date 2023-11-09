@@ -17,7 +17,7 @@
     class="cursor-pointer"
   >
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
             <p class="font-size-6 text-center font-bold">Современная классика</p>
 
@@ -49,11 +49,10 @@
             <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider4.jpg)`}"></div>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
             <p class="font-size-6 text-center font-bold">Современная классика</p>
 
@@ -84,11 +83,10 @@
             <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider4.jpg)`}"></div>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
             <p class="font-size-6 text-center font-bold">Современная классика</p>
 
@@ -120,7 +118,6 @@
             <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider4.jpg)`}"></div>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
     </swiper>
 </template>

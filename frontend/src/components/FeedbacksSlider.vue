@@ -17,7 +17,7 @@
     class="cursor-pointer"
   >
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
         <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback1.jpg)`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Дизайн-проект студии</p>
@@ -27,11 +27,10 @@
             </p>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
         <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback2.jpg)`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Ремонт частного дома</p>
@@ -41,11 +40,10 @@
             </p>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
         <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback3.jpg)`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Дизайн-проект офиса</p>
@@ -55,11 +53,10 @@
             </p>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
         <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback1.jpg)`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Дизайн-проект студии</p>
@@ -69,11 +66,10 @@
             </p>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
         <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback2.jpg)`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Ремонт частного дома</p>
@@ -83,11 +79,10 @@
             </p>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
 
       <swiper-slide>
-        <div class="flex justify-between mt-30px">
+        <div class="flex justify-between mt-30px mb-40px">
         <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback3.jpg)`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Дизайн-проект офиса</p>
@@ -97,7 +92,6 @@
             </p>
           </div>
         </div>
-        <div class="h-40px"></div>
       </swiper-slide>
     </swiper>
 </template>

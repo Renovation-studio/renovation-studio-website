@@ -44,7 +44,7 @@
       <OurProjectsSlider />
     </div>
 
-    <div class="margin mt-50px">
+    <div class="margin mt-50px mb-50px">
       <div class="flex justify-between">
         <span class="font-size-6 font-bold">Отзывы</span>
       </div>
