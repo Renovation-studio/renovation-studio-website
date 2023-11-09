@@ -12,6 +12,18 @@ export default {
         'garamond': ['Garamond']
       }
     },
+    fontSize: {
+        '2xs': '0.7rem',
+        'xs': '0.75rem',
+        sm: '0.875rem',
+        base: '1rem',
+        'lg': '1.125rem',
+        xl: '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
+        '5xl': '3.0rem',
+    },
     container: {
       padding: {
         DEFAULT: '1rem',
@@ -39,7 +51,8 @@ export default {
       'gray' : '#9ca3af',
       'lightgray' : '#d1d5db',
       'green': '#16a34a',
-      'darkgray': '#1f2937'
+      'darkgray': '#1f2937',
+      'red': '#e00d0d'
     },
   },
   plugins: [],
