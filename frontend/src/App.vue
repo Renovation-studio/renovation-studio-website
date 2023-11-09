@@ -1,13 +1,32 @@
 <script setup lang="ts">
-  import { RouterView } from 'vue-router'
-  import Header from './components/Header.vue'
-  import Footer from './components/Footer.vue'
+import { ref, onMounted } from "vue";
+import { RouterView } from 'vue-router'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+
+const scrollToTopBtn = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+const handleScroll = () => {
+  if (scrollToTopBtn.value) {
+    scrollToTopBtn.value.style.visibility = window.scrollY > 200 ? 'visible' : 'hidden';
+    scrollToTopBtn.value.style.opacity = window.scrollY > 200 ? '1' : '0';
+  }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 
 <template>
   <body>
     <Header />
     <RouterView />
+    <div ref="scrollToTopBtn" class="scroll-to-top" @click="scrollToTop"><img src="@/assets/img/arrow_up.svg" alt="arrow"></div>
     <Footer />
   </body>
 </template>
@@ -19,5 +38,19 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.scroll-to-top {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  cursor: pointer;
+  background: #8dd3bb;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 999;
+  transition: visibility 0.5s, opacity 0.5s ease;
 }
 </style>
