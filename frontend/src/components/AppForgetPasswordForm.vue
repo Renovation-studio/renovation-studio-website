@@ -83,7 +83,7 @@
                     v-model="password1"
                     :type="passIsHidden1 ? 'password' : 'text'"
                     :class="!followsCriteria
-                      ? 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-darkgray rounded-md'
+                      ? 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-red rounded-md'
                       : 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-darkgray rounded-md'"
                     placeholder="Новый пароль"
                   >
