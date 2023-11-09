@@ -43,12 +43,20 @@
       </div>
       <OurProjectsSlider />
     </div>
+
+    <div class="margin mt-50px">
+      <div class="flex justify-between">
+        <span class="font-size-6 font-bold">Отзывы</span>
+      </div>
+      <FeedbacksSlider />
+    </div>
   </main>
 </template>
 
 
 <script setup lang="ts">
 import OurProjectsSlider from '../components/OurProjectsSlider.vue'
+import FeedbacksSlider from '../components/FeedbacksSlider.vue'
 document.title = 'ПРИстройка';
 </script>
 
