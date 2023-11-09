@@ -21,3 +21,12 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+.owerflow-scroll-y {
+  overflow-y: scroll;
+  text-overflow: ellipsis
+}
+
+.owerflow-scroll-y::-webkit-scrollbar {
+  width: 0;
+}
