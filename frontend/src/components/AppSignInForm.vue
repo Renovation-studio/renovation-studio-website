@@ -126,7 +126,7 @@
                 type="submit"
                 class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-white hover:bg-purchase hover:text-white border-main text-main"
               >
-                Зарегестрироваться
+                Зарегистрироваться
               </button>
             </div>
           </form>
