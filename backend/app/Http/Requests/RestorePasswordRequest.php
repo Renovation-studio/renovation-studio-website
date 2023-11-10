@@ -14,7 +14,7 @@ class RestorePasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required_without:phoneNumber|email:rfc,dns',
+            'email' => 'required|email:rfc,dns',
         ];
     }
 }
