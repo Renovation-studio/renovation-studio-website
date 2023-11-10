@@ -24,3 +24,5 @@ Route::post('/auth/signin', [AuthController::class, 'signin'])->name('signin');
 Route::post('/auth/signout', [AuthController::class, 'signout'])->name('signout');
 
 Route::post('/auth/signup', [AuthController::class, 'signup'])->name('signup');
+
+Route::post('/auth/restore-password', [AuthController::class, 'restorePassword'])->name('restore-password');
