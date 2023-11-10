@@ -15,7 +15,7 @@ class SignupRequest extends FormRequest
     {
         return [
             'username' => 'bail|required|string',
-            'phoneNumber' => 'bail|required_without:email|integer:11',
+            'phoneNumber' => 'bail|required_without:email|digits:11',
             'email' => 'bail|required_without:phoneNumber|email:rfc,dns',
             'password' => 'required|string',
         ];
