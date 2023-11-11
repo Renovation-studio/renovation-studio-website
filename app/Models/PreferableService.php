@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class PreferableService extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,20 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-
+    protected $table = 'preferable_service';
+    
      public $timestamps = false;
 
     protected $fillable = [
-        'email',
-        'password',
-        'phoneNumber',
-        'avatarUrl',
-        'surname',
-        'name',
-        'patronymic',
-        'service_type_id',
-        'wishes',
-        'preferable_services_id',
-        'interior_style_id'
+        'user_id',
+        'service_id'
     ];
 }

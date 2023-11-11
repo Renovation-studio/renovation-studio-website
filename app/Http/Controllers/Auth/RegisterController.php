@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\PreferableService;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,10 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'hash' => ['required', 'string', 'min:8', 'confirmed'],
-            'phoneNumber' => ['required', 'string', 'min:11', 'max:11'],
-            'avatarUrl' =>[]
+            'email' => 'unique:users,email'
         ]);
     }
 
@@ -71,11 +69,43 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        return User::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'phoneNumber' => $data['phoneNumber'],
-            'avatarUrl' => $data['avatarUrl']
+        //$validator = validator($data);
+        $request->validate([
+            'email' => 'unique:users,email',
+            'phone' => 'unique:users,phoneNumber',
         ]);
+        $service_array = isset($data['preferable_services']) ? json_encode($data['preferable_services']) : null;
+        $user = User::create([
+             'email' => $data['email'],
+              'password' => Hash::make($data['password']),
+            'phoneNumber' => $data['phone'],
+            'avatarUrl' => $data['photo'],
+            'surname' => $data['surname'],
+            'name' => $data['firstName'],
+            'patronymic' => $data['patronymic'],
+            'service_type_id' => isset($data['service']) ? $data['service'] : null,
+            'wishes' => $data['wishes'],
+            'preferable_services_id' => $service_array,
+            'interior_style_id' => isset($data['interior_style']) ? $data['interior_style'] : null
+         ]);
+         $lastInsertedId = $user->id;
+         if($service_array != null)
+         {
+              foreach($data['preferable_services'] as $service)
+              {
+                 PreferableService::create([
+                     'user_id' => $lastInsertedId,
+                    'service_id' => $service
+                ]);
+              }
+        }
+        else
+        {
+             PreferableService::create([
+                'user_id' => $lastInsertedId,
+                'service_id' => null
+            ]);
+        }
+        return $user;
     }
 }
