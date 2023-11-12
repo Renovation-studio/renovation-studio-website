@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Element extends Model
+class Elements extends Model
 {
     protected $table = 'elements';
-    protected $fillable = ['description', 'element_service_id', 'cost', 'work_duration', 'title'];
     protected $hidden = ['created_at', 'updated_at'];
+    public function elementServices(): HasMany {
+        return $this->hasMany(ElementServices::class);
+    }
 }

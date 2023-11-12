@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Element;
+use App\Models\Elements;
 use Illuminate\Http\Request;
 
 class ElementController extends Controller
@@ -13,7 +13,7 @@ class ElementController extends Controller
     public function index()
     {
         //return json_encode(Element::all(), JSON_UNESCAPED_UNICODE);
-        return Element::all();
+        return Elements::all();
     }
 
     /**

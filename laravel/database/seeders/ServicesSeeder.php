@@ -17,21 +17,21 @@ class ServicesSeeder extends Seeder
             [
                 'img' => 'kitchen.jpg',
                 'description' => 'Комплексный ремонт кухни включает в себя заказ, доставку, сборку и установку кухни.',
-                'element_service_id' => 1,
+                'element_services_id' => 1,
                 'cost' => 100000,
                 'title' => 'Ремонт кухни'
             ],
             [
                 'img' => 'bathroom.jpg',
                 'description' => 'Комплексный ремонт ванной включает в себя укладку плитки, установку ванной и раковины, а также проведение и настройку всей нужной сантехники.',
-                'element_service_id' => 2,
+                'element_services_id' => 2,
                 'cost' => 80000,
                 'title' => 'Ремонт ванной'
             ],
             [
                 'img' => 'bedroom.jpg',
                 'description' => 'Комплексный ремонт спальни включает в себя поклейку обоев, укладку пола, проведение проводки и натягивание потолка.',
-                'element_service_id' => 3,
+                'element_services_id' => 3,
                 'cost' => 100000,
                 'title' => 'Ремонт спальни'
             ]

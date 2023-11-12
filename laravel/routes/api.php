@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ElementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/elements', [ElementController::class, 'index']);
 
-Route::get('/catalog', [CatalogController::class, 'index']);
+Route::get('/catalog', [ServicesController::class, 'index']);
+
+Route::get('/catalog/{id}', [ServicesController::class, 'show']);
+

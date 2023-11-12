@@ -15,43 +15,43 @@ class ElementServicesSeeder extends Seeder
     {
         $elementServices = [
             [
-                'service_id' => 1,
-                'element_id' => 1
+                'services_id' => 1,
+                'elements_id' => 1
             ],
             [
-                'service_id' => 1,
-                'element_id' => 2
+                'services_id' => 1,
+                'elements_id' => 2
             ],
             [
-                'service_id' => 3,
-                'element_id' => 3
+                'services_id' => 3,
+                'elements_id' => 3
             ],
             [
-                'service_id' => 2,
-                'element_id' => 4
+                'services_id' => 2,
+                'elements_id' => 4
             ],
             [
-                'service_id' => 2,
-                'element_id' => 5
+                'services_id' => 2,
+                'elements_id' => 5
             ],
             [
-                'service_id' => 2,
-                'element_id' => 6,
+                'services_id' => 2,
+                'elements_id' => 6,
             ],
             [
-                'service_id' => 3,
-                'element_id' => 7
+                'services_id' => 3,
+                'elements_id' => 7
             ],
             [
-                'service_id' => 3,
-                'element_id' => 8
+                'services_id' => 3,
+                'elements_id' => 8
             ],
             [
-                'service_id' => 3,
-                'element_id' => 9
+                'services_id' => 3,
+                'elements_id' => 9
             ],
         ];
 
-        DB::table('elementservices')->insert($elementServices);
+        DB::table('element_services')->insert($elementServices);
     }
 }
