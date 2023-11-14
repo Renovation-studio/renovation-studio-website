@@ -1,40 +1,52 @@
 <template>
   <div class="flex flex-wrap font-montserrat text-sm">
-    <div class="container mx-auto sm:px-3 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-2xl">
-      <div class="flex flex-wrap ">
+    <div
+      class="container mx-auto sm:px-3 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-2xl"
+    >
+      <div class="flex flex-wrap">
         <div class="sm:w-4/5 pr-2 pl-2 mx-auto">
           <form
             novalidate
             @submit="checkForm"
           >
-            <h1 class="mb-3 text-center font-montserrat text-lg font-bold mt-2">
-              Авторизация
-            </h1>
+            <h1 class="mb-3 text-center font-montserrat text-lg font-bold mt-2">Авторизация</h1>
 
             <div class="mb-3 border border-lightgray rounded-md">
               <div class="flex flex-wrap">
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
-                    :class="email ? 'm-0.5 bg-main rounded-md pt-1 pb-1' : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'"
+                    :class="
+                      email
+                        ? 'm-0.5 bg-main rounded-md pt-1 pb-1'
+                        : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'
+                    "
                   >
                     <a
                       type="button"
                       class="font-montserrat text-sm"
                       @click="changeInputLoginTypeToEmail()"
-                    >Почта</a>
+                    >
+                      Почта
+                    </a>
                   </div>
                 </div>
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
-                    :class="!email ? 'm-0.5 bg-main rounded-md pt-1 pb-1' : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'"
+                    :class="
+                      !email
+                        ? 'm-0.5 bg-main rounded-md pt-1 pb-1'
+                        : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'
+                    "
                   >
                     <a
                       type="button"
                       class="font-montserrat text-sm"
                       @click="changeInputLoginTypeToPhone()"
-                    >Телефон</a>
+                    >
+                      Телефон
+                    </a>
                   </div>
                 </div>
               </div>
@@ -45,16 +57,26 @@
                 v-if="email"
                 v-model="login"
                 type="email"
-                :class="errorLogin ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md' : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'"
+                :class="
+                  errorLogin
+                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                    : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                "
                 placeholder="Почта"
-              >
+              />
 
               <input
                 v-else
                 v-model="login"
-                :class="errorLogin ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md' : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'"
+                v-maska
+                data-maska="+7 ### ###-##-##"
+                :class="
+                  errorLogin
+                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                    : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                "
                 placeholder="Телефон"
-              >
+              />
             </div>
 
             <p
@@ -81,13 +103,15 @@
                   :type="passIsHidden ? 'password' : 'text'"
                   class="block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md"
                   placeholder="Пароль"
-                >
+                />
                 <div
                   id="eye1"
                   class="input-group-append absolute inset-y-0 right-0 pr-3 mt-1.5 flex items-center leading-5"
                   @click="changePasswordType()"
                 >
-                  <span class="input-group-text cumancen text-gray text-sm h-full"><i :class="passIsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" /></span>
+                  <span class="input-group-text cumancen text-gray text-sm h-full">
+                    <i :class="passIsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -99,13 +123,15 @@
                   aria-describedby="remember"
                   type="checkbox"
                   class="accent-main checked:bg-main checked:before:bg-main w-3 h-3 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-main dark:bg-gray dark:border-gray dark:focus:ring-main dark:ring-offset-gray"
-                >
+                />
               </div>
               <div class="ml-1.5 text-sm">
                 <label
                   for="remember"
                   class="text-gray-500 dark:text-gray-300 text-xs"
-                >Запомнить меня</label>
+                >
+                  Запомнить меня
+                </label>
               </div>
             </div>
 
@@ -120,7 +146,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="flex flex-wrap mb-2 text-center">
               <button
@@ -147,16 +172,21 @@
 </template>
 
 <script lang="ts">
-import validator from 'validator';
+import validator from 'validator'
+import { vMaska } from "maska"
+
 export default {
+  directives: {
+    maska: vMaska
+  },
   data() {
     return {
-      passIsHidden : true,
-      email : true,
-      errorLogin : false,
+      passIsHidden: true,
+      email: true,
+      errorLogin: false,
 
       login: null,
-      password: null,
+      password: null
     }
   },
   methods: {
@@ -170,21 +200,23 @@ export default {
       this.email = false
     },
     checkForm(e: any) {
-      this.errorLogin = this.email ? !validator.isEmail(String(this.login)) : !validator.isMobilePhone(String(this.login))
+      this.errorLogin = this.email
+        ? !validator.isEmail(String(this.login))
+        : !validator.isMobilePhone(String(this.login))
 
-      if (this.errorLogin){
-        e.preventDefault();
+      if (this.errorLogin) {
+        e.preventDefault()
       }
     }
-  },
+  }
 }
 </script>
 
 <style scoped>
-  .main-container{
-    max-width: 320px;
-  }
-  #div-switch:hover{
-    background-color: lightgray;
-  }
+.main-container {
+  max-width: 320px;
+}
+#div-switch:hover {
+  background-color: lightgray;
+}
 </style>
