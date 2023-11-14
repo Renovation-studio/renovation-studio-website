@@ -52,7 +52,9 @@ export default {
       'lightgray' : '#d1d5db',
       'green': '#16a34a',
       'darkgray': '#1f2937',
-      'red': '#e00d0d'
+      'red': '#e00d0d',
+      'borderdarkgray': 'rgba(31,41,55,0.67)',
+      'borderred': 'rgba(224,13,13,0.71)'
     },
   },
   plugins: [],

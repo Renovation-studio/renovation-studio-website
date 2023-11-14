@@ -13,15 +13,15 @@
             >
           </div>
 
-          <div class="w-1/12">
+          <div class="w-1/6">
             <div class="flex flex-wrap  mt-2">
-              <div class="w-1/6 pt-2">
+              <div class="w-1/6 pt-1">
                 <img
                   src="../assets/icon _location on_.png"
                   alt="loc"
                 >
               </div>
-              <div class="relative flex-grow max-w-full flex-1 px-2 pb-2">
+              <div class="relative flex-grow max-w-full flex-1 pb-2">
                 <span class="text-xs">Волгоград</span>
               </div>
             </div>
@@ -29,11 +29,10 @@
 
           <div
             v-show="$router.currentRoute.value.name !== 'login' && $router.currentRoute.value.name !== 'forgot_password'"
-            class="w-8/12 text-right mt-2"
+            class="w-7/12 text-right mt-2"
           >
             <button
-              class="text-xs rounded-lg text-bold font-montserrat inline-block py-2 px-4 no-underline repair-order-btn bg-white border border-darkgray"
-              href="#"
+              class="text-xs rounded-lg text-bold inline-block py-2 px-4 no-underline repair-order-btn bg-white border border-darkgray"
               @click="$router.push('login')"
             >
               Войти
@@ -49,32 +48,31 @@
       <div class="flex flex-wrap  sm:px-4 mx-auto w-65">
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
-            class="inline-block py-2 px-4 no-underline nav-item"
+            class=" text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
           >О нас</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
-            class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+            class="text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
           >Портфолио</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
-            class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+            class="text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
           >Цены</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
-            class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+            class="text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
           >Отзывы</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <button
-            class="text-sm rounded-lg text-bold font-montserrat inline-block py-2 px-4 no-underline repair-order-btn bg-purchase border-none"
-            href="#"
+            class="text-sm rounded-lg text-bold inline-block py-2 px-4 no-underline repair-order-btn bg-purchase border-none"
           >
             Заказать ремонт
           </button>

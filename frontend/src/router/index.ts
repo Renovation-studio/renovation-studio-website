@@ -23,8 +23,8 @@ const router = createRouter({
       component: SignInView
     },
     {
-      path: '/forgot_password',
-      name: 'forgot_password',
+      path: '/forgot-password',
+      name: 'forgot-spassword',
       component: ForgotPasswordView
     }
   ]

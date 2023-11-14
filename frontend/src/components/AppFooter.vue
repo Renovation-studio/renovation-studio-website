@@ -7,7 +7,7 @@
             src="../assets/Логотип lg.png"
             alt="Лого"
           >
-          <h6 class="mt-2 mb-2">
+          <h6 class="mt-2 mb-2 text-sm">
             Мы в соцсетях:
           </h6>
           <div class="flex flex-wrap  mr-auto">
@@ -35,77 +35,77 @@
         <div class="relative flex-grow max-w-full flex-1 px-4" />
 
         <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h6 class="py-2 px-4 p-0">
+          <h6 class="text-sm py-2 px-4 p-0">
             Услуги
           </h6>
-          <ul class="flex flex-wrap list-none pl-0 mb-0 flex-col">
+          <ul class="flex flex-wrap list-none pl-1 mb-0 flex-col">
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Проектирование</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Строительство</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Отделка и ремонт</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Декорирование</a>
             </li>
           </ul>
         </div>
 
         <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h6 class="py-2 px-4 p-0">
+          <h6 class=" text-sm py-2 px-4 p-0">
             Информация о нас
           </h6>
-          <ul class="flex flex-wrap list-none pl-0 mb-0 flex-col">
+          <ul class="flex flex-wrap list-none pl-1 mb-0 flex-col">
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Команда</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Вакансии</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-sm text-bold font-montserrat  inline-block py-2 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-2 px-4 no-underline p-0 text-gray-400"
               >Новости</a>
             </li>
           </ul>
         </div>
 
         <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h6 class="py-2 px-4 p-0">
+          <h6 class=" text-sm py-2 px-4 p-0">
             Контакты
           </h6>
-          <ul class="flex flex-wrap list-none pl-0 mb-0 flex-col">
+          <ul class="flex flex-wrap list-none pl-1 mb-0 flex-col">
             <li class="text-muted">
               <div class="flex flex-wrap">
                 <div class="w-1/9 pt-2">
-                  <span class="material-symbols-outlined text-black text-md">call</span>
+                  <span class="material-symbols-outlined text-black text-sm">call</span>
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-4">
                   <a
                     href="#"
-                    class="text-sm text-bold font-montserrat  inline-block py-2 px-3 no-underline p-0 text-gray-400"
+                    class="text-xs text-bold inline-block py-2 px-1 no-underline p-0 text-gray-400"
                   >8 999 888 22 55</a>
                 </div>
               </div>
@@ -113,12 +113,12 @@
             <li class="text-muted">
               <div class="flex flex-wrap">
                 <div class="w-1/9 pt-2">
-                  <span class="material-symbols-outlined text-black text-md">home</span>
+                  <span class="material-symbols-outlined text-black text-sm">home</span>
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-4">
                   <a
                     href="#"
-                    class="text-sm text-bold font-montserrat  inline-block py-2 px-3 no-underline p-0 text-gray-400"
+                    class="text-xs text-bold inline-block py-2 px-1 no-underline p-0 text-gray-400"
                   >г. Волгоград, <br>ул. Волгоградская, 1</a>
                 </div>
               </div>
@@ -126,12 +126,12 @@
             <li class="text-muted">
               <div class="flex flex-wrap">
                 <div class="w-1/9 pt-2">
-                  <span class="material-symbols-outlined text-black text-md">mail</span>
+                  <span class="material-symbols-outlined text-black text-sm">mail</span>
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-4">
                   <a
                     href="#"
-                    class="text-sm text-bold font-montserrat  inline-block py-2 px-3 no-underline p-0 text-gray-400"
+                    class="text-xs text-bold inline-block py-2 px-1 no-underline p-0 text-gray-400"
                   >pristroika@volsu.ru</a>
                 </div>
               </div>
