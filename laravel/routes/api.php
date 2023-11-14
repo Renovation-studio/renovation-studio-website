@@ -16,13 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 Route::get('/elements', [ElementController::class, 'index']);
 
 Route::get('/catalog', [ServicesController::class, 'index']);
 
 Route::get('/catalog/{id}', [ServicesController::class, 'show']);
 
+Route::get('/search', [ServicesController::class, 'search']);
