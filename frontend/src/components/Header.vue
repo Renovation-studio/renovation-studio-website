@@ -1,6 +1,6 @@
 <template>
 <header>
-    <div class="row">
+    <div class="row margin-s">
         <div class="left">
             <router-link to="/"><img class="w-200px" src="@/assets/img/logo.png" alt="logo" /></router-link>
             <div class="ml-50px">
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="menu">
-        <div class="row flex justify-between items-center h-full w-70%">
+        <div class="row margin flex justify-between items-center h-full w-100%">
             <button @click="scrollToServices" class="font-medium">Услуги</button>
             <button @click="scrollToProjects" class="font-medium">Портфолио</button>
             <button @click="scrollToFeedbacks" class="font-medium">Отзывы</button>
@@ -108,7 +108,7 @@ const scrollToContactForm = () => {
 header > .row {
     display: flex;
     justify-content: space-between;
-    padding: 20px 80px;
+    padding: 20px 0;
 }
 
 header > .row > .left, .right {

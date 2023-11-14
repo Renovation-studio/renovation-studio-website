@@ -1,9 +1,9 @@
 <template>
     <footer ref="footer" id="footer" class="relative">
-        <FeedbackForm v-if="feedbackFormEnable" />
+        <ContactForm v-if="contactFormEnable" />
         <div ref="footerContainer" class="h-200px bg-#8dd3bb">
-            <div ref="about" class="flex pt-30px h-100% w-100%">
-                <div class="flex grow flex-justify-center">
+            <div ref="about" class="margin-s flex justify-between pt-30px h-100%">
+                <div class="flex flex-justify-center">
                     <div class="flex-col">
                         <img class="w-150px" src="@/assets/img/logo.png" alt="logo" />
                         <p class="font-bold mt-10px mb-10px">Мы в соцсетях</p>
@@ -12,7 +12,7 @@
                         <a href="https://instagram.com/"><img class="w-20px mr-10px cursor-pointer" src="@/assets/img/icon_instagram.png" alt="instagram" /></a>
                     </div>
                 </div>
-                <div class="flex grow flex-justify-center">
+                <div class="flex flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold mt-10px">Информация о нас</p>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Команда</p></router-link>
@@ -20,7 +20,7 @@
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Новости</p></router-link>
                     </div>
                 </div>
-                <div class="flex grow flex-justify-center">
+                <div class="flex flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold mt-10px">Наши услуги</p>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонтные работы</p></router-link>
@@ -28,7 +28,7 @@
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонт под ключ</p></router-link>
                     </div>
                 </div>
-                <div class="flex grow flex-justify-center">
+                <div class="flex flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold mt-10px">Контакты</p>
                         <div class="mt-10px">
@@ -52,11 +52,11 @@
 
 
 <script setup lang="ts">
-import FeedbackForm from './FeedbackForm.vue'
+import ContactForm from './ContactForm.vue'
 import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 
-const feedbackFormEnable = ref(false);
+const contactFormEnable = ref(false);
 const footer = ref<HTMLElement | null>(null);
 const footerContainer = ref<HTMLElement | null>(null);
 const about = ref<HTMLElement | null>(null);
@@ -65,17 +65,17 @@ const currentRoute = router.currentRoute.value;
 
 onMounted(() => {
     if (currentRoute.path === '/') {
-        feedbackFormEnable.value = true;
+        contactFormEnable.value = true;
         if (footer.value) {
             footer.value.style.marginTop = '200px';
         }
 
         if (footerContainer.value) {
-            footerContainer.value.style.height = '400px';
+            footerContainer.value.style.height = '420px';
         }
 
         if (about.value) {
-            about.value.style.paddingTop = '230px';
+            about.value.style.paddingTop = '250px';
         }
     }
 });

@@ -12,38 +12,76 @@
                 <div class="relative mt-10px">
                     <label class="block mb-5px mt-10px" for="name">Ваше имя</label>
                     <input v-model="name" @input="formatName" class="round" :class="{ 'not-valid': isValidName === false }" type="text" name="name" id="name" maxlength="30" placeholder="Имя">
-                    <div v-if="isValidName === false" class="tooltip">
-                        <span>
-                            <p>Пожалуйста, введите корректное имя.</p>
-                            <p>Пример: Никита</p>
-                        </span>
-                    </div>
+                    <transition 
+                    enter-active-class="transition ease-out duration-200"
+                    enter-from-class="opacity-0 scale-95 translate-x-[-2em]"
+                    enter-to-class="opacity-100 scale-100 translate-x-0"
+                    leave-active-class="transition ease-in duration-200"
+                    leave-from-class="opacity-100 scale-100"
+                    leave-to-class="opacity-0 scale-95 translate-x-[-2em]"
+                    >
+                        <div ref="tooltipName" v-show="isValidName === false" class="tooltip">
+                            <span>
+                                <p>Пожалуйста, введите корректное имя.</p>
+                                <p>Пример: Никита</p>
+                            </span>
+                        </div>
+                </transition>
                 </div>
 
                 <div class="relative mt-10px">
                     <label class="block mb-5px mt-10px" for="phone">Номер телефона</label>
                     <input v-model="phone" @click="add7" @input="formatPhoneNumber" class="round" :class="{ 'not-valid': isValidPhone === false }" type="tel" name="phone" id="phone" maxlength="18" placeholder="+7 (123) 456 78-90">
-                    <div v-if="isValidPhone === false" class="tooltip">
-                        <span>
-                            <p>Пожалуйста, введите корректный номер.</p>
-                            <p>Пример: +7 (123) 456 78-90</p>
-                        </span>
-                    </div>
+                    <transition 
+                    enter-active-class="transition ease-out duration-200"
+                    enter-from-class="opacity-0 scale-95 translate-x-[-2em]"
+                    enter-to-class="opacity-100 scale-100 translate-x-0"
+                    leave-active-class="transition ease-in duration-200"
+                    leave-from-class="opacity-100 scale-100"
+                    leave-to-class="opacity-0 scale-95 translate-x-[-2em]"
+                    >
+                        <div ref="tooltipPhone" v-show="isValidPhone === false" class="tooltip">
+                            <span>
+                                <p>Пожалуйста, введите корректный номер.</p>
+                                <p>Пример: +7 (123) 456 78-90</p>
+                            </span>
+                        </div>
+                </transition>
                 </div>
 
                 <div class="relative mt-10px">
                     <label class="block mb-5px" for="email">Почта</label>
                     <input v-model="email" @input="formatEmail" class="round" :class="{ 'not-valid': isValidEmail === false }" type="text" name="email" id="email" maxlength="30" placeholder="example@mail.ru">
-                    <div v-if="isValidEmail === false" class="tooltip">
-                        <span>
-                            <p>Пожалуйста, введите корректную почту.</p>
-                            <p>Пример: example@mail.ru</p>
-                        </span>
-                    </div>
+                    <transition 
+                    enter-active-class="transition ease-out duration-200"
+                    enter-from-class="opacity-0 scale-95 translate-x-[-2em]"
+                    enter-to-class="opacity-100 scale-100 translate-x-0"
+                    leave-active-class="transition ease-in duration-200"
+                    leave-from-class="opacity-100 scale-100"
+                    leave-to-class="opacity-0 scale-95 translate-x-[-2em]"
+                    >
+                        <div ref="tooltipEmail" v-show="isValidEmail === false" class="tooltip">
+                            <span>
+                                <p>Пожалуйста, введите корректную почту.</p>
+                                <p>Пример: example@mail.ru</p>
+                            </span>
+                        </div>
+                    </transition>
                 </div>
-            
-                <div class="text-center w-70% mt-20px">
-                    <button class="sendBtn font-medium round" type="submit">Отправить</button>
+                <div class="flex flex-justify-center text-center w-70% mt-20px">
+                    <button v-show="!formSended" class="sendBtn font-medium round" type="submit">Отправить</button>
+                    <transition 
+                    enter-active-class="transition ease-out duration-200"
+                    enter-from-class="opacity-0 scale-95"
+                    enter-to-class="opacity-100 scale-100 translate-x-0"
+                    leave-active-class="transition ease-in duration-200"
+                    leave-from-class="opacity-100 scale-100"
+                    leave-to-class="opacity-0 scale-95"
+                    >
+                        <p v-show="formSended" class="sendMsg round">
+                            <img class="v-middle mr-25px" src="@/assets/img/done.svg" alt="arrow">Спасибо, ваше обращение принято!
+                        </p>
+                    </transition>
                 </div>
             </div>
         </form>
@@ -59,9 +97,13 @@
 import { ref, computed } from "vue";
 
 const startValidation = ref(false);
+const formSended = ref(false);
 const name = ref('');
 const phone = ref('');
 const email = ref('');
+const tooltipName = ref<HTMLElement | null>(null);
+const tooltipPhone = ref<HTMLElement | null>(null);
+const tooltipEmail = ref<HTMLElement | null>(null);
 
 const isValidName = computed(() => {
     let inputName = name.value.replace(/[^\S]/g, '');
@@ -115,11 +157,39 @@ function formatName () {
     name.value = name.value.replace(/[^A-Za-zА-Яа-я\s]/g, '');
 }
 
+function shake (element: HTMLElement) {
+    element.style.animation = 'shakeY 0.4s ease-in-out';
+    setTimeout(() => {
+      element.style.animation = '';
+    }, 500);
+}
+
 function send () {
+    if (formSended.value) {
+      return;
+    }
+
+    if (tooltipName.value && isValidName.value === false) {
+      shake(tooltipName.value);
+      return;
+    }
+
+    if (tooltipPhone.value && isValidPhone.value === false) {
+      shake(tooltipPhone.value);
+      return;
+    }
+
+    if (tooltipEmail.value && isValidEmail.value === false) {
+      shake(tooltipEmail.value);
+      return;
+    }
+
     startValidation.value = true;
     if (isValidName.value && isValidPhone.value && isValidEmail.value) {
-        window.location.reload();
-    }
+        formSended.value = true;
+        startValidation.value = false;
+        return;
+    } 
 }
 </script>
 
@@ -130,10 +200,10 @@ function send () {
     display: flex;
     justify-content: space-between;
     height: 400px;
-    width: calc(100% - 400px);
+    width: 80%;
     background: #cdeae1;
     top: -200px;
-    right: 200px;
+    right: 10%;
     padding: 20px;
 }
 
@@ -149,6 +219,7 @@ form input {
     font-size: large;
     width: 70%;
     border-style: none;
+    transition: background-color 0.2s;
 }
 
 form input:focus {
@@ -156,7 +227,7 @@ form input:focus {
 }
 
 form input.not-valid {
-    background: #fbc9c9;
+    background-color: #fbc9c9;
 }
 
 form input.not-valid::after {
@@ -170,7 +241,6 @@ form input.not-valid::after {
 }
 
 form .sendBtn {
-    height: 100%;
     padding: 10px 25px;
     cursor: pointer;
     background: #fff;
@@ -182,6 +252,13 @@ form .sendBtn:hover {
     cursor: pointer;
     background: #fff;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.sendMsg {
+    padding: 10px 25px;
+    background: #94d79f;
+    font-weight: 700;
+    user-select: none;
 }
 
 .tooltip {

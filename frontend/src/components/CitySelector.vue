@@ -1,8 +1,8 @@
 <template>
     <div ref="root" class="flex pt-10px pb-10px cursor-pointer" @click="isOpen = !isOpen">
       <img src="@/assets/img/location.svg" alt="location">
-      <span v-if="selectedCity" class="mt-10px ml-5px">{{ selectedCity.name }}</span>
-      <span v-else class="mt-10px ml-5px">Волгоград</span>
+      <span v-if="selectedCity" class="mt-3px ml-3px">{{ selectedCity.name }}</span>
+      <span v-else class="mt-3px ml-3px">Волгоград</span>
     </div>
     <transition 
     enter-active-class="transition ease-out duration-200"

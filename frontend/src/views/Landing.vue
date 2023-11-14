@@ -1,12 +1,12 @@
 <template>
   <main>
     <div class="bgImage h-70vh w-100%" :style="{backgroundImage: `url(src/assets/img/background.jpg)`}">
-      <div class="title-block margin round">
+      <div class="title-block margin-s round">
         <div class="font-semibold">Ремонт и дизайн интерьера</div>
         <div class="title">
           Студия <br> ремонта <br> ПРИстройка
         </div>
-        <button class="green round">Заказать дизайн-проект</button>
+        <button @click="scrollToContactForm" class="green round">Заказать дизайн-проект</button>
       </div>
     </div>
 
@@ -58,6 +58,21 @@
 import OurProjectsSlider from '../components/OurProjectsSlider.vue'
 import FeedbacksSlider from '../components/FeedbacksSlider.vue'
 document.title = 'ПРИстройка';
+
+const scrollToContactForm = () => {
+  const element = document.getElementById('contact-form');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(() => {
+      element.style.animation = 'shake 0.6s ease-in-out';
+    }, 750);
+
+    setTimeout(() => {
+      element.style.animation = '';
+    }, 1500);
+  }
+};
 </script>
 
 
@@ -66,15 +81,12 @@ main {
     flex-grow: 1;
 }
 
-.margin {
-  margin-left: 200px;
-  margin-right: 200px;
-}
-
 .title-block {
   float: left;
   margin-top: 100px;
-  margin-left: 50px;
+  padding: 30px;
+  background-color: #ecf3f06e;
+  backdrop-filter: blur(5px);
 }
 
 .title {
