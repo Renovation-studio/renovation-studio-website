@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="margin mt-50px">
+    <div id="our-services" class="margin mt-50px">
       <div class="flex justify-between">
         <span class="font-size-6 font-bold">Наши услуги</span>
         <button class="white round">Посмотреть все</button>
@@ -37,14 +37,14 @@
       </div>
     </div>
 
-    <div class="margin mt-50px">
+    <div id="our-projects" class="margin mt-50px">
       <div class="flex justify-between">
         <span class="font-size-6 font-bold">Наши дизайн-проекты</span>
       </div>
       <OurProjectsSlider />
     </div>
 
-    <div class="margin mt-50px mb-50px">
+    <div id="feedbacks" class="margin mt-50px mb-50px">
       <div class="flex justify-between">
         <span class="font-size-6 font-bold">Отзывы</span>
       </div>

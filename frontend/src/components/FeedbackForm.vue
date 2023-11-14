@@ -1,5 +1,5 @@
 <template>
-<div class="contact-form round">
+<div id="contact-form" class="contact-form round">
     <div class="w-65%">
         <span class="phone">
             Оставьте свои контактные данные
@@ -49,7 +49,7 @@
         </form>
     </div>
     <div class="w-35%" style="display: flex; flex-direction: column; justify-content: flex-end;">
-        <img class="h-100% flex-self-end pointer-events-none select-none" src="@/assets/img/post.png" alt="post" />
+        <img class="h-85% flex-self-end pointer-events-none select-none" src="@/assets/img/post.png" alt="post" />
     </div>
 </div>
 </template>

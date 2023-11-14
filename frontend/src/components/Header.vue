@@ -13,11 +13,11 @@
     </div>
     <div class="menu">
         <div class="row flex justify-between items-center h-full w-70%">
-            <button class="font-medium">Услуги</button>
-            <button class="font-medium">Портфолио</button>
-            <button class="font-medium">Отзывы</button>
-            <button class="font-medium">О нас</button>
-            <button class="green font-medium round">Заказать ремонт</button>
+            <button @click="scrollToServices" class="font-medium">Услуги</button>
+            <button @click="scrollToProjects" class="font-medium">Портфолио</button>
+            <button @click="scrollToFeedbacks" class="font-medium">Отзывы</button>
+            <button @click="scrollToFooter" class="font-medium">О нас</button>
+            <button @click="scrollToContactForm" class="green font-medium round">Заказать ремонт</button>
         </div>
     </div>
 </header>
@@ -25,6 +25,83 @@
 
 <script setup lang="ts">
 import CitySelector from './CitySelector.vue'
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const currentRoute = router.currentRoute.value;
+
+const scrollToServices = () => {
+    if (currentRoute.path !== '/') {
+        return
+    }
+
+  router.push({ name: 'landing' }).then(() => {
+    const element = document.getElementById('our-services');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+};
+
+  const scrollToProjects = () => {
+    if (currentRoute.path !== '/') {
+        return
+    }
+
+  router.push({ name: 'landing' }).then(() => {
+    const element = document.getElementById('our-projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+};
+
+  const scrollToFeedbacks = () => {
+    if (currentRoute.path !== '/') {
+        return
+    }
+
+  router.push({ name: 'landing' }).then(() => {
+    const element = document.getElementById('feedbacks');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+};
+
+  const scrollToFooter = () => {
+    if (currentRoute.path !== '/') {
+        return
+    }
+
+  router.push({ name: 'landing' }).then(() => {
+    const element = document.getElementById('footer');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+};
+
+const scrollToContactForm = () => {
+    if (currentRoute.path !== '/') {
+        return
+    }
+    
+  router.push({ name: 'landing' }).then(() => {
+    const element = document.getElementById('contact-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => {
+        element.style.animation = 'shake 0.6s ease-in-out';
+      }, 750);
+
+      setTimeout(() => {
+        element.style.animation = '';
+      }, 1500);
+    }
+  });
+};
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-    <footer ref="footer" class="relative">
+    <footer ref="footer" id="footer" class="relative">
         <FeedbackForm v-if="feedbackFormEnable" />
         <div ref="footerContainer" class="h-200px bg-#8dd3bb">
             <div ref="about" class="flex pt-30px h-100% w-100%">
@@ -33,11 +33,11 @@
                         <p class="font-bold mt-10px">Контакты</p>
                         <div class="mt-10px">
                             <img class="mr-5px v-middle" src="@/assets/img/icon_phone.png" alt="phone" />
-                            <span>+7(999)555-12-34</span>
+                            <span>+7(927)555-12-34</span>
                         </div>
                         <div class="mt-10px">
                             <img class="mr-5px v-middle" src="@/assets/img/icon_mail.png" alt="mail" />
-                            <span>test@mail.ru</span>
+                            <span>pristroyka@mail.ru</span>
                         </div>
                         <div class="mt-10px">
                             <img class="mr-5px v-super" src="@/assets/img/icon_home.png" alt="home" />
@@ -67,7 +67,7 @@ onMounted(() => {
     if (currentRoute.path === '/') {
         feedbackFormEnable.value = true;
         if (footer.value) {
-            footer.value.style.marginTop = '170px';
+            footer.value.style.marginTop = '200px';
         }
 
         if (footerContainer.value) {
@@ -75,7 +75,7 @@ onMounted(() => {
         }
 
         if (about.value) {
-            about.value.style.paddingTop = '220px';
+            about.value.style.paddingTop = '230px';
         }
     }
 });

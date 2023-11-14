@@ -39,3 +39,15 @@ body {
   width: 17px !important;
   height: 17px !important;
 }
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-10px); 
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
