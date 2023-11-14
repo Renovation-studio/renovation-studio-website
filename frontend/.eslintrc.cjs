@@ -10,6 +10,18 @@ module.exports = {
     '@vue/eslint-config-typescript'
   ],
   ignorePatterns: ['postcss.config.js'],
+  rules: {
+    'vue/html-self-closing': ['error', {
+      html: {
+        void: 'any',
+        normal: 'any',
+        component: 'always'
+      },
+      svg: 'always',
+      math: 'always'
+    }],
+    'vue/singleline-html-element-content-newline': 'off'
+  },
   parserOptions: {
     ecmaVersion: 'latest'
   }

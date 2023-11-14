@@ -4,5 +4,7 @@
   "tabWidth": 2,
   "singleQuote": true,
   "printWidth": 100,
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleAttributePerLine": true,
   "trailingComma": "none"
 }
