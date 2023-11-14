@@ -52,7 +52,6 @@
               <input
                 v-else
                 v-model="login"
-                v-mask="'+7 (###) ### ## ##'"
                 :class="errorLogin ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md' : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'"
                 placeholder="Телефон"
               >
@@ -149,10 +148,7 @@
 
 <script lang="ts">
 import validator from 'validator';
-import {mask} from 'vue-the-mask';
 export default {
-  directives: {mask},
-
   data() {
     return {
       passIsHidden : true,
@@ -180,9 +176,10 @@ export default {
         e.preventDefault();
       }
     }
-  }
+  },
 }
 </script>
+
 <style scoped>
   .main-container{
     max-width: 320px;

@@ -3,10 +3,13 @@
     "pre-commit": "lint-staged",
     "prepare": "husky install"
   },
-  "workspaces": ["frontend"],
+  "workspaces": [
+    "frontend"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "@types/vue-the-mask": "^0.11.5",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.0"
   }
