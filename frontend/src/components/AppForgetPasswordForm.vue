@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-wrap">
-    <div class="container mx-auto sm:px-3 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-2xl">
+  <div class="flex flex-wrap font-montserrat">
+    <div class="container mx-auto sm:px-2 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-2xl">
       <div class="flex flex-wrap ">
-        <div class="sm:w-4/5 pr-2 pl-2 mx-auto">
+        <div class="sm:w-4/5 mx-auto">
           <form
             novalidate
             @submit.prevent="checkForm"
@@ -11,11 +11,11 @@
               v-show="step === 1"
               class="step"
             >
-              <h1 class="mb-3 text-center text-lg font-bold mt-2">
+              <h1 class="mb-3 text-center text-base font-bold mt-2">
                 Востановление пароля
               </h1>
 
-              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-sm text-darkgray">
+              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-xs text-darkgray">
                 Введите адрес электронной почты, чтобы сменить пароль
               </h3>
 
@@ -25,8 +25,8 @@
                   v-model="email"
                   type="email"
                   :class="errorEmail
-                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-red rounded-md'
-                    : 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-darkgray rounded-md' "
+                    ? 'block appearance-none w-4/5 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                    : 'block appearance-none w-4/5 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md' "
                   aria-describedby="emailHelp"
                   placeholder="Email"
                 >
@@ -34,7 +34,7 @@
 
               <p
                 v-if="errorEmail"
-                class="text-red text-2xs font-montserrat mt-1 mb-2 pl-1"
+                class="text-red text-2xs text-center font-montserrat mt-1 mb-2 pl-1"
               >
                 Email имеет неверный формат
               </p>
@@ -46,7 +46,7 @@
               <div class="flex flex-wrap mt-10">
                 <button
                   type="submit"
-                  class="bg-purchase border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  class="bg-purchase text-sm border-purchase px-2 p-1 w-2/3 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
                   @click="newPassword"
                 >
                   Сбросить пароль
@@ -56,7 +56,7 @@
               <div class="flex flex-wrap mt-1 text-center">
                 <div
                   id="signIn"
-                  class="block text-sm mx-auto mt-1 text-darkgray"
+                  class="block text-xs mx-auto mt-1 text-darkgray"
                   @click="$router.push('login')"
                 >
                   <a href="">Вернуться к авторизации</a>
@@ -69,11 +69,11 @@
               v-show="step === 2"
               class="step mb-4"
             >
-              <h1 class="mb-3 text-center text-lg font-bold mt-2">
+              <h1 class="mb-3 text-center text-base font-bold mt-2">
                 Востановление пароля
               </h1>
 
-              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-sm text-darkgray">
+              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-xs text-darkgray">
                 Введите новый пароль и подтвердите его
               </h3>
 
@@ -81,25 +81,18 @@
                 <div class="relative flex items-stretch w-full">
                   <input
                     v-model="password1"
-                    :type="passIsHidden1 ? 'password' : 'text'"
+                    type="password"
                     :class="!followsCriteria
-                      ? 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-red rounded-md'
-                      : 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-darkgray rounded-md'"
+                      ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-red rounded-md'
+                      : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-darkgray rounded-md'"
                     placeholder="Новый пароль"
                   >
-                  <div
-                    id="eye1"
-                    class="input-group-append absolute inset-y-0 right-0 pr-3 mt-1.5 flex items-center leading-5"
-                    @click="changePasswordType(1)"
-                  >
-                    <span class="input-group-text cumancen text-gray text-sm h-full"><i :class="passIsHidden1 ? 'fas fa-eye' : 'fas fa-eye-slash'" /></span>
-                  </div>
                 </div>
               </div>
 
               <p
                 v-if="!followsCriteria"
-                class="text-red text-2xs font-montserrat mt-1 mb-2 pl-1"
+                class="text-red text-2xs t font-montserrat mt-1 mb-2 pl-3"
               >
                 Пароль не отвечает требованиям
               </p>
@@ -112,25 +105,18 @@
                 <div class="relative flex items-stretch w-full">
                   <input
                     v-model="password2"
-                    :type="passIsHidden2 ? 'password' : 'text'"
+                    type="password"
                     :class="!passwordsAreSame
-                      ? 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-red rounded-md'
-                      : 'block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-darkgray rounded-md'"
-                    placeholder="Повторите ввод"
+                      ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                      : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'"
+                    placeholder="Подтвердите пароль"
                   >
-                  <div
-                    id="eye1"
-                    class="input-group-append absolute inset-y-0 right-0 pr-3 mt-1.5 flex items-center leading-5"
-                    @click="changePasswordType(2)"
-                  >
-                    <span class="input-group-text cumancen text-gray text-sm h-full"><i :class="passIsHidden2 ? 'fas fa-eye' : 'fas fa-eye-slash'" /></span>
-                  </div>
                 </div>
               </div>
 
               <p
                 v-if="!passwordsAreSame"
-                class="text-red text-2xs font-montserrat mt-1 mb-1 pl-1"
+                class="text-red text-2xs font-montserrat mt-1 mb-1 pl-3"
               >
                 Пароли не совпадают
               </p>
@@ -142,7 +128,8 @@
               <div class="flex flex-wrap mt-7 mb-2">
                 <button
                   type="submit"
-                  class="bg-main border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  class="bg-main text-sm border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  :disabled="!password1 || !password2"
                   @click="submitNewPassword"
                 >
                   Сменить пароль
@@ -155,18 +142,18 @@
               v-show="step === 3"
               class="step  mb-10"
             >
-              <h1 class="mb-3 text-center text-lg font-bold mt-2">
+              <h1 class="mb-3 text-center text-base font-bold mt-2">
                 Пароль изменен!
               </h1>
 
-              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-sm text-darkgray">
+              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-xs text-darkgray">
                 Теперь вы можете использовать новый пароль, чтобы войти в свой аккаунт
               </h3>
 
               <div class="flex flex-wrap mt-10 mb-2">
                 <button
                   type="submit"
-                  class="bg-main border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  class="bg-main text-sm border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
                   @click="$router.push('/')"
                 >
                   Авторизоваться
@@ -186,8 +173,6 @@ export default {
   data() {
     return {
       step : 1,
-      passIsHidden1 : true,
-      passIsHidden2 : true,
       errorEmail: false,
       passwordsAreSame: true,
       followsCriteria: true,
@@ -207,13 +192,6 @@ export default {
     checkForm() {
       //something
     },
-    changePasswordType(num: number) {
-      if (num === 1) {
-        this.passIsHidden1 = !this.passIsHidden1
-      } else if (num === 2) {
-        this.passIsHidden2 = !this.passIsHidden2
-      }
-    },
     submitNewPassword() {
       this.followsCriteria = validator.isStrongPassword(String(this.password1))
       if (this.followsCriteria) {
@@ -228,6 +206,6 @@ export default {
 </script>
 <style scoped>
 .main-container{
-  max-width: 330px;
+  max-width: 300px;
 }
 </style>
