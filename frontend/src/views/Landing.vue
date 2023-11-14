@@ -122,6 +122,7 @@ button:hover {
 
 .service {
   cursor: pointer;
+  text-decoration: none;
   transition: 0.25s box-shadow;
 }
 
