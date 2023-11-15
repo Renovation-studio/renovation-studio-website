@@ -30,6 +30,26 @@
                 </div>
 
                 <div class="relative mt-10px">
+                    <label class="block mb-5px" for="email">Почта</label>
+                    <input v-model="email" @input="formatEmail" class="round" :class="{ 'not-valid': isValidEmail === false }" type="text" name="email" id="email" maxlength="30" placeholder="example@mail.ru">
+                    <transition 
+                    enter-active-class="transition ease-out duration-200"
+                    enter-from-class="opacity-0 scale-95 translate-x-[-2em]"
+                    enter-to-class="opacity-100 scale-100 translate-x-0"
+                    leave-active-class="transition ease-in duration-200"
+                    leave-from-class="opacity-100 scale-100"
+                    leave-to-class="opacity-0 scale-95 translate-x-[-2em]"
+                    >
+                        <div ref="tooltipEmail" v-show="isValidEmail === false" class="tooltip">
+                            <span>
+                                <p>Пожалуйста, введите корректную почту.</p>
+                                <p>Пример: example@mail.ru</p>
+                            </span>
+                        </div>
+                    </transition>
+                </div>
+
+                <div class="relative mt-10px">
                     <label class="block mb-5px mt-10px" for="phone">Номер телефона</label>
                     <input v-model="phone" @click="add7" @input="formatPhoneNumber" class="round" :class="{ 'not-valid': isValidPhone === false }" type="tel" name="phone" id="phone" maxlength="18" placeholder="+7 (123) 456 78-90">
                     <transition 
@@ -49,25 +69,6 @@
                 </transition>
                 </div>
 
-                <div class="relative mt-10px">
-                    <label class="block mb-5px" for="email">Почта</label>
-                    <input v-model="email" @input="formatEmail" class="round" :class="{ 'not-valid': isValidEmail === false }" type="text" name="email" id="email" maxlength="30" placeholder="example@mail.ru">
-                    <transition 
-                    enter-active-class="transition ease-out duration-200"
-                    enter-from-class="opacity-0 scale-95 translate-x-[-2em]"
-                    enter-to-class="opacity-100 scale-100 translate-x-0"
-                    leave-active-class="transition ease-in duration-200"
-                    leave-from-class="opacity-100 scale-100"
-                    leave-to-class="opacity-0 scale-95 translate-x-[-2em]"
-                    >
-                        <div ref="tooltipEmail" v-show="isValidEmail === false" class="tooltip">
-                            <span>
-                                <p>Пожалуйста, введите корректную почту.</p>
-                                <p>Пример: example@mail.ru</p>
-                            </span>
-                        </div>
-                    </transition>
-                </div>
                 <div class="flex flex-justify-center text-center w-70% mt-20px">
                     <button v-show="!formSended" class="sendBtn font-medium round" type="submit">Отправить</button>
                     <transition 
@@ -102,12 +103,16 @@ const name = ref('');
 const phone = ref('');
 const email = ref('');
 const tooltipName = ref<HTMLElement | null>(null);
-const tooltipPhone = ref<HTMLElement | null>(null);
 const tooltipEmail = ref<HTMLElement | null>(null);
+const tooltipPhone = ref<HTMLElement | null>(null);
 
 const isValidName = computed(() => {
     let inputName = name.value.replace(/[^\S]/g, '');
     return startValidation.value ? inputName.length > 1 : null;
+});
+
+const isValidEmail = computed(() => {
+    return startValidation.value ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) : null;
 });
 
 const isValidPhone = computed(() => {
@@ -115,9 +120,6 @@ const isValidPhone = computed(() => {
     return startValidation.value ? inputNumber.length === 11 : null;
 });
 
-const isValidEmail = computed(() => {
-    return startValidation.value ? /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) : null;
-});
 
 function add7() {
     if (phone.value === '') {
@@ -174,13 +176,13 @@ function send () {
       return;
     }
 
-    if (tooltipPhone.value && isValidPhone.value === false) {
-      shake(tooltipPhone.value);
+    if (tooltipEmail.value && isValidEmail.value === false) {
+      shake(tooltipEmail.value);
       return;
     }
 
-    if (tooltipEmail.value && isValidEmail.value === false) {
-      shake(tooltipEmail.value);
+    if (tooltipPhone.value && isValidPhone.value === false) {
+      shake(tooltipPhone.value);
       return;
     }
 
