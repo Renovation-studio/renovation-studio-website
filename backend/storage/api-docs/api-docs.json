@@ -1,0 +1,166 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API for renovation studio project",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "api/auth/signin": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Log in user account and creates new user session",
+                "operationId": "signinUser",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 11,
+                            "minLength": 11
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull login"
+                    },
+                    "400": {
+                        "description": "Invalid credentials"
+                    }
+                }
+            }
+        },
+        "api/auth/signout": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Clears current user session",
+                "operationId": "signoutUser",
+                "responses": {
+                    "200": {
+                        "description": "Successfull logout"
+                    }
+                }
+            }
+        },
+        "api/auth/restore-password": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Log in user account and creates new user session",
+                "operationId": "restorePassword",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull restore"
+                    },
+                    "400": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "api/auth/signup": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Creates new user account and creates new user session",
+                "operationId": "signupUser",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 11,
+                            "minLength": 11
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull creation of user"
+                    },
+                    "401": {
+                        "description": "User already exists"
+                    },
+                    "400": {
+                        "description": "Invalid format"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "cookieSessionAuth": {
+                "type": "http",
+                "name": "session",
+                "in": "cookie",
+                "scheme": "basic"
+            }
+        }
+    }
+}
