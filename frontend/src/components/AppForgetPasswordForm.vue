@@ -31,6 +31,7 @@
                   "
                   aria-describedby="emailHelp"
                   placeholder="Email"
+                  @blur="validateEmail"
                 />
               </div>
 
@@ -47,8 +48,9 @@
 
               <div class="flex flex-wrap mt-10">
                 <button
+                  :disabled="!Boolean(email)"
+                  class="disabled:bg-purchase text-sm border-purchase px-2 p-1 w-2/3 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black bg-main hover:bg-mainhover"
                   type="submit"
-                  class="bg-purchase text-sm border-purchase px-2 p-1 w-2/3 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
                   @click="newPassword"
                 >
                   Сбросить пароль
@@ -80,14 +82,24 @@
                 <div class="relative flex items-stretch w-full">
                   <input
                     v-model="password1"
-                    type="password"
+                    :type="pass1IsHidden ? 'password' : 'text'"
                     :class="
                       !followsCriteria
                         ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-red rounded-md'
                         : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-darkgray rounded-md'
                     "
                     placeholder="Новый пароль"
+                    @blur="doesFollowCriteria"
                   />
+                  <div
+                    id="eye1"
+                    class="input-group-append absolute inset-y-0 right-0 pr-5 mt-1.5 flex items-center leading-5"
+                    @click="changePasswordType(1)"
+                  >
+                    <span class="input-group-text cumancen text-gray text-sm h-full">
+                      <i :class="pass1IsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -106,14 +118,24 @@
                 <div class="relative flex items-stretch w-full">
                   <input
                     v-model="password2"
-                    type="password"
+                    :type="pass2IsHidden ? 'password' : 'text'"
                     :class="
                       !passwordsAreSame
                         ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
                         : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
                     "
                     placeholder="Подтвердите пароль"
+                    @blur="arePasswordsSame"
                   />
+                  <div
+                    id="eye1"
+                    class="input-group-append absolute inset-y-0 right-0 pr-5 mt-1.5 flex items-center leading-5"
+                    @click="changePasswordType(2)"
+                  >
+                    <span class="input-group-text cumancen text-gray text-sm h-full">
+                      <i :class="pass2IsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -131,7 +153,7 @@
               <div class="flex flex-wrap mt-7 mb-2">
                 <button
                   type="submit"
-                  class="bg-main text-sm border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  class="bg-main text-sm border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-mainhover disabled:bg-purchase"
                   :disabled="!password1 || !password2"
                   @click="submitNewPassword"
                 >
@@ -169,41 +191,73 @@
 
 <script lang="ts">
 import validator from 'validator'
-export default {
-  data() {
-    return {
-      step: 1,
-      errorEmail: false,
-      passwordsAreSame: true,
-      followsCriteria: true,
+import {ref, defineComponent} from "vue";
 
-      email: null,
-      password1: null,
-      password2: null
-    }
-  },
-  methods: {
-    newPassword() {
-      this.errorEmail =
-        !validator.isEmail(String(this.email)) || validator.isEmpty(String(this.email))
-      if (!this.errorEmail) {
-        this.step = 2
+export default defineComponent({
+  setup() {
+    // form fields
+    const step = ref(1);
+    const errorEmail = ref(false);
+    const passwordsAreSame = ref(true);
+    const followsCriteria = ref(true);
+
+    const email = ref('');
+    const password1 = ref('');
+    const password2 = ref('');
+
+    const pass1IsHidden = ref(true);
+    const pass2IsHidden = ref(true);
+
+    const changePasswordType = (num: number) => {
+      if (num === 1) {
+        pass1IsHidden.value = !pass1IsHidden.value
+      } else if (num === 2) {
+        pass2IsHidden.value = !pass2IsHidden.value
       }
-    },
-    checkForm() {
+    };
+    const validateEmail = () => {
+      errorEmail.value =
+          !validator.isEmail(String(email.value)) || validator.isEmpty(String(email.value))
+    };
+    const newPassword = () => {
+      if (!errorEmail. value) {
+        step.value = 2
+      }
+    };
+    const checkForm = () => {
       //something
-    },
-    submitNewPassword() {
-      this.followsCriteria = validator.isStrongPassword(String(this.password1))
-      if (this.followsCriteria) {
-        this.passwordsAreSame = this.password1 === this.password2
-        if (this.passwordsAreSame) {
-          this.step = 3
-        }
-      }
+    };
+    const doesFollowCriteria = () => {
+      followsCriteria.value = validator.isStrongPassword(String(password1.value))
+    };
+    const arePasswordsSame = () => {
+      passwordsAreSame.value = password1.value === password2.value
+    };
+
+    const submitNewPassword = () => {
+      step.value = 3
+    };
+
+    return {
+      step,
+      errorEmail,
+      passwordsAreSame,
+      followsCriteria,
+      email,
+      password1,
+      password2,
+      newPassword,
+      checkForm,
+      submitNewPassword,
+      validateEmail,
+      doesFollowCriteria,
+      arePasswordsSame,
+      pass1IsHidden,
+      pass2IsHidden,
+      changePasswordType
     }
   }
-}
+});
 </script>
 <style scoped>
 .main-container {

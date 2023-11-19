@@ -45,6 +45,7 @@ export default {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'main': '#8DD3BB',
+      'mainhover': '#6db69d',
       'purchase': '#CDEAE1',
       'altmain': '#296751',
       'muted': '#6c757d',
