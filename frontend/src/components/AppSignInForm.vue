@@ -16,10 +16,9 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
-                    :class="
-                      email
-                        ? 'm-0.5 bg-main rounded-md pt-1 pb-1'
-                        : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'
+                    :class="email
+                      ? 'm-0.5 bg-main rounded-md pt-1 pb-1'
+                      : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'
                     "
                   >
                     <a
@@ -63,13 +62,14 @@
                     : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
                 "
                 placeholder="Почта"
+                @blur="validateLogin"
               />
 
               <input
                 v-else
                 v-model="login"
                 v-maska
-                data-maska="+7 ### ###-##-##"
+                data-maska="+7 (###) ###-##-##"
                 :class="
                   errorLogin
                     ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
@@ -96,13 +96,16 @@
               class="mt-1 mb-3 pl-1"
             />
 
-            <div class="mb-1.5">
+            <div class="mb-0.5">
               <div class="relative flex items-stretch w-full">
                 <input
                   v-model="password"
                   :type="passIsHidden ? 'password' : 'text'"
-                  class="block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md"
+                  :class="!errorPassword
+                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                    : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'"
                   placeholder="Пароль"
+                  @blur="validatePassword"
                 />
                 <div
                   id="eye1"
@@ -115,6 +118,17 @@
                 </div>
               </div>
             </div>
+
+            <p
+              v-if="errorPassword"
+              class="text-red text-2xs font-montserrat mb-1 pl-1"
+            >
+              {{ errorPassword }}
+            </p>
+            <p
+              v-else
+              class="mt-1 mb-1 pl-1"
+            />
 
             <div class="flex items-start mb-3 ml-1">
               <div class="flex items-center h-5">
@@ -149,8 +163,9 @@
 
             <div class="flex flex-wrap mb-2 text-center">
               <button
+                :disabled="!Boolean(password) || !Boolean(login)"
+                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border border-none font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-main hover:bg-mainhover disabled:bg-purchase"
                 type="submit"
-                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border border-none font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-purchase hover:bg-gray"
               >
                 Войти
               </button>
@@ -171,44 +186,49 @@
   </div>
 </template>
 
-<script lang="ts">
-import validator from 'validator'
-import { vMaska } from "maska"
+<script setup lang="ts">
+import { vMaska } from 'maska'
 
-export default {
-  directives: {
-    maska: vMaska
-  },
-  data() {
-    return {
-      passIsHidden: true,
-      email: true,
-      errorLogin: false,
+import {ref} from "vue";
+import validator from "validator";
 
-      login: null,
-      password: null
-    }
-  },
-  methods: {
-    changePasswordType() {
-      this.passIsHidden = !this.passIsHidden
-    },
-    changeInputLoginTypeToEmail() {
-      this.email = true
-    },
-    changeInputLoginTypeToPhone() {
-      this.email = false
-    },
-    checkForm(e: any) {
-      this.errorLogin = this.email
-        ? !validator.isEmail(String(this.login))
-        : !validator.isMobilePhone(String(this.login))
+// form fields
+const login = ref('');
+const password = ref('');
 
-      if (this.errorLogin) {
-        e.preventDefault()
-      }
-    }
+const passIsHidden = ref(true);
+const email = ref(false);
+
+const errorLogin = ref(false);
+const errorPassword = ref('');
+const changePasswordType = () => {
+  passIsHidden.value = !passIsHidden.value
+};
+
+const changeInputLoginTypeToEmail = () => {
+  email.value = true
+  login.value = ''
+};
+
+const changeInputLoginTypeToPhone = () => {
+  email.value = false
+  login.value = ''
+};
+
+const checkForm = async (e: any) => {
+  if (errorLogin.value || errorPassword.value) {
+    e.preventDefault()
   }
+}
+
+const validateLogin = () => {
+  errorLogin.value = email.value
+      ? !validator.isEmail(String(login.value))
+      : !validator.isMobilePhone(String(login.value).replace(/[^0-9]/g,""))
+}
+
+const validatePassword = () => {
+  errorPassword.value = password.value.length === 0 ? 'Пожалуйста введите пароль' : '';
 }
 </script>
 
