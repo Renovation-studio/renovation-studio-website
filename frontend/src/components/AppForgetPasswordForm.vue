@@ -123,7 +123,7 @@
 
               <div
                 v-show="tooltip"
-                class="w-52 top-1/2 specificLeft w-auto absolute text-red rounded-lg p-2 text-xs bg-white border border-lightgray ml-5"
+                class="w-52 specificTop specificLeft w-auto absolute text-red rounded-lg p-2 text-xs bg-white border border-lightgray ml-5"
               >
                 Пароль должен сожержать:
                 <ul class="text-2xs pl-5 list-disc">
@@ -290,6 +290,9 @@ export default defineComponent({
 }
 .specificLeft{
   left: 57%;
+}
+.specificTop{
+  top: 45%
 }
 .material-symbols-outlined {
   font-variation-settings:
