@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap font-montserrat text-sm">
     <div
-      class="container mx-auto sm:px-3 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-2xl"
+      class="container mx-auto sm:px-3 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-md"
     >
       <div class="flex flex-wrap">
         <div class="sm:w-4/5 pr-2 pl-2 mx-auto">
@@ -17,8 +17,8 @@
                   <div
                     id="div-switch"
                     :class="email
-                      ? 'm-0.5 bg-main rounded-md pt-1 pb-1'
-                      : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'
+                      ? 'm-0.5 bg-main rounded-md pt-2 pb-2'
+                      : 'm-0.5 bg-white rounded pt-2 pb-2 hover:bg-grey'
                     "
                   >
                     <a
@@ -35,8 +35,8 @@
                     id="div-switch"
                     :class="
                       !email
-                        ? 'm-0.5 bg-main rounded-md pt-1 pb-1'
-                        : 'm-0.5 bg-white rounded pt-1 pb-1 hover:bg-grey'
+                        ? 'm-0.5 bg-main rounded-md pt-2 pb-2'
+                        : 'm-0.5 bg-white rounded pt-2 pb-2 hover:bg-grey'
                     "
                   >
                     <a
@@ -76,6 +76,7 @@
                     : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
                 "
                 placeholder="Телефон"
+                @blur="validateLogin"
               />
             </div>
 
@@ -112,7 +113,7 @@
                   class="input-group-append absolute inset-y-0 right-0 pr-3 mt-1.5 flex items-center leading-5"
                   @click="changePasswordType()"
                 >
-                  <span class="input-group-text cumancen text-gray text-sm h-full">
+                  <span class="input-group-text cumancen text-muted text-sm h-full">
                     <i :class="passIsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
                   </span>
                 </div>
@@ -139,7 +140,7 @@
                   class="accent-main checked:bg-main checked:before:bg-main w-3 h-3 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-main dark:bg-gray dark:border-gray dark:focus:ring-main dark:ring-offset-gray"
                 />
               </div>
-              <div class="ml-1.5 text-sm">
+              <div class="ml-1.5 text-sm mt-0.5 mb-0.5">
                 <label
                   for="remember"
                   class="text-gray-500 dark:text-gray-300 text-xs"
@@ -164,7 +165,7 @@
             <div class="flex flex-wrap mb-2 text-center">
               <button
                 :disabled="!Boolean(password) || !Boolean(login)"
-                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border border-none font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-main hover:bg-mainhover disabled:bg-purchase"
+                class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] disabled:text-muted w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border border-none font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-main hover:bg-mainhover disabled:bg-purchase"
                 type="submit"
               >
                 Войти
@@ -174,7 +175,7 @@
             <div class="flex flex-wrap mb-3 text-center">
               <button
                 type="submit"
-                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-white hover:bg-purchase hover:text-white border-main text-main"
+                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-white enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] border-main text-main"
               >
                 Зарегистрироваться
               </button>
@@ -222,9 +223,11 @@ const checkForm = async (e: any) => {
 }
 
 const validateLogin = () => {
+  const numericPhone = String(login.value).replace(/[^0-9]/g,"")
+  console.log(numericPhone)
   errorLogin.value = email.value
       ? !validator.isEmail(String(login.value))
-      : !validator.isMobilePhone(String(login.value).replace(/[^0-9]/g,""))
+      : !validator.isMobilePhone(numericPhone) || numericPhone.length < 11
 }
 
 const validatePassword = () => {
