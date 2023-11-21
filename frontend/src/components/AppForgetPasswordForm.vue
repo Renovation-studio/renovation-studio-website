@@ -123,16 +123,18 @@
 
               <div
                 v-show="tooltip"
-                class="w-52 specificTop specificLeft w-auto absolute text-red rounded-lg p-2 text-xs bg-white border border-lightgray ml-5"
+                class="w-48 specificTop specificLeft absolute text-red rounded-lg px-0.5 pt-1 pb-1 text-xs bg-white border border-lightgray ml-2"
               >
-                Пароль должен сожержать:
-                <ul class="text-2xs pl-5 list-disc">
-                  <li>Минимум 8 символов.</li>
-                  <li>Заглавные буквы латинского (A-Z) алфавитa.</li>
-                  <li>Строчные буквы латинского (A-Z) алфавитa.</li>
-                  <li>Арабские цифры (0-9).</li>
-                  <li>Специальные символы (!@#$%^&*(),.?”:{}|&gt;&lt;).</li>
-                </ul>
+                <div class="m-1">
+                  Пароль должен содержать:
+                  <ul class="mt-0.5 text-2xs pl-5 list-disc">
+                    <li>Минимум 8 символов.</li>
+                    <li>Заглавные буквы латинского (A-Z) алфавитa.</li>
+                    <li>Строчные буквы латинского (A-Z) алфавитa.</li>
+                    <li>Арабские цифры (0-9).</li>
+                    <li>Специальные символы (!@#$%^&*(),.?”:{}|&gt;&lt;).</li>
+                  </ul>
+                </div>
               </div>
 
 
@@ -289,7 +291,7 @@ export default defineComponent({
   max-width: 300px;
 }
 .specificLeft{
-  left: 57%;
+  left: 57.5%;
 }
 .specificTop{
   top: 45%
