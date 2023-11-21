@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap font-montserrat">
     <div
-      class="container mx-auto sm:px-2 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-2xl"
+      class="container mx-auto sm:px-2 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-md"
     >
       <div class="flex flex-wrap">
         <div class="sm:w-4/5 mx-auto">
@@ -26,8 +26,8 @@
                   type="email"
                   :class="
                     errorEmail
-                      ? 'block appearance-none w-4/5 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderred rounded-md'
-                      : 'block appearance-none w-4/5 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                      ? 'block appearance-none w-5/6 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                      : 'block appearance-none w-5/6 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
                   "
                   aria-describedby="emailHelp"
                   placeholder="Email"
@@ -48,8 +48,8 @@
 
               <div class="flex flex-wrap mt-10">
                 <button
-                  :disabled="!Boolean(email)"
-                  class="disabled:bg-purchase text-sm border-purchase px-2 p-1 w-2/3 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black bg-main hover:bg-mainhover"
+                  :disabled="!Boolean(email) || errorEmail"
+                  class="disabled:bg-purchase disabled:text-muted  text-sm border-purchase px-3 p-1 w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black bg-main hover:bg-mainhover enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)]"
                   type="submit"
                   @click="newPassword"
                 >
@@ -96,7 +96,7 @@
                     class="input-group-append absolute inset-y-0 right-0 pr-5 mt-1.5 flex items-center leading-5"
                     @click="changePasswordType(1)"
                   >
-                    <span class="input-group-text cumancen text-gray text-sm h-full">
+                    <span class="input-group-text cumancen text-muted text-sm h-full">
                       <i :class="pass1IsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
                     </span>
                   </div>
@@ -105,14 +105,37 @@
 
               <p
                 v-if="!followsCriteria"
-                class="text-red text-2xs t font-montserrat mt-1 mb-2 pl-3"
+                class="text-red text-2xs t font-montserrat mt-0.5 mb-2 pl-3"
               >
                 Пароль не отвечает требованиям
+                <button
+                  class=" material-symbols-outlined text-2xs"
+                  @mouseover="tooltip = true"
+                  @mouseleave="tooltip = false"
+                >
+                  help
+                </button>
               </p>
               <p
                 v-else
                 class="mt-0.5 mb-2.5 pl-1"
               />
+
+              <div
+                v-show="tooltip"
+                class="w-52 top-1/2 specificLeft w-auto absolute text-red rounded-lg p-2 text-xs bg-white border border-lightgray ml-5"
+              >
+                Пароль должен сожержать:
+                <ul class="text-2xs pl-5 list-disc">
+                  <li>Минимум 8 символов.</li>
+                  <li>Заглавные буквы латинского (A-Z) алфавитa.</li>
+                  <li>Строчные буквы латинского (A-Z) алфавитa.</li>
+                  <li>Арабские цифры (0-9).</li>
+                  <li>Специальные символы (!@#$%^&*(),.?”:{}|&gt;&lt;).</li>
+                </ul>
+              </div>
+
+
 
               <div class="mb-0.5">
                 <div class="relative flex items-stretch w-full">
@@ -132,7 +155,7 @@
                     class="input-group-append absolute inset-y-0 right-0 pr-5 mt-1.5 flex items-center leading-5"
                     @click="changePasswordType(2)"
                   >
-                    <span class="input-group-text cumancen text-gray text-sm h-full">
+                    <span class="input-group-text cumancen text-muted text-sm h-full">
                       <i :class="pass2IsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
                     </span>
                   </div>
@@ -141,7 +164,7 @@
 
               <p
                 v-if="!passwordsAreSame"
-                class="text-red text-2xs font-montserrat mt-1 mb-1 pl-3"
+                class="text-red text-2xs font-montserrat mt-0.5 mb-1 pl-3"
               >
                 Пароли не совпадают
               </p>
@@ -153,8 +176,8 @@
               <div class="flex flex-wrap mt-7 mb-2">
                 <button
                   type="submit"
-                  class="bg-main text-sm border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-mainhover disabled:bg-purchase"
-                  :disabled="!password1 || !password2"
+                  class="bg-main disabled:text-muted enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] text-sm border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-mainhover disabled:bg-purchase"
+                  :disabled="!password1 || !password2 || !passwordsAreSame || !followsCriteria"
                   @click="submitNewPassword"
                 >
                   Сменить пароль
@@ -175,7 +198,7 @@
               <div class="flex flex-wrap mt-10 mb-2">
                 <button
                   type="submit"
-                  class="bg-main text-sm border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] bg-main text-sm border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
                   @click="$router.push('/')"
                 >
                   Авторизоваться
@@ -207,6 +230,7 @@ export default defineComponent({
 
     const pass1IsHidden = ref(true);
     const pass2IsHidden = ref(true);
+    const tooltip = ref(false);
 
     const changePasswordType = (num: number) => {
       if (num === 1) {
@@ -254,7 +278,8 @@ export default defineComponent({
       arePasswordsSame,
       pass1IsHidden,
       pass2IsHidden,
-      changePasswordType
+      changePasswordType,
+      tooltip
     }
   }
 });
@@ -262,5 +287,15 @@ export default defineComponent({
 <style scoped>
 .main-container {
   max-width: 300px;
+}
+.specificLeft{
+  left: 57%;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+       'FILL' 0,
+       'wght' 400,
+       'GRAD' 0,
+       'opsz' 24
 }
 </style>
