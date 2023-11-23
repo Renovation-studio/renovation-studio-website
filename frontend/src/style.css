@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Стили для поля выбора Select2 */
+.custom-select {
+    width: 430px;
+    padding-left: 10px; /* Регулируйте отступ слева по вашему усмотрению */
+}
+
+/* Стили для выпадающего списка Select2 */
+.select2-container--default .select2-selection--single {
+    border: 2px solid #D1D1D1;
+    width: 430px;
+    height: 49.81px;
+    top: 420.89px;
+    left: 506px;
+    border-radius: 9.96px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    padding-left: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 49.81px;
+    padding-left: 10px; /* Регулируйте отступ слева по вашему усмотрению */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 49.81px;
+}
+
+/* Стили для выделенной полосы при выборе из списка */
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #6B9F88; /* Замените этот цвет на желаемый зеленый */
+    color: #fff; /* Цвет текста в уже выбранном элементе */
+}
+/* Стили для выделенной полосы при наведении на вариант */
+.select2-container--default .select2-results__option:hover {
+    background-color: #8DD3BB; /* Замените этот цвет на желаемый зеленый */
+    color: #fff; /* Цвет текста при наведении на вариант */
+}
+/* Тени при раскрытии списка */
+.select2-container--default .select2-dropdown {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
