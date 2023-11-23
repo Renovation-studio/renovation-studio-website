@@ -110,8 +110,7 @@
                 Пароль не отвечает требованиям
                 <button
                   class=" material-symbols-outlined text-2xs"
-                  @mouseover="tooltip = true"
-                  @mouseleave="tooltip = false"
+                  @click="tooltip = !tooltip"
                 >
                   help
                 </button>
@@ -201,7 +200,7 @@
                 <button
                   type="submit"
                   class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] bg-main text-sm border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
-                  @click="$router.push('/')"
+                  @click="$router.push('login')"
                 >
                   Авторизоваться
                 </button>
