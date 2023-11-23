@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\PreferableService;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -33,7 +34,8 @@ class RegisterController extends Controller
         } else {
             $photoPath = null;
         }
-
+        //$service_array = isset($data['services']) ? json_encode($data['services']) : null;
+        $service_array = $data['services'];
        $user = User::create([
            'email' => $data['email'],
            'password' => Hash::make($data['password']),
@@ -43,10 +45,29 @@ class RegisterController extends Controller
            'name' => $data['firstName'],
            'patronymic' => $data['patronymic'],
            'wishes' => $data['wishes'],
-            'preferable_services_id' => $data['services'] ?? null,
+            'preferable_services_id' => $service_array,
            'interior_style_id' => $data['interior_style'] ?? null,
            'service_type_id' => $data['service'] ?? null,
        ]);
+
+       $lastInsertedId = $user->id;
+         if($service_array != null)
+         {
+              foreach(json_decode($data['services']) as $service)
+              {
+                 PreferableService::create([
+                     'user_id' => $lastInsertedId,
+                    'service_id' => $service
+                ]);
+              }
+        }
+        else
+        {
+             PreferableService::create([
+                'user_id' => $lastInsertedId,
+                'service_id' => null
+            ]);
+        }
 
        return $user;
    }
