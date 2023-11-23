@@ -1,4 +1,21 @@
-https://superb-gelato-6a3cef.netlify.app
+ССЫЛКА НА ДЕПЛОЙ: https://superb-gelato-6a3cef.netlify.app
+
+======================ВНИМАНИЕ======================
+На данный момент для работы требуется в консоли в папке backend прописать команду:
+npm artisan serve
+А ТАКЖЕ АКТУАЛЬНАЯ БД, которую взять вы можете у @Aramymo
+В дополнение к бд надо обновить .env файл под себя, а именно поля
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=users
+DB_USERNAME=root
+DB_PASSWORD=password
+
+Если не можете найти файл, то измените файл .env.example, а потом в консоль команду
+cp .env.example .env
+===================================================
 
 # Renovation Studo
 
