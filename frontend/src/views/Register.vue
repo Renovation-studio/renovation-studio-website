@@ -168,7 +168,7 @@
             </p>
             <div class="link">
                 <p>Уже есть аккаунт?
-                    <router-link to="/Login">Войти</router-link>
+                    <a href="https://auth--renovation-studio-auth.netlify.app">Войти</a>
                 </p>
             </div>
 
@@ -218,7 +218,7 @@ export default {
         const agreement = ref(false);
         const uploadedFile = ref(null);
         const email = ref('');
-        const movie = ref('');
+        const movie = ref(1);
         const errors = ref([]);
         const password = ref('');
         const confirmPassword = ref('');
@@ -608,7 +608,7 @@ export default {
                 firstNameError.value = '';
                 patronymicError.value = '';
                 // Перенаправьте пользователя на другую страницу
-                router.push('/');
+                window.location.href = 'https://auth--renovation-studio-auth.netlify.app'
 
 
         };
