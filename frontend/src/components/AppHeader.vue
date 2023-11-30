@@ -50,7 +50,7 @@
           <a
             class=" text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
-          >О нас</a>
+          >Услуги</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
@@ -62,13 +62,13 @@
           <a
             class="text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
-          >Цены</a>
+          >Отзывы</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-sm text-bold inline-block py-2 px-4 no-underline nav-item"
             href="#"
-          >Отзывы</a>
+          >О нас</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-3">
           <button

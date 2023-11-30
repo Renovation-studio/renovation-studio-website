@@ -35,65 +35,65 @@
         <div class="relative flex-grow max-w-full flex-1 px-4" />
 
         <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h6 class="text-sm py-2 px-4 p-0 font-medium">
+          <h6 class="text-sm py-2 px-3.5 p-0 font-medium">
             Услуги
           </h6>
           <ul class="flex flex-wrap list-none mb-0 flex-col">
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Проектирование</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Строительство</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Отделка и ремонт</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Декорирование</a>
             </li>
           </ul>
         </div>
 
         <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h6 class=" text-sm py-2 px-4 p-0 font-medium">
+          <h6 class=" text-sm py-2 px-3.5 p-0 font-medium">
             Информация о нас
           </h6>
           <ul class="flex flex-wrap list-none mb-0 flex-col">
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Команда</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Вакансии</a>
             </li>
             <li class="text-muted">
               <a
                 href="#"
-                class="text-xs text-bold inline-block py-0.5 px-4 no-underline p-0 text-gray-400"
+                class="text-xs text-bold inline-block py-1 px-4 no-underline p-0 text-gray-400"
               >Новости</a>
             </li>
           </ul>
         </div>
 
         <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h6 class=" text-sm py-2 px-4 p-0 font-medium">
+          <h6 class=" text-sm py-2 px-3.5 p-0 font-medium">
             Контакты
           </h6>
           <ul class="flex flex-wrap list-none mb-0 flex-col pl-3">
@@ -105,7 +105,7 @@
                 <div class="relative flex-grow max-w-full flex-1 px-1">
                   <a
                     href="#"
-                    class="text-xs text-bold inline-block py-0.5 px-1 no-underline p-0 text-gray-400"
+                    class="text-xs text-bold inline-block py-1 px-1 no-underline p-0 text-gray-400"
                   >8 999 888 22 55</a>
                 </div>
               </div>
@@ -118,7 +118,7 @@
                 <div class="relative flex-grow max-w-full flex-1 px-1">
                   <a
                     href="#"
-                    class="text-xs text-bold inline-block py-0.5 px-1 no-underline p-0 text-gray-400"
+                    class="text-xs text-bold inline-block py-1 px-1 no-underline p-0 text-gray-400"
                   >г. Волгоград, <br>ул. Волгоградская, 1</a>
                 </div>
               </div>
@@ -131,7 +131,7 @@
                 <div class="relative flex-grow max-w-full flex-1 px-1">
                   <a
                     href="#"
-                    class="text-xs text-bold inline-block py-0.5 px-1 no-underline p-0 text-gray-400"
+                    class="text-xs text-bold inline-block py-1 px-1 no-underline p-0 text-gray-400"
                   >pristroika@volsu.ru</a>
                 </div>
               </div>
