@@ -16,7 +16,7 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
-                    :class="email
+                    :class="typeQuery === type.email.valueOf()
                       ? 'm-0.5 bg-main rounded-md pt-2 pb-2'
                       : 'm-0.5 bg-white rounded pt-2 pb-2 hover:bg-grey'
                     "
@@ -34,7 +34,7 @@
                   <div
                     id="div-switch"
                     :class="
-                      !email
+                      typeQuery === type.phone.valueOf()
                         ? 'm-0.5 bg-main rounded-md pt-2 pb-2'
                         : 'm-0.5 bg-white rounded pt-2 pb-2 hover:bg-grey'
                     "
@@ -53,7 +53,7 @@
 
             <div class="mb-1">
               <input
-                v-if="email"
+                v-if="typeQuery === type.email.valueOf()"
                 v-model="login"
                 type="email"
                 :class="
@@ -81,13 +81,13 @@
             </div>
 
             <p
-              v-if="errorLogin && email"
+              v-if="errorLogin && typeQuery === type.email.valueOf()"
               class="text-red text-2xs font-montserrat mt-1 mb-3 pl-1"
             >
               Email имеет неверный формат
             </p>
             <p
-              v-else-if="errorLogin && !email"
+              v-else-if="errorLogin"
               class="text-red text-2xs font-montserrat mt-1 mb-3 pl-1"
             >
               Телефон имеет неверный формат
@@ -192,6 +192,17 @@ import { vMaska } from 'maska'
 
 import {ref} from "vue";
 import validator from "validator";
+import { useRouteQuery } from "@vueuse/router"
+
+const enum type{
+  email = "email",
+  phone = "phone"
+}
+
+const typeQuery = useRouteQuery("type", type.email.valueOf()) // or with a default value
+console.log(typeQuery.value)
+console.log(type.email)
+console.log(type.phone)
 
 // form fields
 const login = ref('');
@@ -207,12 +218,14 @@ const changePasswordType = () => {
 };
 
 const changeInputLoginTypeToEmail = () => {
-  email.value = true
+  typeQuery.value = String(type.email.valueOf())
+  errorLogin.value = false
   login.value = ''
 };
 
 const changeInputLoginTypeToPhone = () => {
-  email.value = false
+  typeQuery.value = String(type.phone.valueOf())
+  errorLogin.value = false
   login.value = ''
 };
 
