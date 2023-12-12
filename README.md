@@ -1,4 +1,4 @@
-ССЫЛКА НА ДЕПЛОЙ: https://superb-gelato-6a3cef.netlify.app
+ССЫЛКА НА ДЕПЛОЙ: https://coruscating-bubblegum-449419.netlify.app/Register
 
 ======================ВНИМАНИЕ======================
 
