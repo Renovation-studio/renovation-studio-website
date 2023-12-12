@@ -218,7 +218,7 @@ export default {
         const agreement = ref(false);
         const uploadedFile = ref(null);
         const email = ref('');
-        const movie = ref('');
+        const movie = ref(1);
         const errors = ref([]);
         const password = ref('');
         const confirmPassword = ref('');
@@ -413,9 +413,9 @@ export default {
             if (!surname.value) {
                 document.getElementById("surname").style.borderColor = "red";
                 surnameError.value = 'Введите вашу фамилию.';
-            } else if (surname.value.length < 2 || surname.value.length > 50) {
+            } else if (surname.value.length < 1 || surname.value.length > 50) {
                 document.getElementById("surname").style.borderColor = "red";
-                surnameError.value = 'Минимум 2 символа и максимум 50 символов.';
+                surnameError.value = 'Минимум 1 символа и максимум 50 символов.';
             } else if (/\d/.test(surname.value)) {
                 document.getElementById("surname").style.borderColor = "red";
                 surnameError.value = 'Фамилия не должна содержать цифры.';
@@ -441,9 +441,9 @@ export default {
             if (!firstName.value) {
                 document.getElementById("firstName").style.borderColor = "red";
                 firstNameError.value = 'Введите ваше имя.';
-            } else if (firstName.value.length < 2 || firstName.value.length > 50) {
+            } else if (firstName.value.length < 1 || firstName.value.length > 50) {
                 document.getElementById("firstName").style.borderColor = "red";
-                firstNameError.value = 'Минимум 2 символа и максимум 50 символов.';
+                firstNameError.value = 'Минимум 1 символа и максимум 50 символов.';
             } else if (/\d/.test(firstName.value)) {
                 document.getElementById("firstName").style.borderColor = "red";
                 firstNameError.value = 'Имя не должно содержать цифры.';
