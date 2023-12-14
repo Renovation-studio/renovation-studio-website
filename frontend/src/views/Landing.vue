@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="bgImage h-70vh w-100%" :style="{backgroundImage: `url(src/assets/img/background.jpg)`}">
+    <div class="title-image bgImage h-70vh w-100%" :style="{backgroundImage: `url(src/assets/img/background.jpg)`}">
       <div class="title-block margin-s round">
         <div class="font-semibold">Ремонт и дизайн интерьера</div>
         <div class="title">
@@ -128,5 +128,19 @@ button:hover {
 
 .service:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+.title-image {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-block {
+  margin-left: 0;
+  margin-right: 0;
+}
 }
 </style>

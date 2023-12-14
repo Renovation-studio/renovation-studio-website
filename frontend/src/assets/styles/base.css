@@ -73,3 +73,15 @@ body {
     transform: translateY(3px);
   }
 }
+
+@media (width < 768px) {
+  .margin-s {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+  
+  .margin {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}

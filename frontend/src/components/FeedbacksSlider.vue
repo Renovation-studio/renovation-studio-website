@@ -1,7 +1,7 @@
 <template>
     <swiper
     :modules="[Autoplay, Pagination]"
-    :slides-per-view="3"
+    :slides-per-view="slidesPerView"
     :centeredSlides="true"
     :speed="1500"
     :space-between="30"
@@ -48,7 +48,7 @@
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Дизайн-проект офиса</p>
             <p class="pt-1em">
-                Ваш рофессионализм и креативный взгляд сделали наше рабочее пространство не только функциональным, но и вдохновляющим.
+                Ваш профессионализм и креативный взгляд сделали наше рабочее пространство не только функциональным, но и вдохновляющим.
                  Мы получили много положительных отзывов от сотрудников.
             </p>
           </div>
@@ -87,7 +87,7 @@
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">Дизайн-проект офиса</p>
             <p class="pt-1em">
-                Ваш рофессионализм и креативный взгляд сделали наше рабочее пространство не только функциональным, но и вдохновляющим.
+                Ваш gрофессионализм и креативный взгляд сделали наше рабочее пространство не только функциональным, но и вдохновляющим.
                  Мы получили много положительных отзывов от сотрудников.
             </p>
           </div>
@@ -100,8 +100,28 @@
 <script setup lang="ts">
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+const slidesPerView = ref(3);
+updateSlidesPerView();
+
+const resizeHandler = () => {
+  updateSlidesPerView();
+};
+
+onMounted(() => {
+  window.addEventListener('resize', resizeHandler);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', resizeHandler);
+});
+
+function updateSlidesPerView() {
+  slidesPerView.value = window.innerWidth < 768 ? 1 : 3;
+}
 </script>
 
 

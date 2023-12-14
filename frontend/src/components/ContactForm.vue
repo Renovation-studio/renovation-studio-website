@@ -1,6 +1,6 @@
 <template>
 <div id="contact-form" class="contact-form round">
-    <div class="w-65%">
+    <div class="container w-65%">
         <span class="phone">
             Оставьте свои контактные данные
         </span>
@@ -11,7 +11,7 @@
             <div class="h-40px mt-30px">
                 <div class="relative mt-10px">
                     <label class="block mb-5px mt-10px" for="name">Ваше имя</label>
-                    <input v-model="name" @input="formatName" class="round" :class="{ 'not-valid': isValidName === false }" type="text" name="name" id="name" maxlength="30" placeholder="Имя">
+                    <input v-model="name" @input="formatName" class="round" :class="{ 'not-valid': isValidName === false }" type="text" name="name" id="name" maxlength="30" placeholder="Никита">
                     <transition 
                     enter-active-class="transition ease-out duration-200"
                     enter-from-class="opacity-0 scale-95 translate-x-[-2em]"
@@ -69,7 +69,7 @@
                 </transition>
                 </div>
 
-                <div class="flex flex-justify-center text-center w-70% mt-20px">
+                <div class="btn-container flex flex-justify-center text-center w-70% mt-20px">
                     <button v-show="!formSended" class="sendBtn font-medium round" type="submit">Отправить</button>
                     <transition 
                     enter-active-class="transition ease-out duration-200"
@@ -87,7 +87,7 @@
             </div>
         </form>
     </div>
-    <div class="w-35%" style="display: flex; flex-direction: column; justify-content: flex-end;">
+    <div class="img w-35% flex flex-col justify-end">
         <img class="h-85% flex-self-end pointer-events-none select-none" src="@/assets/img/post.png" alt="post" />
     </div>
 </div>
@@ -284,5 +284,24 @@ form .sendBtn:hover {
     border-width: 10px 10px 0;
     border-color: #fbc9c9 transparent transparent transparent;
     transform: rotate(90deg); 
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .contact-form {
+        height: 430px;
+    }
+
+    .container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .img {
+        display: none;
+    }
+
+    .btn-container {
+        width: auto;
+    }
 }
 </style>

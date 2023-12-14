@@ -18,7 +18,7 @@
   >
       <swiper-slide>
         <div class="flex justify-between mt-30px mb-40px">
-          <div class="slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
+          <div class="slide-info slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
             <p class="font-size-6 text-center font-bold">Современная классика</p>
 
             <p class="pt-2em font-medium">Квартира площадью 100 кв. м.</p>
@@ -53,7 +53,7 @@
 
       <swiper-slide>
         <div class="flex justify-between mt-30px mb-40px">
-          <div class="slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
+          <div class="slide-info slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
             <p class="font-size-6 text-center font-bold">Современная классика</p>
 
             <p class="pt-2em font-medium">Квартира площадью 100 кв. м.</p>
@@ -87,7 +87,7 @@
 
       <swiper-slide>
         <div class="flex justify-between mt-30px mb-40px">
-          <div class="slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
+          <div class="slide-info slide-info-width owerflow-scroll-y line-height-1em h-30em p-2em pr-60px round bg-#8dd3bb">
             <p class="font-size-6 text-center font-bold">Современная классика</p>
 
             <p class="pt-2em font-medium">Квартира площадью 100 кв. м.</p>
@@ -139,5 +139,20 @@ import 'swiper/css/pagination';
 
 .slide-img-width {
   width: calc(50% - 0.5em);
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .slide-info {
+    padding: 1em;
+  }
+
+  .slide-info-width {
+    height: 20em;
+    width: calc(50% - 0.5em);
+  }
+
+  .slide-img-width {
+    height: 9.5em;
+  }
 }
 </style>

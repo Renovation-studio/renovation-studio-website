@@ -2,8 +2,8 @@
     <footer ref="footer" id="footer" class="relative">
         <ContactForm v-if="contactFormEnable" />
         <div ref="footerContainer" class="h-200px bg-#8dd3bb">
-            <div ref="about" class="margin-s flex justify-between pt-30px h-100%">
-                <div class="flex flex-justify-center">
+            <div ref="about" class="about margin-s flex justify-between pt-30px h-100%">
+                <div class="about-block flex flex-justify-center">
                     <div class="flex-col">
                         <img class="w-150px" src="@/assets/img/logo.png" alt="logo" />
                         <p class="font-bold mt-10px mb-10px">Мы в соцсетях</p>
@@ -12,25 +12,25 @@
                         <a href="https://instagram.com/"><img class="w-20px mr-10px cursor-pointer" src="@/assets/img/icon_instagram.png" alt="instagram" /></a>
                     </div>
                 </div>
-                <div class="flex flex-justify-center">
+                <div class="about-block flex flex-justify-center">
                     <div class="flex-col">
-                        <p class="font-bold mt-10px">Информация о нас</p>
+                        <p class="font-bold">Информация о нас</p>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Команда</p></router-link>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Вакансии</p></router-link>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Новости</p></router-link>
                     </div>
                 </div>
-                <div class="flex flex-justify-center">
+                <div class="about-block flex flex-justify-center">
                     <div class="flex-col">
-                        <p class="font-bold mt-10px">Наши услуги</p>
+                        <p class="font-bold">Наши услуги</p>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонтные работы</p></router-link>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Дизайн-проект</p></router-link>
                         <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонт под ключ</p></router-link>
                     </div>
                 </div>
-                <div class="flex flex-justify-center">
+                <div class="about-block flex flex-justify-center">
                     <div class="flex-col">
-                        <p class="font-bold mt-10px">Контакты</p>
+                        <p class="font-bold">Контакты</p>
                         <div class="mt-10px">
                             <img class="mr-5px v-middle" src="@/assets/img/icon_phone.png" alt="phone" />
                             <span>+7(927)555-12-34</span>
@@ -64,6 +64,10 @@ const router = useRouter();
 const currentRoute = router.currentRoute.value; 
 
 onMounted(() => {
+    if (footerContainer.value) {
+            footerContainer.value.style.height = window.innerWidth < 768 ? '340px' : '200px';
+        }
+
     if (currentRoute.path === '/') {
         contactFormEnable.value = true;
         if (footer.value) {
@@ -71,7 +75,7 @@ onMounted(() => {
         }
 
         if (footerContainer.value) {
-            footerContainer.value.style.height = '420px';
+            footerContainer.value.style.height = window.innerWidth < 768 ? '560px' : '420px';
         }
 
         if (about.value) {
@@ -85,5 +89,17 @@ onMounted(() => {
 <style scoped>
 p.link:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .about {
+       flex-wrap: wrap;
+    }
+
+    .about-block {
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }
 </style>

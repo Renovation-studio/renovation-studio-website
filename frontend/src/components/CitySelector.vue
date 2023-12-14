@@ -56,7 +56,7 @@ ul.city-list {
   padding-inline-start: 0;
   width: 150px;
   border: solid 2px #eeeeee;
-  z-index: 999;
+  z-index: 998;
 }
 
 .city-list > li {

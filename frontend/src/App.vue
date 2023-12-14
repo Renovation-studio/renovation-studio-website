@@ -53,4 +53,10 @@ body{
   z-index: 999;
   transition: visibility 0.5s, opacity 0.5s ease;
 }
+
+@media (width < 768px) {
+  .scroll-to-top {
+    display: none;
+  }
+}
 </style>
