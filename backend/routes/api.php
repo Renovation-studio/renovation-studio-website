@@ -22,14 +22,14 @@ use App\Http\Controllers\RegisterController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['middleware' => ['web']], function () {
+    Route::post('/login', [AuthController::class, 'signin'])->name('signin');
 
-Route::post('/auth/signin', [AuthController::class, 'signin'])->name('signin');
+    Route::post('/logout', [AuthController::class, 'signout'])->name('signout');
 
-Route::post('/auth/signout', [AuthController::class, 'signout'])->name('signout');
-
+    Route::post('/restore-password', [AuthController::class, 'restorePassword'])->name('restore-password');
+});
 Route::post('/auth/signup', [AuthController::class, 'signup'])->name('signup');
-
-Route::post('/auth/restore-password', [AuthController::class, 'restorePassword'])->name('restore-password');
 
 
 

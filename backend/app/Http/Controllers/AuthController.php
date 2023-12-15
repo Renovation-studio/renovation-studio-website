@@ -6,6 +6,7 @@ use App\Http\Requests\SigninRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\RestorePasswordRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -54,7 +55,20 @@ class AuthController extends Controller
      * )
      */
     public function signin(SigninRequest $request) {
-        return "Signin";
+        $validated = request()->validate([
+            'phoneNumber' => 'required_without:email',
+            'email' => 'required_without:phoneNumber|email',
+            'password' => 'required'
+        ]);
+
+        if(auth()->attempt($validated))
+        {
+            $request->session()->regenerate();
+            return "Logged in!";
+        }
+        else{
+            return "WRONG";
+        }
     }
 
     /**
@@ -70,7 +84,10 @@ class AuthController extends Controller
      * )
      */
     public function signout(Request $request) {
-        return 'Logout';
+        auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return "Logged Out";
     }
 
     /**
@@ -99,7 +116,11 @@ class AuthController extends Controller
      * )
      */
     public function restorePassword(RestorePasswordRequest $request) {
-        return 'Restore password';
+        if($request->session()->exists('users'))
+        {
+            return 'Aboba';
+        }
+        else return 'Restore password';
     }
 
     /**
