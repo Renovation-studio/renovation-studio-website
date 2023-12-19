@@ -2,7 +2,7 @@
   <main>
     <div class="title-image bgImage h-70vh w-100%" :style="{backgroundImage: `url(src/assets/img/background.jpg)`}">
       <div class="title-block margin-s round">
-        <div class="font-semibold">Ремонт и дизайн интерьера</div>
+        <div class="subtitle font-semibold">Ремонт и дизайн интерьера</div>
         <div class="title">
           Студия <br> ремонта <br> ПРИстройка
         </div>
@@ -94,7 +94,6 @@ main {
   margin-bottom: 40px;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: large;
   border-top: 3px solid;
   border-bottom: 3px solid;
   font-size: 3rem;
@@ -130,9 +129,13 @@ button:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
+@media (min-width: 550px) and (max-width: 768px) {
+  .title-block {
+    margin-top: 85px;
+  }
+
 .title-image {
-  height: 85vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,6 +144,71 @@ button:hover {
 .title-block {
   margin-left: 0;
   margin-right: 0;
+}
+
+#feedbacks {
+  margin-left: 0px;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+}
+}
+
+@media (max-width: 549px) {
+  
+  .title-block {
+    margin-top: 80px;
+  }
+
+.title-image {
+  height: 67vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-block {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#feedbacks {
+  margin-left: 0px;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.font-size-6 {
+  font-size: 1.25rem;
+}
+
+button {
+  padding: 8px 20px;
+}
+}
+
+@media (max-width: 380px) {
+  .title-block {
+    margin-top: 60px;
+  }
+
+  .title-image {
+  height: 63vh;
 }
 }
 </style>

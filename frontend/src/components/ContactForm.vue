@@ -286,7 +286,26 @@ form .sendBtn:hover {
     transform: rotate(90deg); 
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
+@media (min-width: 550px) and (max-width: 768px) {
+    .contact-form {
+        height: 430px;
+    }
+
+    .container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .img {
+        display: none;
+    }
+
+    .btn-container {
+        width: auto;
+    }
+}
+
+@media (max-width: 549px) {
     .contact-form {
         height: 430px;
     }

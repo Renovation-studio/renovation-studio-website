@@ -91,7 +91,19 @@ p.link:hover {
     text-decoration: underline;
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
+@media (min-width: 550px) and (max-width: 768px) {
+    .about {
+       flex-wrap: wrap;
+    }
+
+    .about-block {
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 549px) {
     .about {
        flex-wrap: wrap;
     }

@@ -84,4 +84,13 @@ body {
     margin-left: 3%;
     margin-right: 3%;
   }
+
+  body {
+    font-size: 14px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 15px !important;
+    height: 15px !important;
+  }
 }
