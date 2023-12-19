@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap font-montserrat text-sm">
     <div
-      class="container mx-auto sm:px-3 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-md"
+      class="container mx-auto sm:px-3 pt-5 pb-3 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-md"
     >
       <div class="flex flex-wrap">
         <div class="sm:w-4/5 pr-2 pl-2 mx-auto">
@@ -16,15 +16,16 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
+                    class="cursor-pointer m-0.5 py-2"
                     :class="typeQuery === type.email.valueOf()
-                      ? 'm-0.5 bg-main rounded-md pt-2 pb-2'
-                      : 'm-0.5 bg-white rounded pt-2 pb-2 hover:bg-grey'
+                      ? ' bg-main rounded-md'
+                      : 'bg-white rounded hover:bg-grey'
                     "
+                    @click.prevent="changeInputLoginTypeToEmail()"
                   >
                     <a
                       type="button"
-                      class="font-montserrat text-sm"
-                      @click="changeInputLoginTypeToEmail()"
+                      class="font-montserrat text-sm font-medium"
                     >
                       Почта
                     </a>
@@ -33,16 +34,17 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
+                    class="m-0.5 py-2 cursor-pointer"
                     :class="
                       typeQuery === type.phone.valueOf()
-                        ? 'm-0.5 bg-main rounded-md pt-2 pb-2'
-                        : 'm-0.5 bg-white rounded pt-2 pb-2 hover:bg-grey'
+                        ? 'bg-main rounded-md'
+                        : 'bg-white rounded hover:bg-grey'
                     "
+                    @click.prevent="changeInputLoginTypeToPhone()"
                   >
                     <a
                       type="button"
-                      class="font-montserrat text-sm"
-                      @click="changeInputLoginTypeToPhone()"
+                      class="font-montserrat text-sm font-medium"
                     >
                       Телефон
                     </a>
@@ -56,10 +58,11 @@
                 v-if="typeQuery === type.email.valueOf()"
                 v-model="login"
                 type="email"
+                class="block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border font-medium rounded-md"
                 :class="
                   errorLogin
-                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
-                    : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                    ? 'border-borderred'
+                    : 'border-borderdarkgray'
                 "
                 placeholder="Почта"
                 @blur="validateLogin"
@@ -70,10 +73,11 @@
                 v-model="login"
                 v-maska
                 data-maska="+7 (###) ###-##-##"
+                class="block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border font-medium rounded-md"
                 :class="
                   errorLogin
-                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
-                    : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                    ? 'border-borderred'
+                    : 'border-borderdarkgray'
                 "
                 placeholder="Телефон"
                 @blur="validateLogin"
@@ -82,13 +86,13 @@
 
             <p
               v-if="errorLogin && typeQuery === type.email.valueOf()"
-              class="text-red text-2xs font-montserrat mt-1 mb-3 pl-1"
+              class="text-red text-2xs font-montserrat mt-1 mb-3 pl-1 font-medium"
             >
               Email имеет неверный формат
             </p>
             <p
               v-else-if="errorLogin"
-              class="text-red text-2xs font-montserrat mt-1 mb-3 pl-1"
+              class="text-red text-2xs font-montserrat mt-1 mb-3 pl-1 font-medium"
             >
               Телефон имеет неверный формат
             </p>
@@ -102,27 +106,29 @@
                 <input
                   v-model="password"
                   :type="passIsHidden ? 'password' : 'text'"
+                  class="block appearance-none w-full py-1 px-2 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border font-medium rounded-md"
                   :class="!errorPassword
-                    ? 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
-                    : 'block appearance-none w-full py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'"
+                    ? 'border-borderdarkgray'
+                    : 'border-borderred'"
                   placeholder="Пароль"
                   @blur="validatePassword"
                 />
                 <div
                   id="eye1"
-                  class="input-group-append absolute inset-y-0 right-0 pr-3 mt-1.5 flex items-center leading-5"
+                  class="input-group-append absolute inset-y-0 h-full right-0 pr-3 flex flex-col justify-center items-center leading-5"
                   @click="changePasswordType()"
                 >
-                  <span class="input-group-text cumancen text-muted text-sm h-full">
-                    <i :class="passIsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
-                  </span>
+                  <i
+                    class="text-muted text-sm cursor-pointer" 
+                    :class="passIsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" 
+                  />
                 </div>
               </div>
             </div>
 
             <p
               v-if="errorPassword"
-              class="text-red text-2xs font-montserrat mb-1 pl-1"
+              class="text-red text-2xs font-montserrat mb-1 pl-1 font-medium"
             >
               {{ errorPassword }}
             </p>
@@ -143,7 +149,7 @@
               <div class="ml-1.5 text-sm mt-0.5 mb-0.5">
                 <label
                   for="remember"
-                  class="text-gray-500 dark:text-gray-300 text-xs"
+                  class="text-gray-500 dark:text-gray-300 text-xs font-medium"
                 >
                   Запомнить меня
                 </label>
@@ -154,7 +160,7 @@
               <div class="relative flex-grow max-w-full flex-1">
                 <div
                   id="forgotPassword"
-                  class="block mt-1 text-sm"
+                  class="block mt-1 text-sm font-medium"
                   @click="$router.push('forgot-password')"
                 >
                   Забыли пароль?
@@ -165,7 +171,7 @@
             <div class="flex flex-wrap mb-2 text-center">
               <button
                 :disabled="!Boolean(password) || !Boolean(login)"
-                class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] disabled:text-muted w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border border-none font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-main hover:bg-mainhover disabled:bg-purchase"
+                class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] disabled:text-muted w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border border-none font-medium whitespace-no-wrap rounded-lg leading-normal no-underline bg-main hover:bg-mainhover disabled:bg-purchase"
                 type="submit"
               >
                 Войти
@@ -175,7 +181,7 @@
             <div class="flex flex-wrap mb-3 text-center">
               <button
                 type="submit"
-                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-white enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] border-main text-main"
+                class="w-4/5 mx-auto h-9 color-btn inline-block align-middle text-center select-none border font-medium whitespace-no-wrap rounded-lg leading-normal no-underline bg-white enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] border-main text-main"
               >
                 Зарегистрироваться
               </button>
