@@ -218,7 +218,7 @@ button.green:hover {
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
+@media (max-width: 768px) {
   header {
     position: fixed;
     width: 100%;
@@ -289,5 +289,21 @@ button.green {
 button.green:hover {
     box-shadow: none;
 }
+}
+
+@media (max-width: 549px) {
+  .logo {
+    width: 60%;
+  }
+
+  .menu {
+  width: 40%;
+}
+}
+
+@media (max-width: 380px) {
+  .logo {
+    width: 75%;
+  }
 }
 </style>
