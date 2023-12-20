@@ -3,14 +3,20 @@
     <input
       type="tel"
       v-model="formattedPhoneNumber"
-      :class="{ 'invalid-input': isInvalid }"
+      :class="{ 'bg-[#ffbcbc]': isInvalid }"
       @input="formatInput"
       maxlength="15"
       placeholder="Номер телефона"
-      class="phone-input text-center border-none appearance-none rounded-full w-full px-4 py-3 focus:outline-none focus:ring focus:border-blue-300 text-lg font-bold shadow-lg hover:shadow-xl focus:shadow-xl mb-4 transition-colors"
+      class="phone-input text-center border-none appearance-none rounded-full w-full px-4 py-3 focus:outline-none focus:ring focus:border-blue-300 text-lg font-bold shadow-lg hover:shadow-xl focus:shadow-xl mb-4 transition-colors bg-no-repeat relative"
     />
-    <div v-if="isInvalid" class="exclamation-mark"></div>
-    <div v-if="isInvalid" class="tooltip text-center border-none appearance-none rounded-2xl w-8/12 py-3 text-lg shadow-lg mb-4 bg-[#ffbcbc]">
+    <div
+      v-if="isInvalid"
+      class="exclamation-mark absolute top-[20%] right-2.5 -translate-y-1/2 w-5 h-5 bg-contain bg-no-repeat"
+    ></div>
+    <div
+      v-if="isInvalid"
+      class="tooltip text-center border-none appearance-none rounded-2xl w-8/12 py-3 text-lg shadow-lg mb-4 bg-[#ffbcbc] absolute bottom-[100%] left-[100%] -translate-x-1/2"
+    >
       Неверный формат
     </div>
     <button
@@ -22,42 +28,36 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref } from "vue";
+import { PhoneNumber } from "@/utils/phoneNumberUtils";
+
+const phoneConfig = {
+  regex: /^(?:7|8)?9\d{9}$/,
+  formatting: { 1: " ", 4: " ", 7: " ", 9: " " },
+};
+
+const phoneNumberProcessor = new PhoneNumber(phoneConfig);
 
 export default defineComponent({
   name: "PhoneNumberForm",
+  emits: ['submit'],
   setup() {
     const phoneNumber = ref("");
     const formattedPhoneNumber = ref("");
     const isInvalid = ref(false);
-    const phoneRegex = /^(?:7|8)?9\d{9}$/;
-
-    function formatPhoneNumber(value) {
-      const numbers = value.replace(/\D/g, '');
-      const char = { 1: ' ', 4: ' ', 7: ' ', 9: ' ' };
-      let phoneNumber = '';
-      for (let i = 0; i < numbers.length; i++) {
-        phoneNumber += (char[i] || '') + numbers[i];
-      }
-      return phoneNumber;
-    }
 
     function formatInput(event) {
       const input = event.target.value;
-      formattedPhoneNumber.value = formatPhoneNumber(input);
-      phoneNumber.value = input.replace(/\D/g, '');
-      validatePhoneNumber();
-    }
-
-    function validatePhoneNumber() {
-      isInvalid.value = phoneNumber.value.length > 0 && !phoneRegex.test(phoneNumber.value);
+      const result = phoneNumberProcessor.processInput(input);
+      formattedPhoneNumber.value = result.formatted;
+      isInvalid.value = !result.isValid;
+      phoneNumber.value = result.cleanNumber;
     }
 
     function submitPhoneNumber() {
       if (!isInvalid.value && phoneNumber.value) {
-        console.log("Phone number submitted:", phoneNumber.value);
+        this.$emit('submit');
         phoneNumber.value = "";
         formattedPhoneNumber.value = "";
       }
@@ -67,55 +67,27 @@ export default defineComponent({
       formattedPhoneNumber,
       submitPhoneNumber,
       formatInput,
-      isInvalid
+      isInvalid,
     };
   },
 });
 </script>
 
-
 <style scoped>
-.bg-red-500 {
-  background-color: #f87171;
-}
-/* ffbcbc */
 .phone-input {
   background-position: right 10px center;
-  background-repeat: no-repeat;
   background-size: 20px;
-  position: relative;
-}
-
-.invalid-input {
-  background-color: #ffbcbc;
-}
-
-.relative {
-  position: relative;
 }
 
 .exclamation-mark {
-  position: absolute;
-  top: 20%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background-image: url('../assets/exclamation-mark.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url("../assets/exclamation-mark.svg");
 }
 
 .tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 100%;
-  transform: translateX(-50%);
   display: none;
 }
 
 .exclamation-mark:hover + .tooltip {
   display: block;
 }
-
 </style>
