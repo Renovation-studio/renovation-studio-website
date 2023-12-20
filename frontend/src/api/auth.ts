@@ -22,11 +22,25 @@ export async function getProfile(): Promise<UserProfile> {
 }
 
 export async function register(formData: FormData) {
-  const { data } = await apiInstance.post('register', formData, {
+  await apiInstance.post('register', formData, {
     headers: {
-        'Content-Type': 'multipart/form-data', // Указываем тип контента как форма с файлами
+      'Content-Type': 'multipart/form-data', // Указываем тип контента как форма с файлами
     },
   });
+}
 
-  return data;
+
+export async function checkEmail(data: { email: string }) {
+  const response = await apiInstance.post('check-email', data);
+  return response;
+}
+
+export async function checkPhone(data) {
+  try {
+    const response = await apiInstance.post('check-phone', data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
