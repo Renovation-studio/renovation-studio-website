@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ElementController;
 use Illuminate\Http\Request;
@@ -23,3 +24,5 @@ Route::get('/catalog', [ServicesController::class, 'index']);
 Route::get('/catalog/{id}', [ServicesController::class, 'show']);
 
 Route::get('/search', [ServicesController::class, 'search']);
+
+Route::post('/phone', [PhoneController::class, 'store']);
