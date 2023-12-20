@@ -1,10 +1,10 @@
 <template>
     <div ref="root" class="flex pt-10px pb-10px cursor-pointer" @click="isOpen = !isOpen">
       <img src="@/assets/img/location.svg" alt="location">
-      <span v-if="selectedCity" class="mt-3px ml-3px">{{ selectedCity.name }}</span>
+      <span v-if="selectedCity && isCitiesLoad" class="mt-3px ml-3px">{{ selectedCity.name }}</span>
       <span v-else class="mt-3px ml-3px">Волгоград</span>
     </div>
-    <transition 
+    <transition v-if="isCitiesLoad"
     enter-active-class="transition ease-out duration-200"
     enter-from-class="transition opacity-0 scale-95"
     enter-to-class="transform opacity-100 scale-100"
@@ -22,13 +22,27 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
   
-const cities = ref([
-  { id: 1, name: 'Волгоград' },
-  { id: 2, name: 'Волжский' },
-  { id: 3, name: 'Камышин' },
-  { id: 4, name: 'Михайловка' },
-  { id: 5, name: 'Урюпинск' },
-]);
+type City = {
+  id: number;
+  name: string;
+};
+const cities = ref<City[]>([]);
+const isCitiesLoad = ref(false);
+
+const request = new XMLHttpRequest();
+  const url = "http://localhost:8000/api/get/cities";
+  request.open('GET', url);
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.addEventListener("readystatechange", () => {
+  if (request.readyState === 4 && request.status === 200) {
+    const responseData = JSON.parse(request.responseText);
+    if (responseData.data && Array.isArray(responseData.data)) {
+      cities.value = responseData.data.filter((city: City) => city.id && city.name);
+      isCitiesLoad.value = true;
+    }
+  }
+});
+request.send();
   
 const cityId = ref(1);
 const isOpen = ref(false);
