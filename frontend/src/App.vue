@@ -50,7 +50,6 @@ export default {
   setup() {
     const notificationVisible = ref(false);
     function showNotification() {
-      console.log("test");
       notificationVisible.value = true;
       setTimeout(() => {
         notificationVisible.value = false;
@@ -124,7 +123,6 @@ export default {
       });
 
       if (!isSortingActive) {
-        console.log(originalCatalogueItems.value);
         catalogueItems.value = [...originalCatalogueItems.value];
       }
     };
