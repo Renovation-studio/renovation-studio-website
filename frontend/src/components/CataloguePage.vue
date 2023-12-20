@@ -1,5 +1,5 @@
 <template>
-  <MainHeader @phone-submit-success="showNotification"></MainHeader>
+<!--  <MainHeader @phone-submit-success="showNotification"></MainHeader>-->
   <TopNotification
     v-if="notificationVisible"
     message="Заявка отправлена"
@@ -14,18 +14,18 @@
     :isLoading="isLoading"
     @phone-submit-success="showNotification"
   />
-  <MainFooter></MainFooter>
+<!--  <MainFooter></MainFooter>-->
 </template>
 
 <script lang="ts">
 import { ref, onMounted } from "vue";
 import axios from "axios";
-import MainHeader from "../src/components/MainHeader.vue";
-import MainFooter from "../src/components/MainFooter.vue";
-import FilterButtons from "../src/components/FilterButtons.vue";
-import CatalogueList from "../src/components/CatalogueList.vue";
-import SearchBar from "../src/components/SearchBar.vue";
-import TopNotification from './components/TopNotification.vue';
+import MainHeader from "./MainHeader.vue";
+import MainFooter from "./MainFooter.vue";
+import FilterButtons from "./FilterButtons.vue";
+import CatalogueList from "./CatalogueList.vue";
+import SearchBar from "./SearchBar.vue";
+import TopNotification from './TopNotification.vue';
 
 interface FilterOption {
   name: string;
