@@ -7,9 +7,9 @@
           <CitySelector class="ml-8"></CitySelector>
         </div>
 
-        <div class="cursor-pointer bg-white text-black px-6 py-3 rounded-lg border-solid border-1 border-black shadow-md hover:bg-gray-200 transition duration-300">
+        <!-- <div class="cursor-pointer bg-white text-black px-6 py-3 rounded-lg border-solid border-1 border-black shadow-md hover:bg-gray-200 transition duration-300">
           Войти
-        </div>
+        </div> -->
       </div>
     </header>
 
@@ -42,8 +42,13 @@
       </div>
     </nav>
     <GenericModal v-model="isModalOpen">
+    <template v-if="isUserRegistered">
       <PhoneNumberForm @submit="handlePhoneSubmitSuccess"></PhoneNumberForm>
-    </GenericModal>
+    </template>
+    <template v-else>
+      <p class="text-2xl font-bold text-center">Необходимо зайти в аккаунт</p>
+    </template>
+  </GenericModal>
   </div>
 </template>
 
@@ -62,6 +67,12 @@ export default {
     return {
       isModalOpen: false,
     };
+  },
+  props: {
+    isUserRegistered: {
+      type: Boolean,
+      required: true
+    }
   },
   methods: {
     handlePhoneSubmitSuccess() {
