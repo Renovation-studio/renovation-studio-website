@@ -21,6 +21,38 @@
                 }
             }
         },
+        "/api/phone": {
+            "post": {
+                "summary": "Эндпоинт для кнопки 'Оставить заяву'",
+                "description": "Добавляет номер телефона и дату заявки в соответствующую таблицу",
+                "operationId": "40b6e9739c4c4b1dee71f33ca55d150b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "description": "Номер телефона в формате +7XXXXXXXXXX",
+                                        "type": "string",
+                                        "format": "phone"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "1 в случае успешного добавления, 0 в случае не успешного"
+                    },
+                    "500": {
+                        "description": "Не удалось добавить данные"
+                    }
+                }
+            }
+        },
         "/api/catalog": {
             "get": {
                 "summary": "Список комплексных ремонтов",
