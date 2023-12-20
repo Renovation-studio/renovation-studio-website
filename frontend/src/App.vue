@@ -9,7 +9,11 @@
     @resetCatalogueItems="resetCatalogueItems"
   />
   <FilterButtons :filters="filters" @update:filters="updateFilters" />
-  <CatalogueList :catalogueItems="catalogueItems" @phone-submit-success="showNotification" />
+  <CatalogueList
+    :catalogueItems="catalogueItems"
+    :isLoading="isLoading"
+    @phone-submit-success="showNotification"
+  />
   <MainFooter></MainFooter>
 </template>
 
@@ -70,15 +74,18 @@ export default {
     const catalogueItems = ref<CatalogueItem[]>([]);
     const originalCatalogueItems = ref<CatalogueItem[]>([]);
 
+    const isLoading = ref(true);
+
     onMounted(async () => {
+      isLoading.value = true;
       try {
         const catalogResponse = await axios.get(
-          "/api/catalog"
+          "http://denis.tw1.ru/api/catalog"
         );
         const catalogueItemsWithDetails = await Promise.all(
           catalogResponse.data.map(async (item) => {
             const detailsResponse = await axios.get(
-              `/api/catalog/${item.element_services_id}`
+              `http://denis.tw1.ru/api/catalog/${item.element_services_id}`
             );
             const duration = detailsResponse.data.reduce(
               (acc, detail) => acc + detail.work_duration,
@@ -92,6 +99,8 @@ export default {
         originalCatalogueItems.value = [...catalogueItemsWithDetails];
       } catch (error) {
         console.error("Error fetching catalogue items:", error);
+      } finally {
+        isLoading.value = false;
       }
     });
 
@@ -139,6 +148,7 @@ export default {
       originalCatalogueItems,
       notificationVisible,
       showNotification,
+      isLoading,
     };
   },
   methods: {
@@ -147,7 +157,7 @@ export default {
         const catalogueItemsWithDetails = await Promise.all(
           newItems.map(async (item) => {
             const detailsResponse = await axios.get(
-              `/api/catalog/${item.element_services_id}`
+              `http://denis.tw1.ru/api/catalog/${item.element_services_id}`
             );
             const duration = detailsResponse.data.reduce(
               (acc, detail) => acc + detail.work_duration,
@@ -166,12 +176,12 @@ export default {
     async resetCatalogueItems() {
       try {
         const catalogResponse = await axios.get(
-          "/api/catalog"
+          "http://denis.tw1.ru/api/catalog"
         );
         const catalogueItemsWithDetails = await Promise.all(
           catalogResponse.data.map(async (item) => {
             const detailsResponse = await axios.get(
-              `/api/catalog/${item.element_services_id}`
+              `http://denis.tw1.ru/api/catalog/${item.element_services_id}`
             );
             const duration = detailsResponse.data.reduce(
               (acc, detail) => acc + detail.work_duration,
