@@ -1,6 +1,9 @@
 <template>
   <div class="catalogue-list mx-50">
-    <div v-if="itemsToShow.length > 0">
+    <div v-if="isLoading" class="flex items-center justify-center my-64">
+      <img src="../assets/loading.gif" alt="Loading..." class="w-24 h-24"/>
+    </div>
+    <div v-else-if="itemsToShow.length > 0">
       <div class="grid grid-cols-3 gap-6">
         <CatalogueItem
           v-for="(item, index) in itemsToShow"
@@ -82,6 +85,10 @@ export default defineComponent({
     itemsPerPage: {
       type: Number,
       default: 6,
+    },
+    isLoading: {
+      type: Boolean,
+      required: true,
     },
   },
   setup(props) {
