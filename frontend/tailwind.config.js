@@ -13,6 +13,7 @@ export default {
       }
     },
     fontSize: {
+        'menu': '20px',
         '2xs': '0.7rem',
         'xs': '0.75rem',
         sm: '0.875rem',
@@ -53,9 +54,9 @@ export default {
       'lightgray' : '#d1d5db',
       'green': '#16a34a',
       'darkgray': '#1f2937',
-      'red': '#e00d0d',
-      'borderdarkgray': 'rgba(31,41,55,0.67)',
-      'borderred': 'rgba(224,13,13,0.71)'
+      'red': '#FF4545',
+      'borderdarkgray': '#FF4545',
+      'borderred': '#FF4545'
     },
   },
   plugins: [],

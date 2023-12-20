@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-wrap font-montserrat">
+  <div class="flex flex-wrap font-montserrat text-lg">
     <div
-      class="container mx-auto sm:px-2 mt-5 pt-5 pb-3 mb-5 main-container border border-lightgray rounded-xl shadow-lg hover:shadow-md"
+      class="container mx-auto sm:px-2 pt-5 pb-3 mt-10 main-container border border-lightgray rounded-xl shadow-lg"
     >
       <div class="flex flex-wrap">
         <div class="sm:w-4/5 mx-auto">
@@ -13,9 +13,9 @@
               v-show="step === 1"
               class="step"
             >
-              <h1 class="mb-3 text-center text-base font-bold mt-2">Востановление пароля</h1>
+              <h1 class="mb-3 text-center text-2xl font-bold mt-2">Востановление пароля</h1>
 
-              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-xs text-darkgray">
+              <h3 class="mb-10 text-center font-weight-light w-11/12 mx-auto text-darkgray">
                 Введите адрес электронной почты, чтобы сменить пароль
               </h3>
 
@@ -26,8 +26,8 @@
                   type="email"
                   :class="
                     errorEmail
-                      ? 'block appearance-none w-5/6 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderred rounded-md'
-                      : 'block appearance-none w-5/6 mx-auto py-1 px-2 mb-1 text-sm leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                      ? 'block appearance-none w-5/6 mx-auto py-1 px-2 mb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                      : 'block appearance-none w-5/6 mx-auto py-1 px-2 mb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
                   "
                   aria-describedby="emailHelp"
                   placeholder="Email"
@@ -37,7 +37,7 @@
 
               <p
                 v-if="errorEmail"
-                class="text-red text-2xs text-center font-montserrat mt-1 mb-2 pl-1"
+                class="text-red text-base text-center font-montserrat mt-1 mb-2 pl-1"
               >
                 Email имеет неверный формат
               </p>
@@ -46,10 +46,10 @@
                 class="mt-1 mb-2 pl-1"
               />
 
-              <div class="flex flex-wrap mt-10">
+              <div class="flex flex-wrap mt-10 mb-3">
                 <button
                   :disabled="!Boolean(email) || errorEmail"
-                  class="disabled:bg-purchase disabled:text-muted  text-sm border-purchase px-3 p-1 w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black bg-main hover:bg-mainhover enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)]"
+                  class="disabled:bg-purchase disabled:text-muted text-xl border-purchase pt-2 pb-2 px-3 p-1 w-3/4 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 leading-normal no-underline bg-blue-600 text-black bg-main hover:bg-mainhover enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)]"
                   type="submit"
                   @click="newPassword"
                 >
@@ -57,10 +57,10 @@
                 </button>
               </div>
 
-              <div class="flex flex-wrap mt-1 text-center">
+              <div class="flex flex-wrap mt-1 mb-7 text-center">
                 <div
                   id="signIn"
-                  class="block text-xs mx-auto mt-1 text-darkgray"
+                  class="block mx-auto mt-1 text-darkgray"
                   @click="$router.push('login')"
                 >
                   <a href="">Вернуться к авторизации</a>
@@ -72,9 +72,9 @@
               v-show="step === 2"
               class="step mb-4"
             >
-              <h1 class="mb-3 text-center text-base font-bold mt-2">Востановление пароля</h1>
+              <h1 class="mb-5 text-center text-2xl font-bold mt-2">Востановление пароля</h1>
 
-              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-xs text-darkgray">
+              <h3 class="mb-12 text-center font-weight-light w-11/12 mx-auto text-lg text-darkgray">
                 Введите новый пароль и подтвердите его
               </h3>
 
@@ -85,8 +85,8 @@
                     :type="pass1IsHidden ? 'password' : 'text'"
                     :class="
                       !followsCriteria
-                        ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-red rounded-md'
-                        : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-darkgray rounded-md'
+                        ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 pt-1 pb-1 leading-normal bg-white text-gray-800 border border-red rounded-md'
+                        : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 pt-1 pb-1 leading-normal bg-white text-gray-800 border border-darkgray rounded-md'
                     "
                     placeholder="Новый пароль"
                     @blur="doesFollowCriteria"
@@ -96,47 +96,56 @@
                     class="input-group-append absolute inset-y-0 right-0 pr-5 mt-1.5 flex items-center leading-5"
                     @click="changePasswordType(1)"
                   >
-                    <span class="input-group-text cumancen text-muted text-sm h-full">
-                      <i :class="pass1IsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
-                    </span>
+                    <a
+                      href="javascript:void(0);"
+                      class="input-group-text cumancen text-muted h-full pt-1.5 material-symbols-outlined"
+                    >
+                      {{ pass1IsHidden ? 'visibility' : 'visibility_off' }}
+                    </a>
                   </div>
                 </div>
               </div>
 
               <p
                 v-if="!followsCriteria"
-                class="text-red text-2xs t font-montserrat mt-0.5 mb-2 pl-3"
+                class="text-red text-base t font-montserrat mt-0.5 mb-3.5 pl-3"
               >
                 Пароль не отвечает требованиям
-                <button
-                  class=" material-symbols-outlined text-2xs"
-                  @click="tooltip = !tooltip"
+
+                <Popper
+                  placement="right"
+                  arrow
                 >
-                  help
-                </button>
+                  <button
+                    class="material-symbols-outlined text-base"
+                  >
+                    help
+                  </button>
+                  <slot />
+                  <template #content="props">
+                    <slot
+                      name="content"
+                      v-bind="props"
+                    />
+                    <div class="w-320 text-red rounded-lg px-0.5 pt-1 pb-1 bg-white border border-lightgray ml-2">
+                      <div class="m-1 px-1">
+                        Пароль должен содержать:
+                        <ul class="mt-0.5 pl-5 list-disc">
+                          <li>Минимум 8 символов.</li>
+                          <li>Заглавные буквы латинского (A-Z) алфавитa.</li>
+                          <li>Строчные буквы латинского (A-Z) алфавитa.</li>
+                          <li>Арабские цифры (0-9).</li>
+                          <li>Специальные символы (!@#$%^&*(),.?”:{}|&gt;&lt;).</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </template>
+                </Popper>
               </p>
               <p
                 v-else
-                class="mt-0.5 mb-2.5 pl-1"
+                class="mt-0.5 mb-4 pl-1"
               />
-
-              <div
-                v-show="tooltip"
-                class="w-48 specificTop specificLeft absolute text-red rounded-lg px-0.5 pt-1 pb-1 text-xs bg-white border border-lightgray ml-2"
-              >
-                <div class="m-1">
-                  Пароль должен содержать:
-                  <ul class="mt-0.5 text-2xs pl-5 list-disc">
-                    <li>Минимум 8 символов.</li>
-                    <li>Заглавные буквы латинского (A-Z) алфавитa.</li>
-                    <li>Строчные буквы латинского (A-Z) алфавитa.</li>
-                    <li>Арабские цифры (0-9).</li>
-                    <li>Специальные символы (!@#$%^&*(),.?”:{}|&gt;&lt;).</li>
-                  </ul>
-                </div>
-              </div>
-
-
 
               <div class="mb-0.5">
                 <div class="relative flex items-stretch w-full">
@@ -145,8 +154,8 @@
                     :type="pass2IsHidden ? 'password' : 'text'"
                     :class="
                       !passwordsAreSame
-                        ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
-                        : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 text-sm pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
+                        ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderred rounded-md'
+                        : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 pt-1 pb-1 leading-normal bg-white text-gray-800 border border-borderdarkgray rounded-md'
                     "
                     placeholder="Подтвердите пароль"
                     @blur="arePasswordsSame"
@@ -156,28 +165,31 @@
                     class="input-group-append absolute inset-y-0 right-0 pr-5 mt-1.5 flex items-center leading-5"
                     @click="changePasswordType(2)"
                   >
-                    <span class="input-group-text cumancen text-muted text-sm h-full">
-                      <i :class="pass2IsHidden ? 'fas fa-eye' : 'fas fa-eye-slash'" />
-                    </span>
+                    <a
+                      href="javascript:void(0);"
+                      class="input-group-text cumancen text-muted h-full pt-1.5 material-symbols-outlined"
+                    >
+                      {{ pass2IsHidden ? 'visibility' : 'visibility_off' }}
+                    </a>
                   </div>
                 </div>
               </div>
 
               <p
                 v-if="!passwordsAreSame"
-                class="text-red text-2xs font-montserrat mt-0.5 mb-1 pl-3"
+                class="text-red text-base font-montserrat mt-0.5 mb-10 pl-3"
               >
                 Пароли не совпадают
               </p>
               <p
                 v-else
-                class="mt-1 mb-1 pl-1"
+                class="mt-1 mb-10 pl-1"
               />
 
-              <div class="flex flex-wrap mt-7 mb-2">
+              <div class="flex flex-wrap mt-7 mb-10">
                 <button
                   type="submit"
-                  class="bg-main disabled:text-muted enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] text-sm border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-mainhover disabled:bg-purchase"
+                  class="bg-main pt-2 pb-2 disabled:text-muted enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] text-xl border-purchase w-9/12 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-mainhover disabled:bg-purchase"
                   :disabled="!password1 || !password2 || !passwordsAreSame || !followsCriteria"
                   @click="submitNewPassword"
                 >
@@ -190,16 +202,16 @@
               v-show="step === 3"
               class="step mb-10"
             >
-              <h1 class="mb-3 text-center text-base font-bold mt-2">Пароль изменен!</h1>
+              <h1 class="mb-5 text-center text-2xl font-bold mt-2">Пароль изменен!</h1>
 
-              <h3 class="mb-7 text-center font-weight-light w-11/12 mx-auto text-xs text-darkgray">
+              <h3 class="mb-7 text-center font-weight-light mx-auto text-darkgray">
                 Теперь вы можете использовать новый пароль, чтобы войти в свой аккаунт
               </h3>
 
               <div class="flex flex-wrap mt-10 mb-2">
                 <button
                   type="submit"
-                  class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] bg-main text-sm border-purchase w-4/5 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
+                  class="enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] bg-main text-xl border-purchase pt-2 pb-2 w-3/4 mx-auto inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg py-1 px-3 leading-normal no-underline bg-blue-600 text-black hover:bg-main"
                   @click="$router.push('login')"
                 >
                   Авторизоваться
@@ -216,8 +228,12 @@
 <script lang="ts">
 import validator from 'validator'
 import {ref, defineComponent} from "vue";
+import Popper from "vue3-popper";
 
 export default defineComponent({
+  components: {
+    Popper,
+  },
   setup() {
     // form fields
     const step = ref(1);
@@ -280,14 +296,14 @@ export default defineComponent({
       pass1IsHidden,
       pass2IsHidden,
       changePasswordType,
-      tooltip
+      tooltip,
     }
   }
 });
 </script>
 <style scoped>
 .main-container {
-  max-width: 300px;
+  max-width: 420px;
 }
 .specificLeft{
   left: 57.5%;
@@ -301,5 +317,20 @@ export default defineComponent({
        'wght' 400,
        'GRAD' 0,
        'opsz' 24
+}
+
+input {
+  padding: 8px 10px;
+  line-height: 28px;
+}
+.w-320 {
+  max-width: 320px;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
 }
 </style>
