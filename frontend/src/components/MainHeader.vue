@@ -7,9 +7,9 @@
           <CitySelector class="ml-8"></CitySelector>
         </div>
 
-        <div class="cursor-pointer bg-white text-black px-6 py-3 rounded-lg border-solid border-1 border-black shadow-md hover:bg-gray-200 transition duration-300">
+        <!-- <div class="cursor-pointer bg-white text-black px-6 py-3 rounded-lg border-solid border-1 border-black shadow-md hover:bg-gray-200 transition duration-300">
           Войти
-        </div>
+        </div> -->
       </div>
     </header>
 

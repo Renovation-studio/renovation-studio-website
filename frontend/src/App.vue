@@ -80,12 +80,12 @@ export default {
       isLoading.value = true;
       try {
         const catalogResponse = await axios.get(
-          "http://denis.tw1.ru/api/catalog"
+          "/api/catalog"
         );
         const catalogueItemsWithDetails = await Promise.all(
           catalogResponse.data.map(async (item) => {
             const detailsResponse = await axios.get(
-              `http://denis.tw1.ru/api/catalog/${item.element_services_id}`
+              `/api/catalog/${item.element_services_id}`
             );
             const duration = detailsResponse.data.reduce(
               (acc, detail) => acc + detail.work_duration,
@@ -157,7 +157,7 @@ export default {
         const catalogueItemsWithDetails = await Promise.all(
           newItems.map(async (item) => {
             const detailsResponse = await axios.get(
-              `http://denis.tw1.ru/api/catalog/${item.element_services_id}`
+              `/api/catalog/${item.element_services_id}`
             );
             const duration = detailsResponse.data.reduce(
               (acc, detail) => acc + detail.work_duration,
@@ -176,12 +176,12 @@ export default {
     async resetCatalogueItems() {
       try {
         const catalogResponse = await axios.get(
-          "http://denis.tw1.ru/api/catalog"
+          "/api/catalog"
         );
         const catalogueItemsWithDetails = await Promise.all(
           catalogResponse.data.map(async (item) => {
             const detailsResponse = await axios.get(
-              `http://denis.tw1.ru/api/catalog/${item.element_services_id}`
+              `/api/catalog/${item.element_services_id}`
             );
             const duration = detailsResponse.data.reduce(
               (acc, detail) => acc + detail.work_duration,
