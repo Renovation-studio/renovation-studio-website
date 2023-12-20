@@ -55,7 +55,7 @@ export default {
       'green': '#16a34a',
       'darkgray': '#1f2937',
       'red': '#FF4545',
-      'borderdarkgray': '#FF4545',
+      'borderdarkgray': 'rgba(31,41,55,0.67)',
       'borderred': '#FF4545'
     },
   },

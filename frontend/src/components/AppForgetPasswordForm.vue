@@ -110,9 +110,10 @@
                 v-if="!followsCriteria"
                 class="text-red text-base t font-montserrat mt-0.5 mb-3.5 pl-3"
               >
-                Пароль не отвечает требованиям
+                <span class="pb-2">Пароль не отвечает требованиям</span>
 
                 <Popper
+                  class="pl-0.5"
                   placement="right"
                   arrow
                 >
