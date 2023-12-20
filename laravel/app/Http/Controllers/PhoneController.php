@@ -15,13 +15,14 @@ class PhoneController extends Controller
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
-     *             mediaType="application/json",
+     *             mediaType="application/x-www-form-urlencoded",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="phone",
+     *                     property="Телефон",
      *                     type="string",
      *                     format="phone",
-     *                     description="Номер телефона в формате +7XXXXXXXXXX"
+     *                     description="Номер телефона",
+     *                     property="phone"
      *                 )
      *             )
      *         )

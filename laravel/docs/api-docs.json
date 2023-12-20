@@ -29,11 +29,11 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "application/x-www-form-urlencoded": {
                             "schema": {
                                 "properties": {
                                     "phone": {
-                                        "description": "Номер телефона в формате +7XXXXXXXXXX",
+                                        "description": "Номер телефона",
                                         "type": "string",
                                         "format": "phone"
                                     }
