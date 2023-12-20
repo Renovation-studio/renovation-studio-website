@@ -13,34 +13,47 @@
       >
         X
       </button>
-      <h2 class="text-4xl font-semibold mb-4 self-start">{{ service.name }}</h2>
+      <h2 class="text-4xl font-semibold mb-4 self-start">
+        {{ service.title }}
+      </h2>
       <div
         class="flex flex-row pt-5 border-t-3 border-b-0 border-x-0 border-solid"
       >
         <img
-          :src="service.imageUrl"
-          :alt="service.name"
+          :src="`assets/${service.img}`"
+          :alt="service.title"
           class="object-cover mb-5 w-6/12 aspect-square object-cover max-w-full"
         />
-        <ul
-          class="list-none ml-4 p-0 font-bold text-left text-2xl text-gray-700"
-        >
-          <li
-            v-for="detail in service.details"
-            :key="detail"
-            class="mb-2 bg-transparent"
+        <div v-if="isLoading" class="flex justify-center items-center w-full">
+          <img src="../assets/loading.gif" alt="Loading..." class="w-12 h-12"/>
+        </div>
+        <div v-if="!isLoading">
+          <ul
+            class="list-none ml-4 p-0 font-bold text-left text-2xl text-gray-700"
           >
-            - {{ detail }}
-          </li>
-        </ul>
+            <li
+              v-for="detail in details"
+              :key="detail"
+              class="mb-2 bg-transparent"
+            >
+              - {{ detail }}
+            </li>
+          </ul>
+        </div>
       </div>
       <div
         class="price-line border-dashed pt-4 mt-4 w-full flex justify-between border-t-2 border-slate-700 mt-1 pt-1 border-b-0 border-x-0 text-left"
       >
         <p class="text-2xl font-bold">Стоимость услуги</p>
-        <p class="text-2xl font-bold pb-0">{{ formatPrice(service.price) }}</p>
+        <p class="text-2xl font-bold pb-0">{{ formatPrice(service.cost) }}</p>
       </div>
-      <PhoneNumberForm></PhoneNumberForm>
+      <div
+        class="price-line border-dashed pt-4 mt-4 w-full flex justify-between border-t-2 border-slate-700 mt-1 pt-1 border-b-0 border-x-0 text-left"
+      >
+        <p class="text-2xl font-bold">Продолжительность работ</p>
+        <p class="text-2xl font-bold pb-0">{{ totalDuration }} дней</p>
+      </div>
+      <PhoneNumberForm @submit="handlePhoneSubmit"></PhoneNumberForm>
     </div>
   </div>
 </template>
@@ -49,12 +62,27 @@
 import { defineComponent } from "vue";
 import type { PropType } from "vue";
 import PhoneNumberForm from "./PhoneNumberForm.vue";
+import axios from "axios";
 
 interface ServiceDetails {
-  imageUrl: string;
-  name: string;
-  price: string;
-  details: string[];
+  img: string;
+  title: string;
+  cost: number;
+  description: string;
+  element_services_id: number;
+}
+
+interface CatalogItem {
+  id: number;
+  title: string;
+  description: string;
+  cost: number;
+  work_duration: number;
+  element_services_id: number;
+  pivot: {
+    services_id: number;
+    elements_id: number;
+  };
 }
 
 export default defineComponent({
@@ -72,13 +100,63 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ["close"],
+  data() {
+    return {
+      details: [] as string[],
+      totalDuration: 0,
+      isLoading: false,
+    };
+  },
+  emits: ['close', 'phone-submitted'],
   methods: {
     closeModal() {
       this.$emit("close");
     },
-    formatPrice(price: string) {
-      return price.replace("Р", "₽").replace(/м2/g, "m²");
+    handlePhoneSubmit() {
+      this.closeModal();
+      this.$emit('phone-submitted');
+    },
+    formatPrice(cost: number) {
+      const roundedCost = Math.round(cost);
+      return roundedCost.toLocaleString("ru-RU", {
+        style: "currency",
+        currency: "RUB",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      });
+    },
+    fetchDetails() {
+      if (this.service) {
+        this.isLoading = true;
+        axios
+          .get(
+            `/api/catalog/${this.service.element_services_id}`
+          )
+          .then((response) => {
+            this.details = response.data.map((item: CatalogItem) => item.title);
+            this.totalDuration = response.data.reduce(
+              (acc, item) => acc + item.work_duration,
+              0
+            );
+          })
+          .catch((error) => {
+            console.error("Error fetching service details:", error);
+          })
+          .finally(() => {
+            this.isLoading = false;
+          });
+      }
+    },
+  },
+  watch: {
+    service: {
+      immediate: true,
+      handler(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          this.details = [];
+          this.fetchDetails();
+        }
+      },
     },
   },
 });

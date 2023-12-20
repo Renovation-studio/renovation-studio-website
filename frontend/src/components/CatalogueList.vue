@@ -1,26 +1,37 @@
 <template>
   <div class="catalogue-list mx-50">
-    <div class="grid grid-cols-3 gap-6">
-      <CatalogueItem
-        v-for="(item, index) in itemsToShow"
-        :key="index"
-        :item="item"
-        @open-modal="handleOpenModal"
-      />
-      <ServiceModal
-        :service="selectedService"
-        :show="isModalOpen"
-        @close="handleCloseModal"
-      />
+    <div v-if="itemsToShow.length > 0">
+      <div class="grid grid-cols-3 gap-6">
+        <CatalogueItem
+          v-for="(item, index) in itemsToShow"
+          :key="index"
+          :item="item"
+          @open-modal="handleOpenModal"
+        />
+        <ServiceModal
+          :service="selectedService"
+          :show="isModalOpen"
+          @close="handleCloseModal"
+          @phone-submitted="handlePhoneSubmitSuccess"
+        />
+      </div>
+      <div class="flex justify-center my-4 mt-1">
+        <button
+          v-if="hasMoreItems"
+          class="text-lg border-none appearance-none px-8 py-4 rounded-full text-xl focus:outline-none transition-colors bg-[#cdeae1] hover:bg-[#99d8c2]"
+          @click="loadMore"
+        >
+          Загрузить еще
+        </button>
+      </div>
     </div>
-    <div class="flex justify-center my-4 mt-1">
-      <button
-        v-if="hasMoreItems"
-        class="text-lg border-none appearance-none px-8 py-4 rounded-full text-xl focus:outline-none transition-colors bg-[#cdeae1] hover:bg-[#99d8c2]"
-        @click="loadMore"
-      >
-        Загрузить еще
-      </button>
+    <div v-else class="flex items-center justify-center my-64">
+      <img
+        src="../assets/search-cross.svg"
+        alt="No results found"
+        class="mr-4 h-20 w-20"
+      />
+      <p class="text-3xl font-semibold text-gray-700">Ничего не найдено</p>
     </div>
   </div>
 </template>
@@ -31,13 +42,16 @@ import CatalogueItem from "./CatalogueItem.vue";
 import ServiceModal from "./ServiceModal.vue";
 
 interface CatalogueItemProps {
-  imageUrl: string;
-  name: string;
-  price: string;
+  img: string;
+  title: string;
+  cost: number;
+  description: string;
+  element_services_id: number;
 }
 
 export default defineComponent({
   name: "CatalogueList",
+  emits: ['phone-submit-success'],
   data() {
     return {
       isModalOpen: false,
@@ -51,6 +65,9 @@ export default defineComponent({
     },
     handleCloseModal() {
       this.isModalOpen = false;
+    },
+    handlePhoneSubmitSuccess() {
+      this.$emit('phone-submit-success');
     },
   },
   components: {
