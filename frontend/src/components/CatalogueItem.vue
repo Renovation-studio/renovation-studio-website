@@ -4,18 +4,18 @@
     @click="openModal"
   >
     <img
-      :src="item.imageUrl"
-      :alt="item.name"
+      :src="`assets/${item.img}`"
+      :alt="item.title"
       class="w-full h-auto object-cover block aspect-square"
     />
     <div
       class="p-4 bg-[#cdeae1] flex justify-between items-center z-10 pb-0 rounded-b-lg max-h-10 pt-0"
     >
       <h3 class="2xl:text-2xl xl:text-sm font-bold truncate">
-        {{ item.name }}
+        {{ item.title }}
       </h3>
       <p class="2xl:text-2xl xl:text-sm truncate">
-        {{ formatPrice(item.price) }}
+        {{ formatPrice(item.cost) }}
       </p>
     </div>
     <div
@@ -31,11 +31,11 @@ import { defineComponent } from "vue";
 import type { PropType } from "vue";
 
 interface CatalogueItemProps {
-  imageUrl: string;
-  name: string;
-  price: string;
+  img: string;
+  title: string;
+  cost: number;
   description: string;
-  details: string[];
+  element_services_id: number;
 }
 
 export default defineComponent({
@@ -48,8 +48,9 @@ export default defineComponent({
   },
   emits: ["open-modal"],
   methods: {
-    formatPrice(price: string) {
-      return price.replace("Р", "₽").replace(/м2/g, "m²");
+    formatPrice(cost: number) {
+      const roundedCost = Math.round(cost);
+      return roundedCost.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: 0, maximumFractionDigits: 0 });
     },
     openModal() {
       this.$emit("open-modal", this.item);
