@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ElementController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,22 +20,36 @@ use App\Http\Controllers\RegisterController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/elements', [ElementController::class, 'index']);
+
+Route::get('/catalog', [ServicesController::class, 'index']);
+
+Route::get('/catalog/{id}', [ServicesController::class, 'show']);
+
+Route::get('/search', [ServicesController::class, 'search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::group(['middleware' => ['web']], function () {
-    Route::post('/login', [AuthController::class, 'signin'])->name('signin');
+    Route::post('/signin', [AuthController::class, 'signin'])->name('signin');
 
-    Route::post('/logout', [AuthController::class, 'signout'])->name('signout');
+    Route::post('/signout', [AuthController::class, 'signout'])->name('signout');
 
-    Route::post('/restore-password', [AuthController::class, 'restorePassword'])->name('restore-password');
+    Route::post('/reset-password', [AuthController::class, 'restorePassword'])->name('restore-password');
+
+    Route::get('/set-password/{id}', [AuthController::class, 'resetPassword']);
+
+    Route::post('/set-password/{id}', [AuthController::class, 'post_resetPassword'])->name('reset-password');
 });
 Route::post('/auth/signup', [AuthController::class, 'signup'])->name('signup');
 
-
+Route::get('/email/verify/{id}', [RegisterController::class, 'verify']);
 
 Route::post('/check-email', [RegisterController::class, 'checkEmail']);
+
 Route::post('/check-phone', [RegisterController::class, 'checkPhone']);
+
 Route::post('/register', [RegisterController::class, 'create']);
 

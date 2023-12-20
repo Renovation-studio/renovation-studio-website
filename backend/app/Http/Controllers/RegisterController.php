@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\PreferableService;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\RegistrationVerificationMail;
+use Mail;
+
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -69,7 +73,23 @@ class RegisterController extends Controller
             ]);
         }
 
+        Mail::to($user->email)->send(new RegistrationVerificationMail($user));
+
        return $user;
+   }
+
+   public function verify($id)
+   {
+    $user = User::where('id', '=', $id);
+    if(!empty($user))
+    {
+        //$user->email_verified_at = date('Y-m-d H:i:s');
+        $user->update(['email_verified_at' => date('Y-m-d H:i:s')]);
+        return 1;
+    }
+    else{
+        return 0;
+    }
    }
 
 

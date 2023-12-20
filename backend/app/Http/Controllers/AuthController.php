@@ -7,6 +7,12 @@ use App\Http\Requests\SignupRequest;
 use App\Http\Requests\RestorePasswordRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use App\Models\User;
+use App\Mail\ForgotPasswordMail;
+Use Str;
+Use Mail;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -60,8 +66,8 @@ class AuthController extends Controller
             'email' => 'required_without:phoneNumber|email',
             'password' => 'required'
         ]);
-
-        if(auth()->attempt($validated))
+        $remember = $request['remember-me'];
+        if(auth()->attempt($validated,$remember))
         {
             $request->session()->regenerate();
             return "Logged in!";
@@ -115,12 +121,48 @@ class AuthController extends Controller
      *     ),
      * )
      */
-    public function restorePassword(RestorePasswordRequest $request) {
-        if($request->session()->exists('users'))
+    public function restorePassword(Request $request) {
+        // $validated = request()->validate([
+        //     'email' => 'required|email'
+        // ]);
+        $request->validate(['email' => 'required|email']);
+        $user = User::where('email', $request->input('email'))->first();
+
+        if(!empty($user))
         {
-            return 'Aboba';
+            Mail::to($user->email)->send(new ForgotPasswordMail($user));
+            return "go reset";
         }
-        else return 'Restore password';
+        else{
+            return "not true";
+        }
+    }
+
+    public function resetPassword($id) {
+        $user = User::where('id', '=', $id);
+        if(!empty($user))
+        {
+            return "Frontend does not exist, use postman for now";
+        }
+    }
+
+    public function post_resetPassword($id, Request $request) {
+        $user = User::where('id', '=', $id);
+        if(!empty($user))
+        {
+            if($request->password == $request->cpassword)
+            {
+                $user->update(['password' => Hash::make($request->password)]);
+                if(empty($user->email_verified_at))
+                {
+                    $user->update(['email_verified_at' => date('Y-m-d H:i:s')]);
+                }
+                return "Password reset!";
+            }
+            else{
+                return "Does not match";
+            }
+        }
     }
 
     /**
