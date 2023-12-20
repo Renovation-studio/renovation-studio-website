@@ -1,8 +1,6 @@
 <template>
   <div class="flex flex-wrap font-montserrat text-lg">
-    <div
-      class="container mx-auto sm:px-3 pt-5 pb-3 main-container border border-lightgray rounded-xl shadow-lg"
-    >
+    <div class="container mx-auto sm:px-3 pt-5 pb-3 main-container border border-lightgray rounded-xl shadow-lg">
       <div class="flex flex-wrap">
         <div class="sm:w-4/5 pr-2 pl-2 mx-auto">
           <form
@@ -157,7 +155,7 @@
               <div class="relative flex-grow max-w-full flex-1">
                 <a
                   id="forgotPassword"
-                  href="#"
+                  href="javascript:void(0);"
                   class="block mt-1"
                   @click="$router.push('forgot-password')"
                 >
@@ -180,6 +178,7 @@
               <button
                 type="submit"
                 class="w-4/5 text-xl mx-auto color-btn inline-block pt-2 pb-2 align-middle text-center select-none border font-normal whitespace-no-wrap rounded-lg leading-normal no-underline bg-white enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] border-main text-main"
+                @click="$router.push('registration')"
               >
                 Зарегистрироваться
               </button>

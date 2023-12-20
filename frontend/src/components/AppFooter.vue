@@ -41,26 +41,30 @@
           <ul class="flex flex-wrap list-none mb-0 flex-col">
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-3 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Проектирование</a>
             </li>
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-3 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Строительство</a>
             </li>
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-3 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Отделка и ремонт</a>
             </li>
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-3 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Декорирование</a>
             </li>
           </ul>
@@ -73,20 +77,23 @@
           <ul class="flex flex-wrap list-none mb-0 flex-col">
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-4 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Команда</a>
             </li>
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-4 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Вакансии</a>
             </li>
             <li class="text-muted">
               <a
-                href="#"
+                href="javascript:void(0);"
                 class="text-lg text-bold inline-block pb-3 px-4 no-underline p-0 text-gray-400"
+                @click="$router.push('catalog')"
               >Новости</a>
             </li>
           </ul>
@@ -104,7 +111,7 @@
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-1">
                   <a
-                    href="#"
+                    href="javascript:void(0);"
                     class="text-lg text-bold inline-block py-1 no-underline p-0 text-gray-400"
                   >8 999 888 22 55</a>
                 </div>
@@ -117,7 +124,7 @@
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-1">
                   <a
-                    href="#"
+                    href="javascript:void(0);"
                     class="text-lg text-bold inline-block py-1 no-underline p-0 text-gray-400"
                   >г. Волгоград, <br>ул. Волгоградская, 1</a>
                 </div>
@@ -130,7 +137,7 @@
                 </div>
                 <div class="relative flex-grow max-w-full flex-1 px-1">
                   <a
-                    href="#"
+                    href="javascript:void(0);"
                     class="text-lg text-bold inline-block py-1 no-underline p-0 text-gray-400"
                   >pristroika@volsu.ru</a>
                 </div>
