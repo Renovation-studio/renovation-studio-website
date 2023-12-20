@@ -1,13 +1,13 @@
 <template>
-  <AppHome />
+  <AppInWork />
 </template>
 
 <script lang="ts">
-import AppHome from '@/components/AppHome.vue'
+import AppInWork from '@/components/AppInWork.vue'
 
 export default {
   components: {
-    AppHome
+    AppInWork
   }
 }
 </script>
