@@ -13,6 +13,7 @@
         </div>
     </div> 
     <transition 
+    v-if="isSideMenu"
     enter-active-class="transition ease-out duration-400"
     enter-from-class="opacity-0 transform -translate-x-100%"
     enter-to-class="opacity-100 transform translate-x-0"
@@ -32,6 +33,18 @@
           </div>
       </div>
   </transition>
+
+  <div ref="menu" v-else="isSideMenu" class="menu flex justify-center h-50px bg-#8dd3bb">
+          <div class="btn-container margin-s flex pt-20px pb-20px justify-between items-center h-full w-100%">
+            <div class="btn-container-left flex justify-between w-800px">
+              <button @click="scrollToServices" class="font-medium">Услуги</button>
+              <button @click="scrollToProjects" class="font-medium">Портфолио</button>
+              <button @click="scrollToFeedbacks" class="font-medium">Отзывы</button>
+              <button @click="scrollToFooter" class="font-medium">О нас</button>
+            </div>
+              <button @click="scrollToContactForm" class="green font-medium round">Заказать ремонт</button>
+          </div>
+      </div>
 </header>
 </template>
 
@@ -74,6 +87,7 @@ window.onscroll = function() {
 
 
 const isMenuOpen = ref(false);
+const isSideMenu = ref(true);
 const hamburger = ref<HTMLElement | null>(null);
 const menu = ref<HTMLElement | null>(null);
 
@@ -83,6 +97,7 @@ onMounted(() => {
       && window.getComputedStyle(header.value).position !== 'fixed'
       ) {
       isMenuOpen.value = true;
+      isSideMenu.value = false;
     }
 
   window.addEventListener('click', event => {

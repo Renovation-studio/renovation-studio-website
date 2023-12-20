@@ -11,9 +11,9 @@
     </div>
 
     <div id="our-services" class="margin mt-50px">
-      <div class="flex justify-between">
+      <div class="section-title flex justify-between">
         <span class="font-size-6 font-bold">Наши услуги</span>
-        <button class="white round">Посмотреть все</button>
+        <button v-if="!isRowServices" class="white round">Посмотреть все</button>
       </div>
       <div class="flex justify-between mt-30px">
         <router-link to="/" class="service round flex flex-col flex-items-center w-30%">
@@ -35,17 +35,18 @@
           <span class="font-semibold mt-30px mb-30px">Ремонт под ключ</span>
         </router-link>
       </div>
+      <button v-if="isRowServices" class="white round">Посмотреть все</button>
     </div>
 
     <div id="our-projects" class="margin mt-50px">
-      <div class="flex justify-between">
+      <div class="section-title flex justify-between">
         <span class="font-size-6 font-bold">Наши дизайн-проекты</span>
       </div>
       <OurProjectsSlider />
     </div>
 
     <div id="feedbacks" class="margin mt-50px mb-50px">
-      <div class="flex justify-between">
+      <div class="section-title flex justify-between">
         <span class="font-size-6 font-bold">Отзывы</span>
       </div>
       <FeedbacksSlider />
@@ -55,9 +56,15 @@
 
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import OurProjectsSlider from '../components/OurProjectsSlider.vue'
 import FeedbacksSlider from '../components/FeedbacksSlider.vue'
 document.title = 'ПРИстройка';
+const isRowServices = ref(true);
+
+onMounted(() => {
+  isRowServices.value = window.innerWidth < 549 ? true : false;
+});
 
 const scrollToContactForm = () => {
   const element = document.getElementById('contact-form');
@@ -135,7 +142,7 @@ button:hover {
   }
 
 .title-image {
-  height: 80vh;
+  height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,7 +174,7 @@ button:hover {
   }
 
 .title-image {
-  height: 67vh;
+  height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,6 +206,10 @@ button:hover {
 
 button {
   padding: 8px 20px;
+}
+
+.section-title {
+  justify-content: center;
 }
 }
 
