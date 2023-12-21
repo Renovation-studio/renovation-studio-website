@@ -15,17 +15,17 @@
                 <div class="about-block flex flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold">Информация о нас</p>
-                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Команда</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Вакансии</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Новости</p></router-link>
+                        <router-link to="/info" class="decoration-none"><p class="link mt-10px">Команда</p></router-link>
+                        <router-link to="/info" class="decoration-none"><p class="link mt-10px">Вакансии</p></router-link>
+                        <router-link to="/info" class="decoration-none"><p class="link mt-10px">Новости</p></router-link>
                     </div>
                 </div>
                 <div class="about-block flex flex-justify-center">
                     <div class="flex-col">
                         <p class="font-bold">Наши услуги</p>
-                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонтные работы</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Дизайн-проект</p></router-link>
-                        <router-link to="/" class="decoration-none"><p class="link mt-10px">Ремонт под ключ</p></router-link>
+                        <router-link to="/info" class="decoration-none"><p class="link mt-10px">Ремонтные работы</p></router-link>
+                        <router-link to="/info" class="decoration-none"><p class="link mt-10px">Дизайн-проект</p></router-link>
+                        <router-link to="/info" class="decoration-none"><p class="link mt-10px">Ремонт под ключ</p></router-link>
                     </div>
                 </div>
                 <div class="about-block flex flex-justify-center">
@@ -33,7 +33,7 @@
                         <p class="font-bold">Контакты</p>
                         <div class="mt-10px">
                             <img class="mr-5px v-middle" src="@/assets/img/icon_phone.png" alt="phone" />
-                            <span>+7(927)555-12-34</span>
+                            <span>+7 (927) 555-12-34</span>
                         </div>
                         <div class="mt-10px">
                             <img class="mr-5px v-middle" src="@/assets/img/icon_mail.png" alt="mail" />
@@ -63,7 +63,11 @@ const about = ref<HTMLElement | null>(null);
 const router = useRouter();
 const currentRoute = router.currentRoute.value; 
 
-onMounted(() => {
+const resizeHandler = () => {
+  updateFooterHeight();
+};
+
+const updateFooterHeight = () => {
     if (footerContainer.value) {
             if (window.innerWidth <= 380) {
                 footerContainer.value.style.height = '480px';
@@ -104,6 +108,11 @@ onMounted(() => {
             }
         }
     }
+};
+
+onMounted(() => {
+    window.addEventListener('resize', resizeHandler);
+    updateFooterHeight();
 });
 </script>
 

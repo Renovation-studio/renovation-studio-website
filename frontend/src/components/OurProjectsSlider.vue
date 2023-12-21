@@ -35,14 +35,17 @@
             </p>
           </div>
           <div class="img-container slide-info-width flex flex-wrap justify-between flex-content-between h-30em round">
-            <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider1.jpg)`}"></div>
-            <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider2.jpg)`}"></div>
-            <div class="img3 slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider3.jpg)`}"></div>
-            <div class="img4 slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(src/assets/img/slider4.jpg)`}"></div>
+            <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(${project.pictures[0]})`}"></div>
+            <div class="slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(${project.pictures[1]})`}"></div>
+            <div class="img3 slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(${project.pictures[2]})`}"></div>
+            <div class="img4 slide-img-width bgImage round h-14.5em" :style="{backgroundImage: `url(${project.pictures[3]})`}"></div>
           </div>
         </div>
       </swiper-slide>
     </swiper>
+    <div v-show="!isProjectsLoad" class="flex w-100% justify-center">
+      <img src="@/assets/gif/loading.gif" alt="Loading..." />
+    </div>
 </template>
 
 
@@ -60,10 +63,7 @@ type Project = {
   description: string;
   price: string;
   what_was_done: string;
-  imgPath1: string;
-  imgPath2: string;
-  imgPath3: string;
-  imgPath4: string;
+  pictures: [string, string, string, string];
 };
 const projects = ref<Project[]>([]);
 const isProjectsLoad = ref(false);

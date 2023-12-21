@@ -25,7 +25,9 @@ const scrollToTop = () => {
 <template>
   <body>
     <Header />
-    <RouterView />
+    <transition name="fade" mode="out-in">
+      <RouterView />
+    </transition>
     <div ref="scrollToTopBtn" class="scroll-to-top" @click="scrollToTop"><img src="@/assets/img/arrow_up.svg" alt="arrow"></div>
     <Footer />
   </body>
@@ -52,6 +54,16 @@ body{
   border-radius: 50%;
   z-index: 999;
   transition: visibility 0.5s, opacity 0.5s ease;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 @media (width < 768px) {

@@ -16,6 +16,23 @@
         <li v-for="city in cities" :key="city.id" @click="selectCity(city)">{{ city.name }}</li>
       </ul>
     </transition>
+
+    <transition v-else="isCitiesLoad"
+    enter-active-class="transition ease-out duration-200"
+    enter-from-class="transition opacity-0 scale-95"
+    enter-to-class="transform opacity-100 scale-100"
+    leave-active-class="transition ease-in duration-200"
+    leave-from-class="transform opacity-100 scale-100"
+    leave-to-class="transition opacity-0 scale-95"
+    >
+      <ul v-show="isOpen" class="city-list round">
+        <li>
+          <div class="flex w-100% justify-center">
+            <img src="@/assets/gif/loading.gif" alt="Loading..." width="20" />
+          </div>
+        </li>
+      </ul>
+    </transition>
 </template>
   
 

@@ -20,7 +20,7 @@
       <swiper-slide v-for="feedback in feedbacks" :key="feedback.id">
         <div class="flex justify-between mt-30px mb-40px">
           <div class="green"></div>
-        <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback1.jpg)`}"></div>
+        <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(${feedback.picture})`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">{{ feedback.title }}</p>
             <p class="pt-1em">
@@ -32,7 +32,7 @@
       <swiper-slide v-for="feedback in feedbacks" :key="feedback.id">
         <div class="flex justify-between mt-30px mb-40px">
           <div class="green"></div>
-        <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(src/assets/img/feedback1.jpg)`}"></div>
+        <div class="slide-img-width bgImage round h-10em" :style="{backgroundImage: `url(${feedback.picture})`}"></div>
           <div class="slide-info-width owerflow-scroll-y line-height-1em h-10em">
             <p class="font-size-4 font-bold">{{ feedback.title }}</p>
             <p class="pt-1em">
@@ -42,6 +42,9 @@
         </div>
       </swiper-slide>
     </swiper>
+    <div v-show="!isFeedbacksLoad" class="flex w-100% justify-center">
+      <img src="@/assets/gif/loading.gif" alt="Loading..." />
+    </div>
 </template>
 
 
@@ -56,7 +59,7 @@ type Feedback = {
   id: number;
   title: string;
   text: string;
-  imgPath: string;
+  picture: string;
 };
 const feedbacks = ref<Feedback[]>([]);
 const isFeedbacksLoad = ref(false);
@@ -69,7 +72,7 @@ const request = new XMLHttpRequest();
   if (request.readyState === 4 && request.status === 200) {
     const responseData = JSON.parse(request.responseText);
     if (responseData.data && Array.isArray(responseData.data)) {
-      feedbacks.value = responseData.data.filter((feedback: Feedback) => feedback.id && feedback.title);
+      feedbacks.value = responseData.data.filter((feedback: Feedback) => feedback.id && feedback.title && feedback.picture);
       isFeedbacksLoad.value = true;
     }
   }

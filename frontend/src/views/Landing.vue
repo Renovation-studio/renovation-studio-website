@@ -13,28 +13,28 @@
     <div id="our-services" class="margin mt-50px">
       <div class="section-title flex justify-between">
         <span class="font-size-6 font-bold">Наши услуги</span>
-        <button v-if="!isRowServices" class="white round">Посмотреть все</button>
+        <router-link to="/catalog"><button v-if="!isRowServices" class="white round">Посмотреть все</button></router-link>
       </div>
       <div class="service-container flex justify-between mt-30px">
-        <router-link to="/" class="service round flex flex-col flex-items-center w-30%">
+        <router-link to="/catalog" class="service round flex flex-col flex-items-center w-30%">
           <div class="service-img-container relative w-100%">
             <div class="service-img bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-renovation.jpg)`}"></div>
           </div>
           <span class="service-name font-semibold mt-30px mb-30px">Косметический ремонт</span>
         </router-link>
-        <router-link to="/" v-if="isRowServices" class="service reverse round flex flex-col flex-items-center w-30%">
+        <router-link to="/catalog" v-if="isRowServices" class="service reverse round flex flex-col flex-items-center w-30%">
           <span class="service-name reverse font-semibold mt-30px mb-30px">Дизайн-проект</span>
           <div class="service-img-container reverse relative w-100%">
             <div class="service-img reverse bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-design.jpg)`}"></div>
           </div>
         </router-link>
-        <router-link to="/" v-else="isRowServices" class="service round flex flex-col flex-items-center w-30%">
+        <router-link to="/catalog" v-else="isRowServices" class="service round flex flex-col flex-items-center w-30%">
           <div class="service-img-container relative w-100%">
             <div class="service-img bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-design.jpg)`}"></div>
           </div>
           <span class="service-name font-semibold mt-30px mb-30px">Дизайн-проект</span>
         </router-link>
-        <router-link to="/" class="service round flex flex-col flex-items-center w-30%">
+        <router-link to="/catalog" class="service round flex flex-col flex-items-center w-30%">
           <div class="service-img-container relative w-100%">
             <div class="service-img bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-turnkey.jpg)`}"></div>
           </div>
@@ -42,7 +42,7 @@
         </router-link>
       </div>
       <div v-if="isRowServices" class="flex w-100% justify-center">
-        <button class="center-btn white round">Посмотреть все</button>
+        <router-link to="/catalog"><button class="center-btn white round">Посмотреть все</button></router-link>
       </div>
     </div>
 

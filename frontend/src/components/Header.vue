@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="flex items-center">
-            <router-link to="/"><button class="loginBtn font-medium round" type="button">Войти</button></router-link>
+            <router-link to="/login"><button class="loginBtn font-medium round" type="button">Войти</button></router-link>
         </div>
     </div> 
     <transition 

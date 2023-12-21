@@ -20,162 +20,162 @@ return new class extends Migration
 
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/arrow_up.svg',
+                'path' => 'src/assets/img/arrow_up.svg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/background.jpg',
+                'path' => 'src/assets/img/background.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/cafe0.jpg',
+                'path' => 'src/assets/img/cafe0.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/cafe1.jpg',
+                'path' => 'src/assets/img/cafe1.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/cafe2.jpg',
+                'path' => 'src/assets/img/cafe2.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/cafe3.jpg',
+                'path' => 'src/assets/img/cafe3.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/done.svg',
+                'path' => 'src/assets/img/done.svg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/favicon.ico',
+                'path' => 'src/assets/img/favicon.ico',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/feedback1.jpg',
+                'path' => 'src/assets/img/feedback1.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/feedback2.jpg',
+                'path' => 'src/assets/img/feedback2.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/feedback3.jpg',
+                'path' => 'src/assets/img/feedback3.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/hamburger.svg',
+                'path' => 'src/assets/img/hamburger.svg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/icon_facebook.png',
+                'path' => 'src/assets/img/icon_facebook.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/icon_home.png',
+                'path' => 'src/assets/img/icon_home.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/icon_instagram.png',
+                'path' => 'src/assets/img/icon_instagram.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/icon_mail.png',
+                'path' => 'src/assets/img/icon_mail.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/icon_phone.png',
+                'path' => 'src/assets/img/icon_phone.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/icon_youtube.png',
+                'path' => 'src/assets/img/icon_youtube.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/location.svg',
+                'path' => 'src/assets/img/location.svg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/logo.png',
+                'path' => 'src/assets/img/logo.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/office0.jpg',
+                'path' => 'src/assets/img/office0.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/office1.jpg',
+                'path' => 'src/assets/img/office1.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/office2.jpg',
+                'path' => 'src/assets/img/office2.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/office3.jpg',
+                'path' => 'src/assets/img/office3.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/post.png',
+                'path' => 'src/assets/img/post.png',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/service-design.jpg',
+                'path' => 'src/assets/img/service-design.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/service-renovation.jpg',
+                'path' => 'src/assets/img/service-renovation.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/service-turnkey.jpg',
+                'path' => 'src/assets/img/service-turnkey.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/slider1.jpg',
+                'path' => 'src/assets/img/slider1.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/slider2.jpg',
+                'path' => 'src/assets/img/slider2.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/slider3.jpg',
+                'path' => 'src/assets/img/slider3.jpg',
             ]
         );
         DB::table('pictures')->insert(
             [
-                'path' => 'storage/app/public/img/slider4.jpg',
+                'path' => 'src/assets/img/slider4.jpg',
             ]
         );
     }
