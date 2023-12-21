@@ -16,6 +16,11 @@ const router = createRouter({
       component: InWork
     },
     {
+      path: '/landing',
+      name: 'landing',
+      component: InWork
+    },
+    {
       path: '/catalog',
       name: RouteNames.Catalog,
       component: CatalogueView

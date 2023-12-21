@@ -50,29 +50,29 @@
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
-            @click="$router.push(RouteNames.Catalog)"
+            href="javascript:void(0);"
+            @click="$router.push('catalog')"
           >Услуги</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
-            @click="$router.push(RouteNames.Catalog)"
+            href="javascript:void(0);"
+            @click="$router.push('catalog')"
           >Портфолио</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
-            @click="$router.push(RouteNames.Catalog)"
+            href="javascript:void(0);"
+            @click="$router.push('catalog')"
           >Отзывы</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
-            @click="$router.push(RouteNames.Catalog)"
+            href="javascript:void(0);"
+            @click="$router.push('catalog')"
           >О нас</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-3">
@@ -102,7 +102,7 @@ import { RouteNames } from '@/router';
     height: 1%;
   }
   .w-65{
-    width: 80%;
+    width: 85%;
   }
   .mw-75{
     max-width: 95%;

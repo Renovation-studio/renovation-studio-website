@@ -84,7 +84,7 @@
                     v-model="password1"
                     :type="pass1IsHidden ? 'password' : 'text'"
                     :class="
-                      !followsCriteria
+                      !followsCriteria || !passwordsAreSame
                         ? 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 pt-1 pb-1 leading-normal bg-white text-gray-800 border border-red rounded-md'
                         : 'block appearance-none mx-auto w-11/12 py-1 px-2 mb-1 pt-1 pb-1 leading-normal bg-white text-gray-800 border border-darkgray rounded-md'
                     "
@@ -279,6 +279,7 @@ const checkForm = () => {
 }
 const doesFollowCriteria = () => {
   followsCriteria.value = validator.isStrongPassword(String(password1.value))
+  arePasswordsSame()
 }
 const arePasswordsSame = () => {
   passwordsAreSame.value = password1.value === password2.value
