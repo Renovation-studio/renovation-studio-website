@@ -113,6 +113,7 @@
                   <a
                     href="javascript:void(0);"
                     class="text-lg text-bold inline-block py-1 no-underline p-0 text-gray-400"
+                    @click="$router.push('landing')"
                   >8 999 888 22 55</a>
                 </div>
               </div>
@@ -126,6 +127,7 @@
                   <a
                     href="javascript:void(0);"
                     class="text-lg text-bold inline-block py-1 no-underline p-0 text-gray-400"
+                    @click="$router.push('landing')"
                   >г. Волгоград, <br>ул. Волгоградская, 1</a>
                 </div>
               </div>
@@ -139,6 +141,7 @@
                   <a
                     href="javascript:void(0);"
                     class="text-lg text-bold inline-block py-1 no-underline p-0 text-gray-400"
+                    @click="$router.push('landing')"
                   >pristroika@volsu.ru</a>
                 </div>
               </div>
@@ -150,6 +153,8 @@
   </div>
 </template>
 
+<script setup lang="ts">
+</script>
 <style scoped>
 /* Наследие бутстрапа */
 .mw-90{
