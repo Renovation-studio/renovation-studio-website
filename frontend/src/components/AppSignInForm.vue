@@ -14,7 +14,7 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
-                    :class="typeQuery === type.email.valueOf()
+                    :class="typeQuery === Type.Email
                       ? 'mt-0.5 mb-0.5 ml-0.5 bg-main rounded-lg pt-3 pb-3'
                       : 'mt-0.5 mb-0.5 ml-0.5 bg-white rounded-lg pt-3 pb-3 hover:bg-purchase'
                     "
@@ -32,7 +32,7 @@
                   <div
                     id="div-switch"
                     :class="
-                      typeQuery === type.phone.valueOf()
+                      typeQuery === Type.Phone
                         ? 'mt-0.5 mb-0.5 mr-0.5 bg-main rounded-lg pt-3 pb-3'
                         : 'mt-0.5 mb-0.5 mr-0.5 bg-white rounded-lg pt-3 pb-3 hover:bg-purchase'
                     "
@@ -51,7 +51,7 @@
 
             <div class="mb-1">
               <input
-                v-if="typeQuery === type.email.valueOf()"
+                v-if="typeQuery === Type.Email"
                 v-model="login"
                 type="email"
                 :class="
@@ -79,7 +79,7 @@
             </div>
 
             <p
-              v-if="errorLogin && typeQuery === type.email.valueOf()"
+              v-if="errorLogin && typeQuery === Type.Email"
               class="text-red font-montserrat text-base mt-1 mb-5 pl-1"
             >
               Email имеет неверный формат
@@ -193,24 +193,29 @@
 <script setup lang="ts">
 import { vMaska } from 'maska'
 
-import {ref} from "vue";
+import { ref } from "vue";
 import validator from "validator";
+import { useRouter } from 'vue-router';
+import { RouteNames } from '@/router'
 import { useRouteQuery } from "@vueuse/router"
 
-const enum type{
-  email = "email",
-  phone = "phone"
+import { useAuthStore } from '@/stores/auth';
+
+const enum Type {
+  Email = "email",
+  Phone = "phone"
 }
 
-const typeQuery = useRouteQuery("type", type.email.valueOf()) // or with a default value
+const typeQuery = useRouteQuery<Type>("type", Type.Email); // or with a default value
+const router = useRouter();
 
+const auth = useAuthStore();
 
 // form fields
 const login = ref('');
 const password = ref('');
 
 const passIsHidden = ref(true);
-const email = ref(false);
 
 const errorLogin = ref(false);
 const errorPassword = ref('');
@@ -219,20 +224,32 @@ const changePasswordType = () => {
 };
 
 const changeInputLoginTypeToEmail = () => {
-  typeQuery.value = String(type.email.valueOf())
+  typeQuery.value = Type.Email
   errorLogin.value = false
   login.value = ''
 };
 
 const changeInputLoginTypeToPhone = () => {
-  typeQuery.value = String(type.phone.valueOf())
+  typeQuery.value = Type.Phone
   errorLogin.value = false
   login.value = ''
 };
 
 const checkForm = async (e: any) => {
-  if (errorLogin.value || errorPassword.value) {
-    e.preventDefault()
+  e.preventDefault()
+  if (!errorLogin.value && !errorPassword.value) {
+    if (typeQuery.value === Type.Email)
+      await auth.login({
+        email: login.value,
+        password: password.value
+      })
+    else
+      await auth.login({
+        phoneNumber: login.value,
+        password: password.value
+      })
+
+    //router.push(RouteNames.Catalog)
   }
 }
 
@@ -240,7 +257,7 @@ const validateLogin = () => {
   const numericPhone = String(login.value).replace(/[^0-9]/g,"")
   console.log(String(login.value))
   console.log(validator.isEmail(String(login.value)))
-  errorLogin.value = typeQuery.value === type.email.valueOf() || !typeQuery.value
+  errorLogin.value = typeQuery.value === Type.Email || !typeQuery.value
       ? !validator.isEmail(String(login.value))
       : !validator.isMobilePhone(numericPhone) || numericPhone.length < 11
 }

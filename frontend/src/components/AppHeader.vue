@@ -29,12 +29,12 @@
           </div>
 
           <div
-            v-show="$router.currentRoute.value.name !== 'login' && $router.currentRoute.value.name !== 'forgot_password'"
+            v-show="$router.currentRoute.value.name !== RouteNames.Login && $router.currentRoute.value.name !== RouteNames.ForgotPassword"
             class="w-7/12 text-right mt-5 pr-5"
           >
             <button
               class="rounded-lg text-bold inline-block py-2 px-4 no-underline repair-order-btn bg-purchase border border-purchase"
-              @click="$router.push('login')"
+              @click="$router.push(RouteNames.Login)"
             >
               Войти
             </button>
@@ -51,34 +51,34 @@
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push(RouteNames.Catalog)"
           >Услуги</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push(RouteNames.Catalog)"
           >Портфолио</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push(RouteNames.Catalog)"
           >Отзывы</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push(RouteNames.Catalog)"
           >О нас</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-3">
           <button
             class="rounded-lg text-bold inline-block pt-3 pb-3 py-2 px-4 no-underline repair-order-btn bg-purchase border-none"
-            @click="$router.push('catalog')"
+            @click="$router.push(RouteNames.Catalog)"
           >
             Заказать ремонт
           </button>
@@ -89,6 +89,7 @@
 </template>
 
 <script setup lang="ts">
+import { RouteNames } from '@/router';
 </script>
 <style scoped>
   .img-logo {
