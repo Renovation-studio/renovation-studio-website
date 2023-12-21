@@ -204,7 +204,7 @@ export default {
                 !phone.value ||
                 !surname.value ||
                 !firstName.value ||
-                !patronymic.value ||
+                patronymic.value ||
                 !agreement.value ||
                 emailError.value !== '' ||
                 passwordError.value !== '' ||
@@ -486,7 +486,7 @@ export default {
             if (!patronymic.value) {
                 document.getElementById("patronymic").style.borderColor = "red";
                 patronymicError.value = 'Введите ваше отчество.';
-            } else if (patronymic.value.length < 2 || patronymic.value.length > 50) {
+            } else if (patronymic.value.length < 1 || patronymic.value.length > 50) {
                 document.getElementById("patronymic").style.borderColor = "red";
                 patronymicError.value = 'Минимум 2 символа и максимум 50 символов.';
             } else if (/\d/.test(patronymic.value)) {

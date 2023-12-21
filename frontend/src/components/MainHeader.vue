@@ -18,19 +18,31 @@
         <div class="space-x-50">
           <span
             class="no-underline font-bold cursor-pointer hover:text-gray-500"
-            >Портфолио</span
+            ><a
+              class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+              href="#"
+          ><router-link to="/PageNotFound">Портфолио</router-link></a></span
           >
           <span
             class="no-underline font-bold cursor-pointer hover:text-gray-500"
-            >Цены</span
+            ><a
+              class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+              href="#"
+          ><router-link to="/PageNotFound">Цены</router-link></a></span
           >
           <span
             class="no-underline font-bold cursor-pointer hover:text-gray-500"
-            >Отзывы</span
+            ><a
+              class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+              href="#"
+          ><router-link to="/PageNotFound">Отзывы</router-link></a></span
           >
           <span
             class="no-underline font-bold cursor-pointer hover:text-gray-500"
-            >О нас</span
+            ><a
+              class="text-sm text-bold font-montserrat inline-block py-2 px-4 no-underline nav-item"
+              href="#"
+          ><router-link to="/PageNotFound">О нас</router-link></a></span
           >
           <span
         class="font-bold cursor-pointer text-black px-6 py-3 rounded-lg border-solid border-1 border-black shadow-md hover:bg-gray-200 transition duration-300"
@@ -82,3 +94,18 @@ export default {
   },
 };
 </script>
+
+<style>
+a {
+  font-weight: 500;
+  color: black;
+  text-decoration: inherit;
+  transition: 0.3s;
+}
+a:hover {
+  color: #292f2e;
+  transition: 0.3s;
+}
+
+
+</style>
