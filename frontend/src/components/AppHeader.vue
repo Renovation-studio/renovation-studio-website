@@ -58,27 +58,27 @@
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push('landing')"
           >Портфолио</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push('landing')"
           >Отзывы</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
             href="#"
-            @click="$router.push('catalog')"
+            @click="$router.push('landing')"
           >О нас</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-3">
           <button
             class="rounded-lg text-bold inline-block pt-3 pb-3 py-2 px-4 no-underline repair-order-btn bg-purchase border-none"
-            @click="$router.push('catalog')"
+            @click="$router.push('landing')"
           >
             Заказать ремонт
           </button>
@@ -101,7 +101,7 @@
     height: 1%;
   }
   .w-65{
-    width: 80%;
+    width: 85%;
   }
   .mw-75{
     max-width: 95%;
