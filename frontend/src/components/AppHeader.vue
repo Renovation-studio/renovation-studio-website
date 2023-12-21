@@ -29,7 +29,7 @@
           </div>
 
           <div
-            v-show="$router.currentRoute.value.name !== RouteNames.Login && $router.currentRoute.value.name !== RouteNames.ForgotPassword"
+            v-show="$router.currentRoute.value.name !== RouteNames.Login && $router.currentRoute.value.name !== RouteNames.ForgotPassword && !auth.isAuthorised"
             class="w-7/12 text-right mt-5 pr-5"
           >
             <button
@@ -37,6 +37,23 @@
               @click="$router.push(RouteNames.Login)"
             >
               Войти
+            </button>
+          </div>
+          <div
+            v-if="auth.isAuthorised" 
+            class="w-7/12 mt-5 pr-5 flex justify-end items-center gap-3 "
+          >
+            <span class="material-icons text-4xl">
+              person_outline
+            </span>
+            <div class="mr-5"> 
+              {{ auth.currentUser.name }}
+            </div> 
+            <button
+              class="rounded-lg text-bold inline-block py-2 px-4 no-underline repair-order-btn bg-purchase border border-purchase"
+              @click="onLogout"
+            >
+              Выйти
             </button>
           </div>
         </div>
@@ -90,6 +107,14 @@
 
 <script setup lang="ts">
 import { RouteNames } from '@/router';
+import { useAuthStore } from '@/stores/auth';
+
+const auth = useAuthStore();
+
+function onLogout() {
+  auth.logout();
+}
+
 </script>
 <style scoped>
   .img-logo {
