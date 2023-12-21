@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/post/feedback', [DataFromFormController::class, "feedback"])->name("data.feedback");
 Route::prefix('get')->group(function () {
     Route::get('cities', [LandingController::class, "citiesGetAction"]);
     Route::get('services', [LandingController::class, "servicesGetAction"]);
     Route::get('reviews', [LandingController::class, "reviewsGetAction"]);
     Route::get('dataFromForm', [LandingController::class, "dataFromFormGetAction"]);
     Route::get('portfolios', [LandingController::class, "portfoliosGetAction"]);
-    //Route::post('/feedback', [DataFromFormController::class, "feedback"])->name("data.feedback");
 });

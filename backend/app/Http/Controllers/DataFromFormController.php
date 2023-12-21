@@ -24,6 +24,6 @@ class DataFromFormController extends Controller
         DataFromForm::create($data);
         //Schema::create('users', function (Blueprint $table){$data});
 
-        return redirect(route('data.index'));
+        return response(200);
     }
 }

@@ -74,6 +74,18 @@ body {
   }
 }
 
+@media (width < 1200px) {
+  .margin-s {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+  
+  .margin {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
 @media (width < 768px) {
   .margin-s {
     margin-left: 3%;

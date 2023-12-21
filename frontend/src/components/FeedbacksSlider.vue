@@ -3,7 +3,6 @@
     v-show="isFeedbacksLoad"
     :modules="[Autoplay, Pagination]"
     :slides-per-view="slidesPerView"
-    :centeredSlides="true"
     :speed="1500"
     :space-between="30"
     :loop="true"
@@ -95,7 +94,13 @@ onBeforeUnmount(() => {
 });
 
 function updateSlidesPerView() {
-  slidesPerView.value = window.innerWidth < 768 ? 1 : 3;
+  if (window.innerWidth < 768) {
+    slidesPerView.value = 1;
+  } else if (window.innerWidth < 1100) {
+    slidesPerView.value = 2;
+  } else {
+    slidesPerView.value = 3;
+  }
 }
 </script>
 

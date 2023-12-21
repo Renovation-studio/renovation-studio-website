@@ -233,6 +233,12 @@ button.green:hover {
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
+@media (min-width: 768px) and (max-width: 1100px) {
+  .btn-container-left {
+    width: 70%;
+  }
+}
+
 @media (max-width: 768px) {
   header {
     position: fixed;

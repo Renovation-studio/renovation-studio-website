@@ -188,9 +188,30 @@ function send () {
 
     startValidation.value = true;
     if (isValidName.value && isValidPhone.value && isValidEmail.value) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8000/api/post/feedback', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            // Успешный запрос, обрабатываем ответ
+            console.log(xhr.responseText);
+        } 
+    }
+};
+
+        const formData = {
+            name: name.value,
+            phone: phone.value,
+            mail: email.value
+        };
+
+        const jsonData = JSON.stringify(formData);
+
+        xhr.send(jsonData);
         formSended.value = true;
         startValidation.value = false;
-        return;
     } 
 }
 </script>
@@ -284,6 +305,42 @@ form .sendBtn:hover {
     border-width: 10px 10px 0;
     border-color: #fbc9c9 transparent transparent transparent;
     transform: rotate(90deg); 
+}
+
+@media (min-width: 1500px) {
+    .contact-form {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    height: 400px;
+    width: 70%;
+    background: #cdeae1;
+    top: -200px;
+    right: 15%;
+    padding: 20px;
+} 
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+    .img {
+        width: 20%;
+    }
+
+    .img img {
+        height: 65%;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    form input {
+        width: 55%;
+    }
+
+    .btn-container {
+        width: 55%;
+    }
 }
 
 @media (min-width: 550px) and (max-width: 768px) {

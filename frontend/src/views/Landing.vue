@@ -144,6 +144,27 @@ button:hover {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
+@media (min-width: 768px) and (max-width: 1100px) {
+  .title-block {
+    margin-top: 0;
+  }
+
+  .title-image {
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+}
+}
+
 @media (min-width: 550px) and (max-width: 768px) {
   .title-block {
     margin-top: 85px;

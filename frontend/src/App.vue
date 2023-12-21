@@ -66,7 +66,7 @@ body{
   opacity: 0;
 }
 
-@media (width < 768px) {
+@media (width < 1200px) {
   .scroll-to-top {
     display: none;
   }

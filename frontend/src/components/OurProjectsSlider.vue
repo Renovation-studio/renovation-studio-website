@@ -94,6 +94,21 @@ request.send();
   width: calc(50% - 0.5em);
 }
 
+@media (min-width: 768px) and (max-width: 1100px) {
+  .slide-info {
+    padding: 2em;
+  }
+
+  .slide-info-width {
+    height: 27em;
+    width: calc(50% - 0.5em);
+  }
+
+  .slide-img-width {
+    height: 13em;
+  }
+}
+
 @media (min-width: 550px) and (max-width: 768px) {
   .slide-info {
     padding: 1em;
