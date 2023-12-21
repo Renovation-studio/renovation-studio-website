@@ -707,6 +707,508 @@ export default {
 </script>
 
 <style scoped>
+* {
+    tab-size: 4;
+    font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+}
+
+.fa {
+  font-family: var(--fa-style-family, "Font Awesome 6 Free");
+  font-weight: var(--fa-style, 900);
+}
+
+.fas, .fa-classic, .fa-solid, .far, .fa-regular {
+  font-family: "Font Awesome 6 Free";
+}
+
+*,
+:before,
+:after {
+  box-sizing:border-box;
+  border-width:0;
+  border-style:solid;
+  border-color:currentColor
+}
+:before,
+:after {
+  --tw-content: ""
+}
+html{
+  line-height:1.5;
+  -webkit-text-size-adjust:100%;
+  -moz-tab-size:4;
+  -o-tab-size:4;
+  tab-size:4;
+  font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+  font-feature-settings:normal;
+  font-variation-settings:normal;
+  -webkit-tap-highlight-color:transparent
+}
+body {
+  margin:0;
+  line-height:inherit;
+}
+hr {
+  height:0;
+  color:inherit;
+  border-top-width:1px
+}
+abbr:where([title]) {
+  -webkit-text-decoration:underline dotted;
+  text-decoration:underline dotted
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size:inherit;
+  font-weight:inherit
+}
+a {
+  color:inherit;
+  text-decoration:inherit
+}
+b,
+strong {
+  font-weight:bolder
+}
+code,
+kbd,
+samp,
+pre {
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  font-feature-settings:normal;
+  font-variation-settings:normal;
+  font-size:1em
+}
+small {
+  font-size:80%
+}
+sub,
+sup {
+  font-size:75%;
+  line-height:0;
+  position:relative;
+  vertical-align:baseline
+}
+sub {
+  bottom:-.25em
+}
+sup {
+  top:-.5em
+}
+table {
+  text-indent:0;
+  border-color:inherit;
+  border-collapse:collapse
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family:inherit;
+  font-feature-settings:inherit;
+  font-variation-settings:inherit;
+  font-size:100%;
+  font-weight:inherit;
+  line-height:inherit;
+  color:inherit;
+  margin:0;
+  padding:0
+}
+button,
+select {
+  text-transform:none
+}
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance:button;
+  background-color:transparent;
+  background-image:none
+}
+:-moz-focusring {
+  outline:auto
+}
+:-moz-ui-invalid {
+  box-shadow:none
+}
+progress {
+  vertical-align:baseline
+}
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height:auto
+}
+[type=search] {
+  -webkit-appearance:textfield;
+  outline-offset:-2px
+}
+::-webkit-search-decoration {
+  -webkit-appearance:none
+}
+::-webkit-file-upload-button {
+  -webkit-appearance:button;
+  font:inherit
+}
+summary {
+  display:list-item
+}
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin:0
+}
+fieldset {
+  margin:0;
+  padding:0
+}
+legend {
+  padding:0
+}
+ol,
+ul,
+menu {
+  list-style:none;
+  margin:0;
+  padding:0
+}
+dialog {
+  padding:0
+}
+textarea {
+  resize:vertical
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  opacity:1;
+  color:#9ca3af
+}
+input::placeholder,
+textarea::placeholder {
+  opacity:1;
+  color:#9ca3af
+}
+button,
+[role=button] {
+  cursor:pointer
+}
+:disabled {
+  cursor:default
+}
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display:block;
+  vertical-align:middle
+}
+img,
+video {
+  max-width:100%;
+  height:auto
+}
+[hidden] {
+  display:none
+}
+*,
+:before,
+:after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / .5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: 
+}
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / .5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: 
+}
+.container {
+  width:100%;
+  padding-right:1rem;
+  padding-left:1rem
+}
+@media (min-width: 640px) {
+  .container {
+    max-width:640px;
+    padding-right:2rem;
+    padding-left:2rem
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width:1024px;
+    padding-right:4rem;
+    padding-left:4rem
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width:1280px;
+    padding-right:5rem;
+    padding-left:5rem
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width:1536px;
+    padding-right:6rem;
+    padding-left:6rem
+  }
+}
+.custom-select {
+  width:430px;
+  padding-left:10px
+}
+.select2-container--default .select2-selection--single {
+  border:2px solid #D1D1D1;
+  width:430px;
+  height:49.81px;
+  top:420.89px;
+  left:506px;
+  border-radius:9.96px;
+  font-size:16px;
+  font-weight:400;
+  line-height:19px;
+  letter-spacing:0em;
+  padding-left:10px
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height:49.81px;
+  padding-left:10px
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height:49.81px
+}
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color:#6b9f88;
+  color:#fff
+}
+.select2-container--default .select2-results__option:hover {
+  background-color:#8dd3bb;
+  color:#fff
+}
+.select2-container--default .select2-dropdown {
+  box-shadow:0 4px 10px #0006
+}
+*,
+:before,
+:after {
+  --un-rotate:0;
+  --un-rotate-x:0;
+  --un-rotate-y:0;
+  --un-rotate-z:0;
+  --un-scale-x:1;
+  --un-scale-y:1;
+  --un-scale-z:1;
+  --un-skew-x:0;
+  --un-skew-y:0;
+  --un-translate-x:0;
+  --un-translate-y:0;
+  --un-translate-z:0;
+  --un-pan-x: ;
+  --un-pan-y: ;
+  --un-pinch-zoom: ;
+  --un-scroll-snap-strictness:proximity;
+  --un-ordinal: ;
+  --un-slashed-zero: ;
+  --un-numeric-figure: ;
+  --un-numeric-spacing: ;
+  --un-numeric-fraction: ;
+  --un-border-spacing-x:0;
+  --un-border-spacing-y:0;
+  --un-ring-offset-shadow:0 0 rgba(0,0,0,0);
+  --un-ring-shadow:0 0 rgba(0,0,0,0);
+  --un-shadow-inset: ;
+  --un-shadow:0 0 rgba(0,0,0,0);
+  --un-ring-inset: ;
+  --un-ring-offset-width:0px;
+  --un-ring-offset-color:#fff;
+  --un-ring-width:0px;
+  --un-ring-color:rgba(147,197,253,.5);
+  --un-blur: ;
+  --un-brightness: ;
+  --un-contrast: ;
+  --un-drop-shadow: ;
+  --un-grayscale: ;
+  --un-hue-rotate: ;
+  --un-invert: ;
+  --un-saturate: ;
+  --un-sepia: ;
+  --un-backdrop-blur: ;
+  --un-backdrop-brightness: ;
+  --un-backdrop-contrast: ;
+  --un-backdrop-grayscale: ;
+  --un-backdrop-hue-rotate: ;
+  --un-backdrop-invert: ;
+  --un-backdrop-opacity: ;
+  --un-backdrop-saturate: ;
+  --un-backdrop-sepia: 
+}
+::backdrop {
+  --un-rotate:0;
+  --un-rotate-x:0;
+  --un-rotate-y:0;
+  --un-rotate-z:0;
+  --un-scale-x:1;
+  --un-scale-y:1;
+  --un-scale-z:1;
+  --un-skew-x:0;
+  --un-skew-y:0;
+  --un-translate-x:0;
+  --un-translate-y:0;
+  --un-translate-z:0;
+  --un-pan-x: ;
+  --un-pan-y: ;
+  --un-pinch-zoom: ;
+  --un-scroll-snap-strictness:proximity;
+  --un-ordinal: ;
+  --un-slashed-zero: ;
+  --un-numeric-figure: ;
+  --un-numeric-spacing: ;
+  --un-numeric-fraction: ;
+  --un-border-spacing-x:0;
+  --un-border-spacing-y:0;
+  --un-ring-offset-shadow:0 0 rgba(0,0,0,0);
+  --un-ring-shadow:0 0 rgba(0,0,0,0);
+  --un-shadow-inset: ;
+  --un-shadow:0 0 rgba(0,0,0,0);
+  --un-ring-inset: ;
+  --un-ring-offset-width:0px;
+  --un-ring-offset-color:#fff;
+  --un-ring-width:0px;
+  --un-ring-color:rgba(147,197,253,.5);
+  --un-blur: ;
+  --un-brightness: ;
+  --un-contrast: ;
+  --un-drop-shadow: ;
+  --un-grayscale: ;
+  --un-hue-rotate: ;
+  --un-invert: ;
+  --un-saturate: ;
+  --un-sepia: ;
+  --un-backdrop-blur: ;
+  --un-backdrop-brightness: ;
+  --un-backdrop-contrast: ;
+  --un-backdrop-grayscale: ;
+  --un-backdrop-hue-rotate: ;
+  --un-backdrop-invert: ;
+  --un-backdrop-opacity: ;
+  --un-backdrop-saturate: ;
+  --un-backdrop-sepia: 
+}
+.container {
+  width:100%
+}
+
 /* Стили для формы */
 .outer-container {
     margin-left: 60px;
@@ -1082,25 +1584,25 @@ input[type="radio"]:checked {
 
 i {
     position: relative;
-    top: -24px;
+    top: -18px;
     left: 15px;
 }
 
 .fa-lock{
     position: relative;
-    top: -24px;
+    top: -18px;
     left: 15px;
 }
 
 .fa-eye{
     position: relative;
-    top: -24px;
+    top: -18px;
     left: 385px;
 }
 
 .fa-info-circle {
     position: relative;
-    top: -24px;
+    top: -18px;
     left: 395px;
 }
 

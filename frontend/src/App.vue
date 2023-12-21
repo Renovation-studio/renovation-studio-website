@@ -1,16 +1,19 @@
 <template>
-  <MainHeader :is-user-registered="isRegistered" @phone-submit-success="showNotification"></MainHeader>
+  <MainHeader
+    :is-user-registered="isRegistered"
+    @phone-submit-success="showNotification"
+  ></MainHeader>
   <CataloguePage v-if="isRegistered"></CataloguePage>
   <Register v-else @register-success="handleRegistrationSuccess"></Register>
   <MainFooter></MainFooter>
 </template>
 
 <script lang="ts">
-import CataloguePage from './components/CataloguePage.vue';
+import CataloguePage from "./components/CataloguePage.vue";
 
-import MainHeader from './components/MainHeader.vue'
-import MainFooter from './components/MainFooter.vue';
-import Register from './views/Register.vue';
+import MainHeader from "./components/MainHeader.vue";
+import MainFooter from "./components/MainFooter.vue";
+import Register from "./views/Register.vue";
 export default {
   components: {
     CataloguePage,
@@ -20,20 +23,22 @@ export default {
   },
   data() {
     return {
-      isRegistered: false
+      isRegistered: false,
     };
   },
   created() {
-    this.isRegistered = sessionStorage.getItem('isRegistered') === 'true';
+    this.isRegistered = sessionStorage.getItem("isRegistered") === "true";
   },
   methods: {
     handleRegistrationSuccess() {
       this.isRegistered = true;
-      sessionStorage.setItem('isRegistered', 'true');
-    }
+      sessionStorage.setItem("isRegistered", "true");
+    },
   },
 };
 </script>
 
 <style>
+
+
 </style>

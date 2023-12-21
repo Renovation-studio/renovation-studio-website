@@ -1,7 +1,5 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 /* Стили для поля выбора Select2 */
 .custom-select {
@@ -31,6 +29,13 @@
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 49.81px;
+}
+
+.select2-container--default .select2-results__option {
+    tab-size: 4;
+    font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+    font-feature-settings: normal;
+    font-variation-settings: normal;
 }
 
 /* Стили для выделенной полосы при выборе из списка */
