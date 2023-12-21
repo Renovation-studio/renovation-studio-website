@@ -101,7 +101,7 @@
     height: 1%;
   }
   .w-65{
-    width: 80%;
+    width: 85%;
   }
   .mw-75{
     max-width: 95%;
