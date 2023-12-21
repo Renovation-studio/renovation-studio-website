@@ -1,10 +1,8 @@
 <template>
-  <MainHeader
-    :is-user-registered="isRegistered"
-    @phone-submit-success="showNotification"
-  ></MainHeader>
-  <CataloguePage v-if="isRegistered"></CataloguePage>
-  <Register v-else @register-success="handleRegistrationSuccess"></Register>
+  <MainHeader :is-user-registered="isRegistered" @phone-submit-success="showNotification"></MainHeader>
+<!--  <CataloguePage v-if="isRegistered"></CataloguePage>-->
+<!--  <Register v-else @register-success="handleRegistrationSuccess"></Register>-->
+  <router-view></router-view>
   <MainFooter></MainFooter>
 </template>
 

@@ -182,9 +182,11 @@
 <script>
 import {computed, inject, nextTick, onMounted, ref, toRefs, watch, watchEffect} from 'vue';
 import { mask } from 'vue-the-mask';
-import  { useRegisterStore } from '../stores/RegisterStore';
+// import  { useRegisterStore } from '../stores/RegisterStore';
 import { useRouter } from 'vue-router';
 import '@fortawesome/fontawesome-free/css/all.css';
+import { register, checkEmail,checkPhone  } from '@/api/auth';
+// import { useAuthStore } from '@/stores/auth';
 import axios from 'axios';
 export default {
     directives: {
@@ -193,7 +195,7 @@ export default {
     emits: ['register-success'],
     setup(props, {emit}) {
         const router = useRouter();
-        const register = useRegisterStore();
+        // const register = useRegisterStore();
         const isFormValid = computed(() => {
             return (
                 !email.value ||
@@ -279,9 +281,9 @@ export default {
                 emailInput.style.borderColor = "red";
             } else {
                 try {
-                    const response = await axios.post('/api/check-email', {
-                        email: email.value
-                    });
+                  const response = await checkEmail({
+                    email: email.value
+                  });
 
                     if (response.data.exists) {
                         emailError.value = 'Этот адрес электронной почты уже используется.';
@@ -388,24 +390,30 @@ export default {
 
 
 
-                        const response = await axios.post('/api/check-phone', {
-                            phone: phone.value,
-                        });
+                      const response = await checkPhone({
+                        phone: phone.value
+                      });
 
 
-                        // Обработка ответа с сервера
-                        if (response.data.exists) {
-                            // Номер телефона уже используется
-                            document.getElementById("phone").style.borderColor = "red";
-                            phoneError.value = 'Этот номер телефона уже используется.';
+                      // Обработка ответа с сервера
+                      if (response !== undefined && response.exists !== undefined) {
+                        if (response.exists) {
+                          // Номер телефона уже используется
+                          document.getElementById("phone").style.borderColor = "red";
+                          phoneError.value = 'Этот номер телефона уже используется.';
                         } else {
-                            // Номер телефона уникален
-                            document.getElementById("phone").style.borderColor = "#8DD3BB";
+                          // Номер телефона уникален
+                          document.getElementById("phone").style.borderColor = "#8DD3BB";
                         }
+                      } else {
+                        // Ошибка структуры ответа
+                        console.error('Некорректная структура ответа:', response);
+                      }
                     } catch (error) {
-                        // Обработка ошибки запроса
-                        console.error('Ошибка запроса', error);
+                      // Обработка ошибки запроса
+                      console.error('Ошибка запроса', error);
                     }
+
                 }
             }
         };
@@ -534,21 +542,21 @@ export default {
 
                 // Установите значения полей формы в хранилище
                 // register.setUploadedFile(uploadedFile.value);
-                register.setEmail(email.value);
-                register.setPassword(password.value);
-                register.setConfirmPassword(confirmPassword.value);
-                register.setPhone(phone.value);
-                register.setSurname(surname.value);
-                register.setFirstName(firstName.value);
-                register.setPatronymic(patronymic.value);
-                register.setMovie(movie.value);
-                register.setWishes(wishes.value);
-                register.setInteriorStyle(interiorStyle.value);
-                register.setPainting(painting.value);
-                register.setTiles(tiles.value);
-                register.setConstruction(construction.value);
-                register.setElectricity(electricity.value);
-                register.setAgreement(agreement.value);
+                // register.setEmail(email.value);
+                // register.setPassword(password.value);
+                // register.setConfirmPassword(confirmPassword.value);
+                // register.setPhone(phone.value);
+                // register.setSurname(surname.value);
+                // register.setFirstName(firstName.value);
+                // register.setPatronymic(patronymic.value);
+                // register.setMovie(movie.value);
+                // register.setWishes(wishes.value);
+                // register.setInteriorStyle(interiorStyle.value);
+                // register.setPainting(painting.value);
+                // register.setTiles(tiles.value);
+                // register.setConstruction(construction.value);
+                // register.setElectricity(electricity.value);
+                // register.setAgreement(agreement.value);
 
                 // Создаем объект FormData
                 const formData = new FormData();
@@ -566,16 +574,11 @@ export default {
 
 
                 try {
-                    const response = await axios.post('/api/register', formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data', // Указываем тип контента как форма с файлами
-                        },
-                    });
-
+                  await register(formData);
 
 
                     // Обработка успешного ответа с сервера
-                    console.log('Успешная регистрация:', response.data);
+                    // console.log('Успешная регистрация:', response.data);
                     triggerRegistrationSuccess();
 
                     // Очистите поля формы после успешной отправки

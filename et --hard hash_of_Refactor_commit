@@ -1,0 +1,223 @@
+[33mcommit c11998ceff12b0b0729b78db7e21a81a7b9af851[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mRSC-48---Frontend-Merge[m[33m, [m[1;31morigin/RSC-48---Frontend-Merge[m[33m)[m
+Merge: e76963b 2038895
+Author: AmbNik <nr201253@mail.ru>
+Date:   Wed Dec 20 23:37:40 2023 +0300
+
+    refactor
+
+[33mcommit e76963be0580bf83f46f3a6ecec6b39871bc9b22[m
+Author: AmbNik <nr201253@mail.ru>
+Date:   Wed Dec 20 23:34:09 2023 +0300
+
+    Refactor
+
+[33mcommit 20388954df1cbb5cfb0b6d793b2ff3c7be507d4a[m
+Merge: 51790d7 3a1bc65
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 22:27:12 2023 +0300
+
+    Merge branch 'RSC-48---Frontend-Merge' of github.com:renovation-studio/renovation-studio-website into RSC-48---Frontend-Merge
+
+[33mcommit 51790d7885fc0490e763cf3937bb23daed77e8ba[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 22:24:30 2023 +0300
+
+    Актуальные изменения
+
+[33mcommit 3a1bc65f99576e547e11b5fd55d236c78f00b47a[m
+Author: Cyrus <cyrus.kuznetsov@gmail.com>
+Date:   Wed Dec 20 21:27:24 2023 +0300
+
+    feat: добавление api и стора авторизации
+
+[33mcommit 7134c35c9cf44b1bfab785625134efd21f6436d1[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 16:07:15 2023 +0300
+
+    [RSC-48] Разрешил использовать JS
+
+[33mcommit 88bf252db3bcc967ad72daef1856246b406c0b71[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 16:05:29 2023 +0300
+
+    [RSC-48] Изменил пути к API каталога
+
+[33mcommit 763197fff27098f21e88170e79acad00eadd8550[m
+Author: AmbNik <nr201253@mail.ru>
+Date:   Wed Dec 20 13:57:01 2023 +0300
+
+    Add register
+
+[33mcommit 3c441bcd7fc9901d7286ab71bd67ffc875e9c58d[m
+Merge: da2b7b2 634fa1d
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 11:25:09 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-48---Frontend-Merge
+
+[33mcommit 634fa1d28d0aac90cc1a2c7be599ec1a897ec56c[m[33m ([m[1;31morigin/RSC-50---Page-Title-Favicon[m[33m)[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 11:20:44 2023 +0300
+
+    [RSC-50] Обновил название страницы и фавикон
+
+[33mcommit da2b7b2964508fb5cf7d5a9e3279d259ad1eb93c[m
+Merge: c6e841e 777d3e0
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 11:16:26 2023 +0300
+
+    Merge branch 'catalog' into RSC-48---Frontend-Merge
+
+[33mcommit 777d3e04efe990f0241d239e925ef84b0b1c1b2e[m
+Merge: 37df7f4 e9c8c9c
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 11:12:26 2023 +0300
+
+    Merge branch 'RSC-49---Initial-Page-Load' into catalog
+
+[33mcommit e9c8c9c81a80612a96e31c5d9b552a7ba3ce13ee[m[33m ([m[1;31morigin/RSC-49---Initial-Page-Load[m[33m)[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 11:10:23 2023 +0300
+
+    [RSC-49] Добавлена загрузка при изначальном открытии страницы
+
+[33mcommit 37df7f4c1321bba8f364f30b6c348bee3e725c68[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 11:01:56 2023 +0300
+
+    Убрал консоль логи
+
+[33mcommit c6e841eb454fd51ccf3863d6c089d12a23180813[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:59:30 2023 +0300
+
+    [RSC-48] Вынес страницу каталога в отдельный компонент
+
+[33mcommit db23edb7ff845bd24792ca7a5e03c0ab68391e0e[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:42:15 2023 +0300
+
+    Временный компонент для хедера
+
+[33mcommit 21c7e634c57fbe4140293b8e98290a08508d9802[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:41:32 2023 +0300
+
+    Добавил недостающие асеты
+
+[33mcommit f0c9f008fcf3828f880d1f845ce9df347b9aaf0d[m[33m ([m[1;31morigin/RSC-35---Catalog-Main-Page[m[33m)[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:39:35 2023 +0300
+
+    [RSC-35] Добавлено содержание страницы сайта
+
+[33mcommit 33da257402a8c1a8416a75c5fd6a9c203aab69bd[m
+Merge: be57e0a 0cd54e7
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:37:42 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-51---Phone-Submission
+
+[33mcommit be57e0a0fc4f270c33d7fcad98ea3011df48c317[m[33m ([m[1;31morigin/RSC-51---Phone-Submission[m[33m)[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:37:27 2023 +0300
+
+    [RSC-51] Добавлен компонент оповещения
+
+[33mcommit 0cd54e7bda4def1506ad787ccd8b56224c605a56[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:35:46 2023 +0300
+
+    Добавил временные хедер и футер
+
+[33mcommit f35ab050e273ffb12caabd83e1ed2f0762905f48[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:29:57 2023 +0300
+
+    Добавил main.ts
+
+[33mcommit 5f3d5f7a6f818e94c11da1729cb10f6a45bc62ef[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:26:50 2023 +0300
+
+    [RSC-51] Добавлена обработка события отправки номера для обратной связи
+
+[33mcommit 5f7b13494a0ccf7f70797484743c2fa1e1f81910[m
+Merge: 31a5739 0252318
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:23:11 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-30_catalog_element
+
+[33mcommit 31a57394e2465d40606a1b320e1dcb50c9b74188[m[33m ([m[1;31morigin/RSC-30_catalog_element[m[33m)[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:22:59 2023 +0300
+
+    [RSC-30] Изменил модуль данных в соответсвии с API
+
+[33mcommit 02523185bc4f4628e5434242d58b4708018e8afd[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:21:22 2023 +0300
+
+    Обновил ассеты
+
+[33mcommit 61ca2b0a08c2ddfc00de0ab43bda0c2822cf6966[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:20:06 2023 +0300
+
+    Акутальные файлы конфигурации
+
+[33mcommit 39eed9869322afb96c72674d300066288eed26b9[m
+Merge: 327a4eb 7248530
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:16:23 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-31_catalog_list
+
+[33mcommit 72485308df4c7fac0a39bd038544aae4f215d469[m
+Merge: 8f2b854 c651e58
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:15:38 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-33_service_details
+
+[33mcommit c651e5810e4d8a34b8552704ba2717b55eaf8fd3[m
+Merge: 5a02e43 f3bb889
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:14:28 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-30_catalog_element
+
+[33mcommit f3bb889a528db0476f32c4c92c9818e5424c2d5f[m
+Merge: aadf9b8 976ae1b
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:13:26 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-29_sort_buttons
+
+[33mcommit 976ae1b8377222e5acbba73ebe22e89b72e8fa32[m
+Merge: 3b8d47a 200d60c
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:12:18 2023 +0300
+
+    Merge branch 'RSC-34_feedback' into catalog
+
+[33mcommit 200d60c4b9f2f94e64e450fe6fb97aaad013c09c[m
+Merge: 866bdd7 200759d
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:12:10 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-34_feedback
+
+[33mcommit 3b8d47a762d016d4731042e4bb20c6959dfe256f[m
+Merge: 5e0158c 200759d
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 10:09:54 2023 +0300
+
+    Merge branch 'catalog' of github.com:renovation-studio/renovation-studio-website into RSC-37-Search
+
+[33mcommit 200759d80f26a5e29186aa99a4e0f1566ec7687f[m[33m ([m[1;31morigin/RSC-32_phone-number-form[m[33m)[m
+Author: Remenos <remenoss@gmail.com>
+Date:   Wed Dec 20 09:29:49 2023 +0300
+
+    [RSC-32] Рефактор функций обработки номера, добавление события при о
