@@ -307,7 +307,11 @@ form .sendBtn:hover {
 
 @media (max-width: 549px) {
     .contact-form {
-        height: 430px;
+        height: 380px;
+    }
+
+    .contact-form .phone {
+        font-size: 1.25rem;
     }
 
     .container {
@@ -321,6 +325,29 @@ form .sendBtn:hover {
 
     .btn-container {
         width: auto;
+    }
+
+    form input {
+        height: 30px;
+        font-size: larger;
+    }
+
+    form .sendBtn {
+        padding: 8px 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .contact-form {
+        height: 370px;
+    }
+
+    .contact-form .phone {
+        font-size: 1.15rem;
+    }
+
+    form input {
+        width: 85%;
     }
 }
 </style>

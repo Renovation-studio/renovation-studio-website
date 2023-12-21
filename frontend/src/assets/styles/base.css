@@ -94,3 +94,9 @@ body {
     height: 15px !important;
   }
 }
+
+@media (width < 380px) {
+  body {
+    font-size: 13px;
+  }
+}

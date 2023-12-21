@@ -15,27 +15,35 @@
         <span class="font-size-6 font-bold">Наши услуги</span>
         <button v-if="!isRowServices" class="white round">Посмотреть все</button>
       </div>
-      <div class="flex justify-between mt-30px">
+      <div class="service-container flex justify-between mt-30px">
         <router-link to="/" class="service round flex flex-col flex-items-center w-30%">
-          <div class="relative w-100%">
-            <div class="bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-renovation.jpg)`}"></div>
+          <div class="service-img-container relative w-100%">
+            <div class="service-img bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-renovation.jpg)`}"></div>
           </div>
-          <span class="font-semibold mt-30px mb-30px">Косметический ремонт</span>
+          <span class="service-name font-semibold mt-30px mb-30px">Косметический ремонт</span>
+        </router-link>
+        <router-link to="/" v-if="isRowServices" class="service reverse round flex flex-col flex-items-center w-30%">
+          <span class="service-name reverse font-semibold mt-30px mb-30px">Дизайн-проект</span>
+          <div class="service-img-container reverse relative w-100%">
+            <div class="service-img reverse bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-design.jpg)`}"></div>
+          </div>
+        </router-link>
+        <router-link to="/" v-else="isRowServices" class="service round flex flex-col flex-items-center w-30%">
+          <div class="service-img-container relative w-100%">
+            <div class="service-img bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-design.jpg)`}"></div>
+          </div>
+          <span class="service-name font-semibold mt-30px mb-30px">Дизайн-проект</span>
         </router-link>
         <router-link to="/" class="service round flex flex-col flex-items-center w-30%">
-          <div class="relative w-100%">
-            <div class="bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-design.jpg)`}"></div>
+          <div class="service-img-container relative w-100%">
+            <div class="service-img bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-turnkey.jpg)`}"></div>
           </div>
-          <span class="font-semibold mt-30px mb-30px">Дизайн-проект</span>
-        </router-link>
-        <router-link to="/" class="service round flex flex-col flex-items-center w-30%">
-          <div class="relative w-100%">
-            <div class="bgImage round pt-70%" :style="{backgroundImage: `url(src/assets/img/service-turnkey.jpg)`}"></div>
-          </div>
-          <span class="font-semibold mt-30px mb-30px">Ремонт под ключ</span>
+          <span class="service-name font-semibold mt-30px mb-30px">Ремонт под ключ</span>
         </router-link>
       </div>
-      <button v-if="isRowServices" class="white round">Посмотреть все</button>
+      <div v-if="isRowServices" class="flex w-100% justify-center">
+        <button class="center-btn white round">Посмотреть все</button>
+      </div>
     </div>
 
     <div id="our-projects" class="margin mt-50px">
@@ -47,7 +55,7 @@
 
     <div id="feedbacks" class="margin mt-50px mb-50px">
       <div class="section-title flex justify-between">
-        <span class="font-size-6 font-bold">Отзывы</span>
+        <span class="feedbacks-title font-size-6 font-bold">Отзывы</span>
       </div>
       <FeedbacksSlider />
     </div>
@@ -165,6 +173,10 @@ button:hover {
 .subtitle {
   text-align: center;
 }
+
+.feedbacks-title {
+  margin-left: 3%;
+}
 }
 
 @media (max-width: 549px) {
@@ -210,6 +222,55 @@ button {
 
 .section-title {
   justify-content: center;
+}
+
+#our-services {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.service-container {
+  flex-direction: column;
+}
+
+.service {
+  width: 95%;
+  flex-direction: row;
+  margin-bottom: 30px;
+  margin-left: 5%;
+}
+
+.service.reverse {
+  margin-left: 0;
+  margin-right: 5%;
+}
+
+.service-img-container {
+  width: 55%;
+}
+
+.service-img {
+  width: 100%;
+  padding-top: 0;
+  height: 150px;
+}
+
+.service-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 45%;
+  margin: 0;
+  padding-left: 10px;
+  height: 150px;
+  background: linear-gradient(to right, #cdeae149, #cdeae1);
+}
+
+.service-name.reverse {
+  background: linear-gradient(to right, #cdeae1, #cdeae149);
+  padding-left: 0;
+  padding-right: 10px;
 }
 }
 

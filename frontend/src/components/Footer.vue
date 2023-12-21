@@ -65,7 +65,13 @@ const currentRoute = router.currentRoute.value;
 
 onMounted(() => {
     if (footerContainer.value) {
-            footerContainer.value.style.height = window.innerWidth < 768 ? '340px' : '200px';
+            if (window.innerWidth <= 380) {
+                footerContainer.value.style.height = '480px';
+            } else if (window.innerWidth < 768) {
+                footerContainer.value.style.height = '340px';
+            } else {
+                footerContainer.value.style.height = '200px';
+            }
         }
 
     if (currentRoute.path === '/') {
@@ -75,11 +81,27 @@ onMounted(() => {
         }
 
         if (footerContainer.value) {
-            footerContainer.value.style.height = window.innerWidth < 768 ? '560px' : '420px';
+            if (window.innerWidth <= 380) {
+                footerContainer.value.style.height = '800px';
+            } else if (window.innerWidth < 549) {
+                footerContainer.value.style.height = '560px';
+            } else if (window.innerWidth < 768) {
+                footerContainer.value.style.height = '560px';
+            } else {
+                footerContainer.value.style.height = '420px';
+            }
         }
 
         if (about.value) {
-            about.value.style.paddingTop = '250px';
+            if (window.innerWidth <= 380) {
+                about.value.style.paddingTop = '180px';
+            } else if (window.innerWidth < 549) {
+                about.value.style.paddingTop = '200px';
+            } else if (window.innerWidth < 768) {
+                about.value.style.paddingTop = '240px';
+            } else {
+                about.value.style.paddingTop = '250px';
+            }
         }
     }
 });
@@ -97,9 +119,7 @@ p.link:hover {
     }
 
     .about-block {
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin: 20px;
     }
 }
 
@@ -109,9 +129,19 @@ p.link:hover {
     }
 
     .about-block {
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin: 20px 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .about {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .about-block {
+        text-align: center;
+        margin: 17px 10px;
     }
 }
 </style>

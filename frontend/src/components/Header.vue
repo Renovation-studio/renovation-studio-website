@@ -320,5 +320,9 @@ button.green:hover {
   .logo {
     width: 75%;
   }
+
+  .loginBtn {
+    padding: 8px 20px;
+  }
 }
 </style>
