@@ -271,6 +271,7 @@ export default defineComponent({
     };
     const doesFollowCriteria = () => {
       followsCriteria.value = validator.isStrongPassword(String(password1.value))
+      arePasswordsSame()
     };
     const arePasswordsSame = () => {
       passwordsAreSame.value = password1.value === password2.value
