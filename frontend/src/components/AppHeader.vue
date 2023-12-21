@@ -50,28 +50,28 @@
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
+            href="javascript:void(0);"
             @click="$router.push('catalog')"
           >Услуги</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
+            href="javascript:void(0);"
             @click="$router.push('landing')"
           >Портфолио</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
+            href="javascript:void(0);"
             @click="$router.push('landing')"
           >Отзывы</a>
         </div>
         <div class="w-1/5 flex-grow max-w-full flex-1 px-4">
           <a
             class="text-bold inline-block pt-3 py-2 px-4 no-underline nav-item"
-            href="#"
+            href="javascript:void(0);"
             @click="$router.push('landing')"
           >О нас</a>
         </div>
