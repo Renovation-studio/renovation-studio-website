@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@vueuse/router": "^10.7.0",
+    "jquery": "^3.7.1",
     "maska": "^2.1.10",
     "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",

@@ -12,14 +12,9 @@
   </AppLayout>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import AppForgetPasswordForm from '@/components/AppForgetPasswordForm.vue'
 import AppLayout from "@/components/AppLayout.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
-export default {
-  components: {
-    AppHeader, AppFooter, AppLayout, AppForgetPasswordForm
-  }
-}
 </script>

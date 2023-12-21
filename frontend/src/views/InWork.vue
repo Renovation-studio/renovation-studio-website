@@ -2,12 +2,6 @@
   <AppInWork />
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import AppInWork from '@/components/AppInWork.vue'
-
-export default {
-  components: {
-    AppInWork
-  }
-}
 </script>

@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AboutView from '@/views/AboutView.vue'
+import { RouteNames } from './route-names';
+
 import SignInView from "@/views/SignInView.vue";
 import ForgotPasswordView from "@/views/ForgotPasswordView.vue";
+import CatalogueView from '@/views/CatalogueView.vue'
+import Register from '@/views/RegistrationView.vue'
 import InWork from "@/views/InWork.vue";
 
 const router = createRouter({
@@ -9,7 +12,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: RouteNames.Home,
       component: InWork
     },
     {
@@ -19,30 +22,26 @@ const router = createRouter({
     },
     {
       path: '/catalog',
-      name: 'catalog',
-      component: InWork
+      name: RouteNames.Catalog,
+      component: CatalogueView
     },
     {
       path: '/registration',
-      name: 'registration',
-      component: InWork
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: AboutView
+      name: RouteNames.Registration,
+      component: Register
     },
     {
       path: '/login',
-      name: 'login',
+      name: RouteNames.Login,
       component: SignInView
     },
     {
       path: '/forgot-password',
-      name: 'forgot-spassword',
+      name: RouteNames.ForgotPassword,
       component: ForgotPasswordView
     }
   ]
 })
 
 export default router
+export { RouteNames }

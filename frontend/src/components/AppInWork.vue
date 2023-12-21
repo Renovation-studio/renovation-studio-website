@@ -23,7 +23,7 @@
             <div class="flex flex-wrap mb-4 text-center">
               <button
                 class="font-medium shadow-lg hover:shadow-lg enabled:hover:shadow-[inset_2px_3px_0_rgba(0,0,0,0.2)] p-3 text-2xl disabled:text-muted w-2/5 mx-auto color-btn inline-block align-middle text-center select-none border border-none whitespace-no-wrap rounded-xl leading-normal no-underline bg-main hover:bg-mainhover disabled:bg-purchase"
-                @click="$router.go(-1)"
+                @click="$router.push(RouteNames.Login)"
               >
                 ВЕРНУТЬСЯ НАЗАД
               </button>
@@ -91,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-
+import { RouteNames } from '@/router';
 </script>
 
 <style scoped>

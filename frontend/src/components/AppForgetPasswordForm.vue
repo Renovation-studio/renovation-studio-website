@@ -117,18 +117,16 @@
                   placement="right"
                   arrow
                 >
-                  <button
-                    class="material-symbols-outlined text-base"
-                  >
-                    help
-                  </button>
+                  <button class="material-symbols-outlined text-base">help</button>
                   <slot />
                   <template #content="props">
                     <slot
                       name="content"
                       v-bind="props"
                     />
-                    <div class="w-320 text-red rounded-lg px-0.5 pt-1 pb-1 bg-white border border-lightgray ml-2">
+                    <div
+                      class="w-320 text-red rounded-lg px-0.5 pt-1 pb-1 bg-white border border-lightgray ml-2"
+                    >
                       <div class="m-1 px-1">
                         Пароль должен содержать:
                         <ul class="mt-0.5 pl-5 list-disc">
@@ -226,99 +224,100 @@
   </div>
 </template>
 
-<script lang="ts">
-import validator from 'validator'
-import {ref, defineComponent} from "vue";
-import Popper from "vue3-popper";
+<script lang="ts" setup>
+import validator from 'validator';
+import { ref } from 'vue';
+import Popper from 'vue3-popper';
 
-export default defineComponent({
-  components: {
-    Popper,
-  },
-  setup() {
-    // form fields
-    const step = ref(1);
-    const errorEmail = ref(false);
-    const passwordsAreSame = ref(true);
-    const followsCriteria = ref(true);
+import { requestResetToken, resetPassword } from '@/api';
 
-    const email = ref('');
-    const password1 = ref('');
-    const password2 = ref('');
+// form fields
+const step = ref(1)
+const errorEmail = ref(false)
+const passwordsAreSame = ref(true)
+const followsCriteria = ref(true)
 
-    const pass1IsHidden = ref(true);
-    const pass2IsHidden = ref(true);
-    const tooltip = ref(false);
+const email = ref('')
+const password1 = ref('')
+const password2 = ref('')
 
-    const changePasswordType = (num: number) => {
-      if (num === 1) {
-        pass1IsHidden.value = !pass1IsHidden.value
-      } else if (num === 2) {
-        pass2IsHidden.value = !pass2IsHidden.value
-      }
-    };
-    const validateEmail = () => {
-      errorEmail.value =
-          !validator.isEmail(String(email.value)) || validator.isEmpty(String(email.value))
-    };
-    const newPassword = () => {
-      if (!errorEmail. value) {
-        step.value = 2
-      }
-    };
-    const checkForm = () => {
-      //something
-    };
-    const doesFollowCriteria = () => {
-      followsCriteria.value = validator.isStrongPassword(String(password1.value))
-      arePasswordsSame()
-    };
-    const arePasswordsSame = () => {
-      passwordsAreSame.value = password1.value === password2.value
-    };
+const pass1IsHidden = ref(true)
+const pass2IsHidden = ref(true)
+const tooltip = ref(false)
 
-    const submitNewPassword = () => {
-      step.value = 3
-    };
+const changePasswordType = (num: number) => {
+  if (num === 1) {
+    pass1IsHidden.value = !pass1IsHidden.value
+  } else if (num === 2) {
+    pass2IsHidden.value = !pass2IsHidden.value
+  }
+}
+const validateEmail = () => {
+  errorEmail.value =
+    !validator.isEmail(String(email.value)) || validator.isEmpty(String(email.value))
+}
 
-    return {
-      step,
-      errorEmail,
-      passwordsAreSame,
-      followsCriteria,
-      email,
-      password1,
-      password2,
-      newPassword,
-      checkForm,
-      submitNewPassword,
-      validateEmail,
-      doesFollowCriteria,
-      arePasswordsSame,
-      pass1IsHidden,
-      pass2IsHidden,
-      changePasswordType,
-      tooltip,
+const token = ref<string | null>(); 
+
+async function newPassword() {
+  if (!errorEmail.value) {
+    try {
+      const res = await requestResetToken({
+        email: email.value
+      });
+
+      token.value = res.token;
+      step.value = 2
+    }
+    catch(e) {
+      errorEmail.value = true;
     }
   }
-});
+}
+const checkForm = () => {
+  
+}
+const doesFollowCriteria = () => {
+  followsCriteria.value = validator.isStrongPassword(String(password1.value))
+  arePasswordsSame();
+}
+const arePasswordsSame = () => {
+  passwordsAreSame.value = password1.value === password2.value
+}
+
+async function submitNewPassword() {
+  if (token.value) {
+    try {
+      await resetPassword({
+        token: token.value,
+        newPassword: password1.value,
+      });
+
+      step.value = 3;
+    }
+    catch(e) {
+      // some error handling
+    }
+  }
+}
 </script>
+
 <style scoped>
 .main-container {
   max-width: 420px;
 }
-.specificLeft{
+.specificLeft {
   left: 57.5%;
 }
-.specificTop{
-  top: 45%
+.specificTop {
+  top: 45%;
 }
 .material-symbols-outlined {
   font-variation-settings:
-       'FILL' 0,
-       'wght' 400,
-       'GRAD' 0,
-       'opsz' 24
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
 
 input {
@@ -330,9 +329,9 @@ input {
 }
 .material-symbols-outlined {
   font-variation-settings:
-      'FILL' 0,
-      'wght' 400,
-      'GRAD' 0,
-      'opsz' 24
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
 </style>

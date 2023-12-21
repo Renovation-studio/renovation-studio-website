@@ -1,10 +1,10 @@
-<template>
+<template> 
   <AppLayout>
     <template #header>
       <AppHeader />
     </template>
     <template #main>
-      <AppSignInForm />
+      <RegisterForm />
     </template>
     <template #footer>
       <AppFooter />
@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import AppSignInForm from '@/components/AppSignInForm.vue'
 import AppLayout from "@/components/AppLayout.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppHeader from "@/components/AppHeader.vue";
+import RegisterForm from '@/components/AppRegister.vue';
 </script>
