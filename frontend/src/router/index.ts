@@ -13,6 +13,11 @@ const router = createRouter({
       component: InWork
     },
     {
+      path: '/landing',
+      name: 'landing',
+      component: InWork
+    },
+    {
       path: '/catalog',
       name: 'catalog',
       component: InWork
