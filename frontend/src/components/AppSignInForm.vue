@@ -14,6 +14,7 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
+                    class="cursor-pointer"
                     :class="typeQuery === Type.Email
                       ? 'mt-0.5 mb-0.5 ml-0.5 bg-main rounded-lg pt-3 pb-3'
                       : 'mt-0.5 mb-0.5 ml-0.5 bg-white rounded-lg pt-3 pb-3 hover:bg-purchase'
@@ -31,9 +32,10 @@
                 <div class="w-1/2 text-center">
                   <div
                     id="div-switch"
+                    class="cursor-pointer"
                     :class="
                       typeQuery === Type.Phone
-                        ? 'mt-0.5 mb-0.5 mr-0.5 bg-main rounded-lg pt-3 pb-3'
+                        ? 'mt-0.5 mb-0.5 mr-0.5 bg-main rounded-lg pt-3 pb-3 '
                         : 'mt-0.5 mb-0.5 mr-0.5 bg-white rounded-lg pt-3 pb-3 hover:bg-purchase'
                     "
                     @click="changeInputLoginTypeToPhone()"
