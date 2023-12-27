@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ElementController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +19,36 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/elements', [ElementController::class, 'index']);
+
+Route::get('/catalog', [ServicesController::class, 'index']);
+
+Route::get('/catalog/{id}', [ServicesController::class, 'show']);
+
+Route::get('/search', [ServicesController::class, 'search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/auth/signin', [AuthController::class, 'signin'])->name('signin');
 
-Route::post('/auth/signout', [AuthController::class, 'signout'])->name('signout');
+Route::group(['middleware' => ['web']], function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::post('/auth/signup', [AuthController::class, 'signup'])->name('signup');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/auth/restore-password', [AuthController::class, 'restorePassword'])->name('restore-password');
+    Route::post('/restore-password', [AuthController::class, 'restorePassword'])->name('restore-password');
+
+    Route::post('/password-reset-token', [AuthController::class, 'requestResetToken'])->name('password-reset-token');
+
+    Route::get('/profile', [AuthController::class, 'getProfile'])->name('profile');
+});
+
+Route::get('/email/verify/{id}', [RegisterController::class, 'verify']);
+
+Route::post('/check-email', [RegisterController::class, 'checkEmail']);
+
+Route::post('/check-phone', [RegisterController::class, 'checkPhone']);
+
+Route::post('/register', [RegisterController::class, 'create']);
+

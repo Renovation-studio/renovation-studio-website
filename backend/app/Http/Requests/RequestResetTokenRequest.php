@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignupRequest extends FormRequest
+class RequestResetTokenRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,10 +14,7 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'bail|required|string',
-            'phoneNumber' => 'bail|required_without:email|digits:11',
-            'email' => 'bail|required_without:phoneNumber|email:rfc,dns',
-            'password' => 'required|string',
+            'email' => 'required|email:rfc,dns',
         ];
     }
 }
