@@ -5,7 +5,10 @@
       <div class="sm:container mx-auto xl:px-5 mw-75">
         <div class="flex flex-wrap ">
           <!-- ЛОГО -->
-          <div class="w-1/6">
+          <div 
+            class="w-1/6 cursor-pointer"
+            @click="$router.push('landing')"
+          >
             <img
               class="img-logo"
               src="../assets/Логотип lg.png"
