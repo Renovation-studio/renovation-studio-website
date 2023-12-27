@@ -14,7 +14,8 @@ class RestorePasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email:rfc,dns',
+            'newPassword' => 'required',
+            'token' => 'required',
         ];
     }
 }
